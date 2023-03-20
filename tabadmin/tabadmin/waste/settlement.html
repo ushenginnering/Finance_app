@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Meta -
+		<meta name="description" content="Responsive Bootstrap4 Dashboard Template">
+		<meta name="author" content="ParkerThemes">
+		<link rel="shortcut icon" href="img/fav.png" />
+
+		 Title -->
+    <title>Settlement History || Admin Dashboard</title>
+    <!-- *************
+			************ Common Css Files *************
+		************ -->
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Icomoon Font Icons css -->
+    <link rel="stylesheet" href="fonts/style.css">
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- *************
+			************ Vendor Css Files *************
+		************ -->
+    <!-- DateRange css -->
+    <link rel="stylesheet" href="vendor/daterange/daterange.css" />
+    <!-- Data Tables -->
+    <link rel="stylesheet" href="vendor/datatables/dataTables.bs4.css" />
+    <link rel="stylesheet" href="vendor/datatables/dataTables.bs4-custom.css" />
+    <link href="vendor/datatables/buttons.bs.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Loading starts -->
+    <div id="loading-wrapper">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Loading ends -->
+    <!-- Page wrapper start -->
+    <div class="page-wrapper">
+        <!-- Sidebar wrapper start -->
+        <nav id="sidebar" class="sidebar-wrapper">
+            <!-- Sidebar brand start  -->
+            <div class="sidebar-brand">
+                <a href="index.html" class="logo">
+                    <img src="img/logo.png" alt="Le Rouge Admin Dashboard" />
+                </a>
+            </div>
+            <!-- Sidebar brand end  -->
+            <!-- Sidebar content start -->
+            <div class="sidebar-content">
+                <!-- sidebar menu start -->
+                <div class="sidebar-menu">
+                    <ul>
+                        <li class="header-menu">Welcome [__USER_FIRSTNAME__]</li><br/>
+                        <li class="">
+                            <a href="index.html">
+                                <i class="icon-devices_other"></i>
+                                <span class="menu-text">Overview</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="investments.html">
+                                <i class="icon-folder"></i>
+                                <span class="menu-text">Investment History</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="transactions.html">
+                                <i class="icon-credit"></i>
+                                <span class="menu-text">Transaction History</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="settlement.html">
+                                <i class="icon-check-circle"></i>
+                                <span class="menu-text">Settlement</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailer.html">
+                                <i class="icon-message-circle"></i>
+                                <span class="menu-text">Mailer</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="blog.html">
+                                <i class="icon-book-open"></i>
+                                <span class="menu-text">Create Post</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tickets.html">
+                                <i class="icon-input"></i>
+                                <span class="menu-text">View Ticket</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="setting.html">
+                                <i class="icon-settings1"></i>
+                                <span class="menu-text">Setting</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- sidebar menu end -->
+            </div>
+            <!-- Sidebar content end -->
+        </nav>
+        <!-- Sidebar wrapper end -->
+        <!-- Page content start  -->
+        <div class="page-content">
+            <!-- Header start -->
+           <header class="header">
+                <div class="toggle-btns">
+                    <a id="toggle-sidebar" href="#">
+                        <i class="icon-list"></i>
+                    </a>
+                    <a id="pin-sidebar" href="#">
+                        <i class="icon-list"></i>
+                    </a>
+                </div>
+                <div class="header-items">
+                    <!-- Header actions start -->
+                    <ul class="header-actions">
+                        <li class="dropdown" style="display:none;">
+                            <a href="#" id="notifications" data-toggle="dropdown" aria-haspopup="true">
+                                <i class="icon-box"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right lrg" aria-labelledby="notifications">
+                                <ul class="header-tasks">
+                                    <li>
+                                        <p>#20 - Dashboard UI<span>90%</span></p>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
+                                                <span class="sr-only">90% Complete (success)</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <p>#35 - Alignment Fix<span>60%</span></p>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                                <span class="sr-only">60% Complete (success)</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <p>#50 - Broken Button<span>40%</span></p>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-secondary" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                                <span class="sr-only">40% Complete (success)</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="dropdown" style="display:none;">
+                            <a href="#" id="notifications" data-toggle="dropdown" aria-haspopup="true">
+                                <i class="icon-bell"></i>
+                                <span class="count-label">8</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right lrg" aria-labelledby="notifications">
+                                <div class="dropdown-menu-header">
+                                    Notifications (40)
+                                </div>
+                                <ul class="header-notifications">
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" id="userSettings" class="user-settings" data-toggle="dropdown" aria-haspopup="true">
+                                <span class="user-name">Julie Sweet</span>
+                                <span class="avatar">
+                                    <img src="img/user24.png" alt="avatar">
+                                    <span class="status busy"></span>
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userSettings">
+                                <div class="header-profile-actions">
+                                    <a href="profile.html"><i class="icon-user1"></i> My Profile</a>
+                                    <a href="setting.html"><i class="icon-settings1"></i>Settings</a>
+                                    <a href="#"><i class="icon-log-out1"></i> Sign Out</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- Header actions end -->
+                </div>
+            </header>
+            <!-- Header end -->
+            <!-- Page header start -->
+            <div class="page-header">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item active">Settlement History</li>
+                </ol>
+            </div>
+            <!-- Page header end -->
+            <!-- Main container start -->
+            <div class="main-container">
+                <!-- Row end -->
+                <!-- Row start -->
+                <div class="row gutters">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="table-container">
+                            <div class="t-header">Settlement</div>
+                            <div class="table-responsive">
+                                <table id="basicExample" class="table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Name of School</th>
+                                            <th>Invested Amount</th>
+                                            <th>Ref. ID</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>samuel peter</td>
+                                            <td>samuelpeter205@gmail.com</td>
+                                            <td>GG High school</td>
+                                            <td>29,000</td>
+                                            <td>34767655DDGD3</td>
+                                            <td><span class="badge badge-success">ready</span></td>
+                                            <td>
+                                                <div></div>
+                                                <button class=" btn btn-danger btn-sm" data-toggle="modal" data-target="#customModalone">Pay fee</button>
+                            </div>
+                            </td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Row end -->
+        </div>
+        <!-- Main container end -->
+    </div>
+    <!-- Page content end -->
+    </div>
+    <!-- Page wrapper end -->
+    <!-- Payment details Modal -->
+    <div class="modal fade" id="customModalone" tabindex="-1" role="dialog" aria-labelledby="customModalTwoLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="customModalTwoLabel">School Payment Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table cellspacing="10" class="table">
+                        <tr>
+                            <td class="boldtext">School Name</td>
+                            <td> GG High school</td>
+                        </tr>
+                        <tr>
+                            <td class="boldtext">Location</td>
+                            <td>27 Obiwali road, rumiubgo</td>
+                        </tr>
+                        <tr>
+                            <td class="boldtext">Email Address</td>
+                            <td>info@gghighschool.org</td>
+                        </tr>
+                        <tr>
+                            <td class="boldtext">Phone</td>
+                            <td>O8129908752</td>
+                        </tr>
+                        <tr>
+                            <td class="boldtext">Contact Person</td>
+                            <td>Samuel Peter</td>
+                        </tr>
+                        <tr>
+                            <td class="boldtext">Bank Number</td>
+                            <td>140876844</td>
+                        </tr>
+                        <tr>
+                            <td class="boldtext">Bank Name</td>
+                            <td> Access Bank</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer custom">
+                    <div class="left-side">
+                        <button type="button" class="btn btn-link primary">Mark as Paid</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--**************************
+			**************************
+				**************************
+							Required JavaScript Files
+				**************************
+			**************************
+		**************************-->
+    <!-- Required jQuery first, then Bootstrap Bundle JS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/moment.js"></script>
+    <!-- *************
+			************ Vendor Js Files *************
+		************* -->
+    <!-- Slimscroll JS -->
+    <script src="vendor/slimscroll/slimscroll.min.js"></script>
+    <script src="vendor/slimscroll/custom-scrollbar.js"></script>
+    <!-- Daterange -->
+    <script src="vendor/daterange/daterange.js"></script>
+    <script src="vendor/daterange/custom-daterange.js"></script>
+    <!-- Data Tables -->
+    <script src="vendor/datatables/dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap.min.js"></script>
+    <!-- Custom Data tables -->
+    <script src="vendor/datatables/custom/custom-datatables.js"></script>
+    <script src="vendor/datatables/custom/fixedHeader.js"></script>
+    <!-- Download / CSV / Copy / Print -->
+    <script src="vendor/datatables/buttons.min.js"></script>
+    <script src="vendor/datatables/jszip.min.js"></script>
+    <script src="vendor/datatables/pdfmake.min.js"></script>
+    <script src="vendor/datatables/vfs_fonts.js"></script>
+    <script src="vendor/datatables/html5.min.js"></script>
+    <script src="vendor/datatables/buttons.print.min.js"></script>
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
