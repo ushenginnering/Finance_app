@@ -4,7 +4,7 @@
 $host="localhost"; // Host name 
 $username="root"; // Mysql username 
 $password=""; // Mysql password 
-$db_name="benjamin_finance_app"; // Database name 
+$db_name = "benjamin_finance_app"; // Database name 
 
 // Create connection
 $conn = new mysqli($host, $username, $password, $dbname);
