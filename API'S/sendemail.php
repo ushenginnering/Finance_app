@@ -1,6 +1,6 @@
 <?php
 function sendmail($sender_email,$sender_gmail_password, $sender_name, $message,$sender_gmail_email,$subject){
- echo "sdfsdfd";        
+       
     require 'PHPMailer/src/Exception.php';
     require 'PHPMailer/src/PHPMailer.php';
     require 'PHPMailer/src/SMTP.php';
