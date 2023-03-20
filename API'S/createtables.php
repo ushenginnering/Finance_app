@@ -13,11 +13,12 @@ $sql = "CREATE TABLE USERS (
 )";
 
 // Execute the query
-if ($conn->query($sql) === TRUE) {
-    echo "Table USERS created successfully";
-} else {
-    echo "Error creating table: " . $conn->error;
-}
+if(mysqli_query($conn, $sql)){
+    echo "working <br>";
+    }else{
+        echo "failed <br>";
+    }
+           
 
 
 // SQL statement to create the accounts_info table
@@ -31,12 +32,12 @@ $sql = "CREATE TABLE accounts_info (
     referral_link VARCHAR(255)
     )";
 
-// Execute the SQL statement
-if (mysqli_query($conn, $sql)) {
-echo "Table accounts_info created successfully";
-} else {
-echo "Error creating table: " . mysqli_error($conn);
-}
+// Execute the query
+if(mysqli_query($conn, $sql)){
+    echo "working <br>";
+    }else{
+        echo "failed <br>";
+    }
 
 
 
@@ -50,13 +51,12 @@ $sql = "CREATE TABLE NOTIFICATIONS (
     DATE_TIME DATETIME DEFAULT CURRENT_TIMESTAMP
 )";
 
-// Execute query
-if (mysqli_query($conn, $sql)) {
-echo "Table NOTIFICATIONS created successfully!";
-} else {
-echo "Error creating table: " . mysqli_error($conn);
-}
-
+// Execute the query
+if(mysqli_query($conn, $sql)){
+    echo "working <br>";
+    }else{
+        echo "failed <br>";
+    }
 
 
 // SQL query to create table
@@ -71,13 +71,12 @@ $sql = "CREATE TABLE deposit_history (
     deposit_proof LONGBLOB
 )";
 
-// Execute query
-if (mysqli_query($conn, $sql)) {
-    echo "Table deposit_history created successfully!";
-} else {
-    echo "Error creating table: " . mysqli_error($conn);
-}
-
+// Execute the query
+if(mysqli_query($conn, $sql)){
+    echo "working <br>";
+    }else{
+        echo "failed <br>";
+    }
 
 
 // SQL query to create table
@@ -92,12 +91,12 @@ $sql = "CREATE TABLE withdrawal_history (
     withdrawal_address VARCHAR(255) NOT NULL
 )";
 
-// Execute query
-if (mysqli_query($conn, $sql)) {
-    echo "Table withdrawal_history created successfully!";
-} else {
-    echo "Error creating table: " . mysqli_error($conn);
-}
+// Execute the query
+if(mysqli_query($conn, $sql)){
+    echo "working <br>";
+    }else{
+        echo "failed <br>";
+    }
 
 
 // SQL query to create table
@@ -111,12 +110,12 @@ $sql = "CREATE TABLE investment_history (
     investment_type ENUM('NEW', 'RE-NEWAL') NOT NULL
 )";
 
-// Execute query
-if (mysqli_query($conn, $sql)) {
-    echo "Table investment_history created successfully!";
-} else {
-    echo "Error creating table: " . mysqli_error($conn);
-}
+// Execute the query
+if(mysqli_query($conn, $sql)){
+    echo "working <br>";
+    }else{
+        echo "failed <br>";
+    }
 
 
 
@@ -131,10 +130,10 @@ $sql = "CREATE TABLE referrals (
     investment_type ENUM('new', 'renewal') NOT NULL
 )";
 
-// Execute query
-if (mysqli_query($conn, $sql)) {
-    echo "Table referrals created successfully!";
-} else {
-    echo "Error creating table: " . mysqli_error($conn);
-}
+// Execute the query
+if(mysqli_query($conn, $sql)){
+    echo "working <br>";
+    }else{
+        echo "failed <br>";
+    }
 ?>

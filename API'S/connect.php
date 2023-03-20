@@ -6,12 +6,10 @@ $username="root"; // Mysql username
 $password=""; // Mysql password 
 $db_name = "benjamin_finance_app"; // Database name 
 
-// Create connection
-$conn = new mysqli($host, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// Connect to server and select databse.
+$conn = mysqli_connect("$host", "$username", "$password","$db_name") or die(mysqli_error());
+if ($conn){
+    echo "connected";
 }
 
 
