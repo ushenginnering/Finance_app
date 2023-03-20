@@ -1,12 +1,15 @@
 <?php
 include "connect.php";
 
+
+if (isset ($_POST['signup'])){
+
 // Get form data
-$fullname = $_POST['fullname']  = 'obi';
-$country = $_POST['country'] = 'nigeria';
-$phone = $_POST['phone'] = '09160308124';
-$password = $_POST['password'] = '12345';
-$mail = $_POST['mail']  = 'uchennaukeh@gmail.com';
+$fullname = $_POST['fullname']  ;
+$country = $_POST['country'];
+$phone = $_POST['phone'] ;
+$password = $_POST['password'] ;
+$mail = $_POST['mail'] ;
 
 // SQL query to insert data into table
 $sql = "INSERT INTO users (fullname, country, phone, password, mail) VALUES ('$fullname', '$country', '$phone', '$password', '$mail')";
@@ -47,6 +50,6 @@ if (mysqli_query($conn, $sql)) {
     echo "Error signing up user: " . mysqli_error($conn);
 }
 
-// Close connection
-mysqli_close($conn);
+
+}
 ?>
