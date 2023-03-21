@@ -88,9 +88,15 @@
                             <div class="t-header"> Investments</div>
                             
                             <div class="table-responsive">
+                            <select id="filter">
+									<option value="active" selected>Active</option>
+									<option value="suspended">Suspended</option>
+									<option value="all">All</option>
+								</select>
                                 <table id="basicExample" class="table custom-table">
                                     <thead>
                                         <tr>
+                                            <th>S/N</th>
                                             <th>Full Name</th>
                                             <th>Email</th>
                                             <th>Phone number</th>
@@ -99,8 +105,9 @@
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="user-data">
                                         <tr>
+                                            <td>1</td>
                                             <td>samuel alex</td>
                                             <td>titi@gmail.com</td>
                                             <td>12345678929</td>
@@ -152,6 +159,8 @@
     <script src="vendor/datatables/buttons.print.min.js"></script>
     <!-- Main JS -->
     <script src="js/main.js"></script>
+    <script src="js/custom/functions.js"></script>
+    <script src="js/custom/users.js"></script>
     <!-- Steps wizard JS -->
     <script src="vendor/wizard/jquery.steps.min.js"></script>
     <script src="vendor/wizard/jquery.steps.custom.js"></script>

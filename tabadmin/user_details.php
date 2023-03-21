@@ -1,23 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- Meta -->
-    <meta name="author" content="">
+    <meta name="author" content="" />
     <link rel="shortcut icon" href="img/fav.png" />
 
     <!-- Title -->
     <title>User Dashboard || User details</title>
     <!-- Bootstrap css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
     <!-- Icomoon Font Icons css -->
-    <link rel="stylesheet" href="fonts/style.css">
+    <link rel="stylesheet" href="fonts/style.css" />
     <!-- Main css -->
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="vendor/lobipanel/css/lobipanel.css" />
     <!-- Data Tables -->
     <link rel="stylesheet" href="vendor/datatables/dataTables.bs4.css" />
@@ -26,13 +26,10 @@
 </head>
 
 <body>
-
     <!-- Page wrapper start -->
     <div class="page-wrapper">
-
         <!-- Sidebar wrapper start -->
         <nav id="sidebar" class="sidebar-wrapper">
-
             <!-- Sidebar brand start  -->
             <div class="sidebar-brand">
                 <a href="index.html" class="logo">
@@ -43,7 +40,6 @@
 
             <!-- Sidebar content start -->
             <div class="sidebar-content">
-
                 <!-- sidebar menu start -->
                 <div class="sidebar-menu">
                     <ul>
@@ -60,7 +56,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="transactions.html">
+                            <a href="deposit.php">
                                 <i class="icon-credit"></i>
                                 <span class="menu-text">Deposit section</span>
                             </a>
@@ -72,7 +68,6 @@
                                 <span class="menu-text">Withdrawal sections</span>
                             </a>
                         </li>
-
 
                         <li>
                             <a href="settlement.html">
@@ -93,17 +88,13 @@
                                 <span class="menu-text">Setting</span>
                             </a>
                         </li>
-
                     </ul>
                 </div>
                 <!-- sidebar menu end -->
-
             </div>
             <!-- Sidebar content end -->
-
         </nav>
         <!-- Sidebar wrapper end -->
-
 
         <!-- Header start -->
         <header class="header">
@@ -116,15 +107,12 @@
                 </a>
             </div>
             <div class="header-items">
-
-
                 <!-- Header actions start -->
                 <ul class="header-actions">
-                    <li class="dropdown" style="display:none;">
+                    <li class="dropdown" style="display: none">
                         <a href="#" id="notifications" data-toggle="dropdown" aria-haspopup="true">
                             <i class="icon-box"></i>
                         </a>
-
                     </li>
                 </ul>
                 <!-- Header actions end -->
@@ -134,7 +122,6 @@
 
         <!-- Page content start  -->
         <div class="page-content">
-
             <!-- Page header start -->
             <div class="page-header">
                 <ol class="breadcrumb">
@@ -145,12 +132,10 @@
             </div>
             <!-- Page header end -->
 
-
             <!-- Main container start -->
             <div class="main-container">
                 <!-- Row start -->
                 <div class="row gutters">
-
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="alert alert-info alert-dismissible fade show" role="alert">
                             Welcome to User details, You can see all details about a
@@ -160,12 +145,10 @@
                             </button>
                         </div>
                     </div>
-
                 </div>
                 <!-- Row end -->
                 <!-- Row start -->
                 <div class="row gutters">
-
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="accordion toggle-icons" id="toggleIcons">
                             <div class="accordion-container">
@@ -191,16 +174,16 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
+                                                        <td id="full-name"></td>
+                                                        <td id=email""></td>
+                                                        <td id="avatar"></td>
+                                                        <td id="phone-number"></td>
+                                                        <td id="country"></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <br>
+                                        <br />
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
                                             data-target="#personalinfo">
                                             Update Personal Information
@@ -236,15 +219,14 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td>$100</td>
-                                                            <td>$100</td>
-                                                            <td>$100</td>
-                                                            <td>$100</td>
-                                                            <td>$100</td>
-                                                            <td>$100</td>
-                                                            <td>$100</td>
-                                                            <td>$100</td>
-
+                                                            <td id="total-deposit"></td>
+                                                            <td id="account-balance"></td>
+                                                            <td id="total-profit-earned"></td>
+                                                            <td id="total-withdrawal"></td>
+                                                            <td id="active-investment"></td>
+                                                            <td id="last-deposit"></td>
+                                                            <td id="last-withdrawal"></td>
+                                                            <td id="referral-bonus"></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -273,6 +255,7 @@
                                                 <table id="basicExample" class="table custom-table">
                                                     <thead>
                                                         <tr>
+                                                            <th>S/N</th>
                                                             <th>Investment Plan</th>
                                                             <th>Percentage %</th>
                                                             <th>Amount</th>
@@ -283,8 +266,9 @@
                                                             <th>Action</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
+                                                    <tbody id="investment-data">
                                                         <tr>
+                                                            <td>1</td>
                                                             <td>Starter Plan</td>
                                                             <td>2%</td>
                                                             <td>100</td>
@@ -296,8 +280,7 @@
                                                                 <div>
                                                                     <a href="#">
                                                                         <span
-                                                                            class=" btn btn-success ">Activate</span></a>
-
+                                                                            class="btn btn-success">Activate</span></a>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -332,8 +315,8 @@
 															<th>Status</th> -->
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
-                                                        <tr>
+                                                    <tbody id="referral-data">
+                                                        <tr >
                                                             <td></td>
                                                             <td></td>
                                                             <!-- <td></td>
@@ -350,17 +333,13 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
 
                 <!-- Row end -->
-
             </div>
             <!-- Main container end -->
-
         </div>
         <!-- Page content end -->
-
     </div>
     <!-- Page wrapper end -->
 
@@ -370,7 +349,9 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="customModalTwoLabel">Personal Information</h5>
+                    <h5 class="modal-title" id="customModalTwoLabel">
+                        Personal Information
+                    </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -380,34 +361,36 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="" class="col-form-label">Fullname:</label>
-                                <input type="text" class="form-control" id="fullname">
+                                <input type="text" class="form-control" id="fullname" />
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="" class="col-form-label">Phone Number:</label>
-                                <input type="text" class="form-control" id="">
+                                <input type="text" class="form-control" id="" />
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="" class="col-form-label">Country:</label>
-                                <input type="text" class="form-control" id="">
+                                <input type="text" class="form-control" id="" />
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="" class="col-form-label">Avater:</label>
-                                <input type="file" class="form-control" id="">
+                                <input type="file" class="form-control" id="" />
                             </div>
                         </div>
-
                     </form>
                 </div>
                 <div class="modal-footer custom">
-
                     <div class="left-side">
-                        <button type="button" class="btn btn-link danger" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-link danger" data-dismiss="modal">
+                            Cancel
+                        </button>
                     </div>
                     <div class="divider"></div>
                     <div class="right-side">
-                        <button type="button" class="btn btn-link success">Save Information</button>
+                        <button type="button" class="btn btn-link success">
+                            Save Information
+                        </button>
                     </div>
                 </div>
             </div>
@@ -415,14 +398,15 @@
     </div>
     <!--End Personal Information Modal -->
 
-
     <!-- Personal Information Modal -->
     <div class="modal fade" id="wallet" tabindex="-1" role="dialog" aria-labelledby="customModalTwoLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="customModalTwoLabel">Personal Information</h5>
+                    <h5 class="modal-title" id="customModalTwoLabel">
+                        Personal Information
+                    </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -432,52 +416,54 @@
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label for="" class="col-form-label">Total Deposit</label>
-                                <input type="text" class="form-control" id="">
+                                <input type="text" class="form-control" id="" />
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="" class="col-form-label">Account Balance</label>
-                                <input type="text" class="form-control" id="">
+                                <input type="text" class="form-control" id="" />
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="" class="col-form-label">Total Profit Earned:</label>
-                                <input type="text" class="form-control" id="">
+                                <input type="text" class="form-control" id="" />
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="" class="col-form-label">Total Withdrawal:</label>
-                                <input type="text" class="form-control" id="">
+                                <input type="text" class="form-control" id="" />
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="" class="col-form-label">Total Withdrawal:</label>
-                                <input type="text" class="form-control" id="">
+                                <input type="text" class="form-control" id="" />
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="" class="col-form-label">Last Deposited</label>
-                                <input type="text" class="form-control" id="">
+                                <input type="text" class="form-control" id="" />
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="" class="col-form-label">Last Withdrawal</label>
-                                <input type="text" class="form-control" id="">
+                                <input type="text" class="form-control" id="" />
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="" class="col-form-label">Referal Bonus</label>
-                                <input type="text" class="form-control" id="">
+                                <input type="text" class="form-control" id="" />
                             </div>
                         </div>
-
                     </form>
                 </div>
                 <div class="modal-footer custom">
-
                     <div class="left-side">
-                        <button type="button" class="btn btn-link danger" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-link danger" data-dismiss="modal">
+                            Cancel
+                        </button>
                     </div>
                     <div class="divider"></div>
                     <div class="right-side">
-                        <button type="button" class="btn btn-link success">Update Wallet</button>
+                        <button type="button" class="btn btn-link success">
+                            Update Wallet
+                        </button>
                     </div>
                 </div>
             </div>
@@ -513,10 +499,10 @@
     <script src="vendor/datatables/html5.min.js"></script>
     <script src="vendor/datatables/buttons.print.min.js"></script>
 
-
     <!-- Main JS -->
     <script src="js/main.js"></script>
-
+    <script src="js/custom/functions.js"></script>
+    <script src="js/custom/user-details.js"></script>
 </body>
 
 </html>

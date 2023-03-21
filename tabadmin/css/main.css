@@ -6316,3 +6316,7 @@ label {
 code {
   color: #225de4;
   word-break: break-word; }
+
+  .__notification {
+    display: none;
+  }
