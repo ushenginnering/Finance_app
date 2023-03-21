@@ -89,7 +89,7 @@ let handle_action = (action, id) => {
 };
 
 // fetch data on load of the page
-$(function (e) {
+$(function () {
   load_data("processed");
 });
 
