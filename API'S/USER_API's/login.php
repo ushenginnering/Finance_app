@@ -1,4 +1,6 @@
 <?php
+// Start the session
+session_start();
 // Set your database credentials
 include '../connect.php';
 
@@ -7,18 +9,21 @@ $user_email = mysqli_real_escape_string($conn, $user_email);
 $password = mysqli_real_escape_string($conn, $password);
 
 // Build the SQL query
-$sql = "SELECT * FROM users WHERE email = '$user_email' AND password = '$password'";
+$sql = "SELECT user_id FROM users WHERE email = '$user_email' AND password = '$password'";
 
 // Execute the query
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    // Output data of each row
+    // Store the user ID in a session variable
+    $row = $result->fetch_assoc();
+    $_SESSION['user_id'] = $row['user_id'];
+    
+    // Output a success message
     echo "Login successful";
 } else {
-    echo "in valid login credencials";
+    // Output an error message
+    echo "Invalid login credentials";
 }
 
-// Close the database connection
-$conn->close();
 ?>
