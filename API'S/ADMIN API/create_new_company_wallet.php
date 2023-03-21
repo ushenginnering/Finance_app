@@ -1,5 +1,5 @@
 <?php
-include "connect.php";
+include "../connect.php";
 
 if (isset($_POST['create_new_company_wallet'])){
 // Escape the variables to prevent SQL injection

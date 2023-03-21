@@ -1,6 +1,6 @@
 <?php
 // Set your database credentials
-include "connect.php";
+include "../connect.php";
 
 // Build the SQL query to select data from the table
 $sql = "SELECT * FROM company_wallets ";
