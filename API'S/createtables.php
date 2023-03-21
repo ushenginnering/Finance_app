@@ -8,6 +8,7 @@ $sql = "CREATE TABLE users (
     fullname VARCHAR(255) NOT NULL,
     country VARCHAR(255) NOT NULL,
     phone VARCHAR(20) NOT NULL,
+    account_status ENUM('ACTIVE', 'INACTIVE') DEFAULT 'INACTIVE',
     password VARCHAR(255) NOT NULL,
     mail VARCHAR(255) NOT NULL,
     user_id  VARCHAR(20) NOT NULL,
@@ -27,7 +28,6 @@ if(mysqli_query($conn, $sql)){
 $sql = "CREATE TABLE accounts_info (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user_id INT(6) UNSIGNED,
-    account_status ENUM('ACTIVE', 'INACTIVE') DEFAULT 'INACTIVE',
     active_investments FLOAT(10, 2),
     total_profit FLOAT(10, 2),
     balance FLOAT(10, 2),
