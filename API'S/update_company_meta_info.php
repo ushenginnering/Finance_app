@@ -15,6 +15,7 @@ if (isset($_POST['update_meta_info'])){
         echo "meta info updated successfully";
     }else{
         echo "failed to update meta info";
+        
     }
 
 }
