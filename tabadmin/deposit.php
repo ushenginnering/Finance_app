@@ -1,4 +1,3 @@
-n
 <!doctype html>
 <html lang="en">
 
@@ -91,6 +90,8 @@ n
 				<div class="row gutters">
 
 					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="__notification alert" role="alert"></div>
+
 						<div class="alert alert-info alert-dismissible fade show" role="alert">
 							Admin to view all Deposit Transaction on the system
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -106,10 +107,16 @@ n
 						<div class="table-container">
 							<!--     <div class="t-header">No Search Field</div> -->
 							<div class="table-responsive">
+								<select id="filter">
+									<option value="succesful">Succesful</option>
+									<option value="processed" selected>Processed</option>
+									<option value="declined">Declined</option>
+									<option value="all">All</option>
+								</select>
 								<table id="copy-print-csv" class="table custom-table">
 									<thead>
 										<tr>
-											<th>S/n</th>
+											<th>S/N</th>
 											<th>Full Name</th>
 											<th>Email</th>
 											<th>Amount</th>
@@ -121,12 +128,12 @@ n
 
 										</tr>
 									</thead>
-									<tbody>
-										<tr>
+									<tbody id="deposit_data">
+										<tr >
 											<td>1</td>
 											<td>Tiger Nixon</td>
 											<td>text@gmail.com</td>
-											<td>$320,800</td>
+											<td><span>$</span>320,800</td>
 											<td>2011/07/25</td>
 											<td>Bitcoin Type</td>
 											<td>
@@ -140,7 +147,6 @@ n
 											<td>Processed</td>
 											<td>
 												<div>
-													<span title="" class=" btn btn-danger icon-delete"></span>
 													<a href=""><span title="Decline Deposit"class="btn btn-warning icon-cancel"></span></a>
 													<a href=""><span title="Approved Deposit"class="btn btn-success icon-check2"></span></a>
 												</div>
@@ -176,7 +182,8 @@ n
 				<div class="modal-body">
 						<div class="row">
 							<center>
-								<img src="img/user24.png" class="img-responsive" width="200" style="margin:0;"/>
+								<img src="img/user24.png" 
+								id="show-img-popup" class="img-responsive" width="200" style="margin:0;"/>
 							</center>
 							
 						</div>
@@ -210,6 +217,8 @@ n
 
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
+    <script src= "./js/custom/functions.js"></script>
+    <script src= "./js/custom/deposit.js"></script>
 
 
 </body>

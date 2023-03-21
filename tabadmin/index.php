@@ -104,7 +104,7 @@
 								<i class="icon-users"></i>
 							</div>
 							<div class="sale-num">
-								<h3>0</h3>
+								<h3 id="total-users">0</h3>
 								<p>Total Users</p>
 							</div>
 						</div>
@@ -115,7 +115,7 @@
 								<i class="icon-credit"></i>
 							</div>
 							<div class="sale-num">
-								<h3>0</h3>
+								<h3 id="total-deposit">0</h3>
 								<p>Total Deposit</p>
 							</div>
 						</div>
@@ -126,7 +126,7 @@
 								<i class="icon-airplay"></i>
 							</div>
 							<div class="sale-num">
-								<h3>0</h3>
+								<h3 id="total-withdrawal">0</h3>
 								<p>Total Withdrawal</p>
 							</div>
 						</div>
@@ -137,7 +137,7 @@
 								<i class="icon-message"></i>
 							</div>
 							<div class="sale-num">
-								<h3>0</h3>
+								<h3 id="total-investment">0</h3>
 								<p'>Total Investment</p>
 							</div>
 						</div>
@@ -164,6 +164,8 @@
 	<script src="vendor/slimscroll/custom-scrollbar.js"></script>
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
+	<script src="js/custom/functions.js"></script>
+	<script src="js/custom/overview.js"></script>
 </body>
 
 </html>
