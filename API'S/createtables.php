@@ -166,4 +166,42 @@ if(mysqli_query($conn, $sql)){
     }else{
         echo "failed <br>";
     }
+
+
+    // Build the SQL query to create the table
+$sql = "CREATE TABLE company_investment_plan (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    plan_name VARCHAR(30) NOT NULL,
+    percentage FLOAT(5,2) NOT NULL,
+    plan_duration INT(11) NOT NULL,
+    minimum_value DECIMAL(10,2) NOT NULL,
+    maximum_value DECIMAL(10,2) NOT NULL
+)";
+
+// Execute the query
+if(mysqli_query($conn, $sql)){
+    echo "working <br>";
+    }else{
+        echo "failed <br>";
+    }
+
+
+    
+// Build the SQL query
+$sql = "CREATE TABLE company_wallets (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    wallet_name VARCHAR(50) NOT NULL,
+    wallet_avatar VARCHAR(255),
+    wallet_address VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    )";
+
+// Execute the query
+if(mysqli_query($conn, $sql)){
+    echo "working <br>";
+    }else{
+        echo "failed <br>";
+    } "Error creating company wallets table: " . $conn->error;
+
 ?>
