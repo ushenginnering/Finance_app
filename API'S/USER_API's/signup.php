@@ -11,10 +11,11 @@ if (isset ($_POST['signup'])){
     $password = $_POST['password'] ;
     $confirm_password = $_POST['confirm_password'] ;
     $mail = $_POST['mail'] ;
+    $user_id =  rand(89,234324);
 
     if ($password == $confirm_password){
             // SQL query to insert data into table
-            $sql = "INSERT INTO users (fullname, country, phone, password, mail) VALUES ('$fullname', '$country', '$phone', '$password', '$mail')";
+            $sql = "INSERT INTO users (fullname, country, phone, password, mail, user_id) VALUES ('$fullname', '$country', '$phone', '$password', '$mail', '$user_id')";
 
             // Execute query
             if (mysqli_query($conn, $sql)) {
