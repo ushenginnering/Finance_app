@@ -10,7 +10,9 @@ let create_table_html = (items) => {
           <td class="amount"><span>$</span>${parseInt(
             Number(item.amount_deposited)
           )?.toLocaleString()}</td>
-          <td class="date">${new Date(item?.date_time).toJSON().slice(0, 10)}</td>
+          <td class="date">${new Date(item?.date_time)
+            .toJSON()
+            .slice(0, 10)}</td>
           <td class="payment_type">${item?.deposit_type}</td>
           <td class="deposit_proof">
           <img src="${item?.deposit_proof}" width="30"/>
@@ -21,7 +23,7 @@ let create_table_html = (items) => {
           <div>
           <a href="#" data-id="${
             item?.user_id
-          }" class="decline-deposit" onClick="handlection('decline', ${
+          }" class="decline-deposit" onClick="handle_action('decline', ${
         item?.user_id
       })">
           <span title="Decline Deposit"class="btn btn-warning icon-cancel" >
@@ -29,7 +31,9 @@ let create_table_html = (items) => {
           </a>
           <a href="#" data-id="${
             item?.user_id
-          } class="approve-deposit" onClick="handle_action('approve', ${item?.user_id})">
+          } class="approve-deposit" onClick="handle_action('approve', ${
+        item?.user_id
+      })">
           <span title="Approved Deposit"class="btn btn-success icon-check2">
           </span>
           </a>

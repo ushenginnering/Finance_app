@@ -66,9 +66,9 @@ let load_data = (filter) => {
     {
       user_id: 1,
       fullname: "Jehoshaphat",
-      mmail: "segunade041@gmail.com",
+      mail: "segunade041@gmail.com",
       phone: "09078785538",
-      country:"Nigeria",
+      country: "Nigeria",
       account_status: "active",
     },
     {
@@ -76,7 +76,7 @@ let load_data = (filter) => {
       fullname: "segun",
       mail: "jeoh@gmail.com",
       phone: "09043781138",
-      country:"Argentina",
+      country: "Argentina",
       account_status: "suspended",
     },
   ]);

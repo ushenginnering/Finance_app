@@ -127,7 +127,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">Home</li>
                     <li class="breadcrumb-item">User section</li>
-                    <li class="breadcrumb-item active">Samuel alex</li>
+                    <li class="breadcrumb-item active" id="active-user"></li>
                 </ol>
             </div>
             <!-- Page header end -->
@@ -175,7 +175,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td id="full-name"></td>
-                                                        <td id=email""></td>
+                                                        <td id="email"></td>
                                                         <td id="avatar"></td>
                                                         <td id="phone-number"></td>
                                                         <td id="country"></td>
@@ -356,30 +356,29 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                <form enctype="multipart/form-data" id="update-personal-info">
                 <div class="modal-body">
-                    <form>
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="" class="col-form-label">Fullname:</label>
-                                <input type="text" class="form-control" id="fullname" />
+                                <input type="text" class="form-control" id="update-fullname" />
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="" class="col-form-label">Phone Number:</label>
-                                <input type="text" class="form-control" id="" />
+                                <input type="tel" class="form-control" id="update-phone" />
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="" class="col-form-label">Country:</label>
-                                <input type="text" class="form-control" id="" />
+                                <input type="text" class="form-control" id="update-country" />
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="" class="col-form-label">Avater:</label>
-                                <input type="file" class="form-control" id="" />
+                                <input type="file" class="form-control" id="update-img" />
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
                 <div class="modal-footer custom">
                     <div class="left-side">
                         <button type="button" class="btn btn-link danger" data-dismiss="modal">
@@ -388,11 +387,10 @@
                     </div>
                     <div class="divider"></div>
                     <div class="right-side">
-                        <button type="button" class="btn btn-link success">
-                            Save Information
-                        </button>
+                        <input type="submit" class="btn btn-link success" value="SAVE INFORMATION"/>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>
@@ -411,8 +409,8 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                <form enctype="multipart/form-data" id="update-wallet-info">
                 <div class="modal-body">
-                    <form>
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label for="" class="col-form-label">Total Deposit</label>
@@ -451,9 +449,8 @@
                                 <input type="text" class="form-control" id="" />
                             </div>
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer custom">
+                    </div>
+                    <div class="modal-footer custom">
                     <div class="left-side">
                         <button type="button" class="btn btn-link danger" data-dismiss="modal">
                             Cancel
@@ -461,11 +458,10 @@
                     </div>
                     <div class="divider"></div>
                     <div class="right-side">
-                        <button type="button" class="btn btn-link success">
-                            Update Wallet
-                        </button>
+                        <input type="submit" class="btn btn-link success" value="Update Wallet">  
                     </div>
                 </div>
+            </form>
             </div>
         </div>
     </div>
