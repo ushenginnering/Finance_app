@@ -122,26 +122,30 @@
 							<div class="card-header">
 								<div class="card-title text-danger">Proof of payment</div>
 							</div>
-							<div class="card-body">
-								<div class="form-group">
-									<label>Amount Deposited</label>
-									<input type="text" class="form-control" placeholder="Amount Deposited" />
+							<form action="" id="deposit-form" enctype="multipart/form-data">
+								<div class="card-body">
+									<div class="form-group">
+										<label>Amount Deposited</label>
+										<input type="number" class="form-control" id="amount-deposited" 
+										name="amount_deposited"
+										placeholder="Amount Deposited" />
+									</div>
+	
+									<div class="form-group">
+										<label>Payment Type</label>
+										 <select class="form-control" id="payment-type" name="deposit_type">
+											<option value="bitcoin wallet">Bitcoin wallet</option>
+											<option value="ethereum wallet">Ethereum wallet</option>
+											<option value="perfect money">Perfect Money</option>
+										 </select>
+									</div>
+	
+									<div class="form-group">
+										<input type="file" class="form-control" placeholder="Email Address" id="proof" name="deposit_proof"/>
+									</div>
+									<input type="submit" class="btn btn-dark" value="Complete Deposit" id="upload-proof"></input>
 								</div>
-
-								<div class="form-group">
-									<label>Payment Type</label>
-									 <select class="form-control">
-										<option>Bitcoin wallet</option>
-										<option>Ethereum wallet</option>
-										<option>Perfect Money</option>
-									 </select>
-								</div>
-
-								<div class="form-group">
-									<input type="file" class="form-control" placeholder="Email Address" />
-								</div>
-								<button class="btn btn-dark">Complete Deposit</button>
-							</div>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -166,6 +170,8 @@
 	<script src="vendor/lobipanel/js/lobipanel-custom.js"></script>
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
+	<script src="js/custom/functions.js"></script>
+	<script src="js/custom/deposit.js"></script>
 	<script>
 		const time = new Date().getHours();
 		let greeting;

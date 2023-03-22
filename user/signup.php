@@ -8,12 +8,12 @@
 
 	<!-- Meta -->
 	<meta name="description"
-		content="Acumen global was founded with the goal to address any gaps in the value chain for any project management activity, in both oil and gas and non-oil and gas sector projects Our interest cut across oil and gas, medical, and construction services. The Directors and managers are qualified in Project Management, Engineering and, Consulting, Financial and Marketing Management, which allow us to Manage all facets of a project.">
+		content="Stoutgies international was founded with the goal to address any gaps in the value chain for any project management activity, in both oil and gas and non-oil and gas sector projects Our interest cut across oil and gas, medical, and construction services. The Directors and managers are qualified in Project Management, Engineering and, Consulting, Financial and Marketing Management, which allow us to Manage all facets of a project.">
 	<meta name="author" content="">
 	<link rel="shortcut icon" href="img/fav.png" />
 
 	<!-- Title -->
-	<title>Acumen Global | User Registration</title>
+	<title>Stoutgies international | User Registration</title>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="css/bootstrap.min.css" />
 
@@ -27,28 +27,29 @@
 	<!-- Container start -->
 	<div class="container">
 
-		<form action="#">
+		<form action="#" id="register-form">
 			<div class="row justify-content-md-center">
 				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
 					<div class="login-screen">
+						<div class="__notification alert"></div>
 						<div class="login-box">
 							<center>
-								<img src="img/logo-dark.png" alt="" width="100" />
+								<img src="img/logo-dark.png" alt="" width="200" />
 						   </center>
 							<h5 class="text-center mt-3">Welcome 👋, Start your Journey to financial freedom .</h5>
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="FullName" />
+								<input type="text" class="form-control" placeholder="FullName" id="fullname"/>
 							</div>
 							<div class="form-group">
-								<input type="email" class="form-control" placeholder="Email Address" />
-							</div>
-
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Phoone number" />
+								<input type="email" class="form-control" placeholder="Email Address" id="email"/>
 							</div>
 
 							<div class="form-group">
-								<select class="form-group form-control">
+								<input type="text" class="form-control" placeholder="Phone number" id="phone-number"/>
+							</div>
+
+							<div class="form-group">
+								<select class="form-group form-control" id="country">
 									<option value="Afganistan">Select Country</option>
 									<option value="Afganistan">Afghanistan</option>
 									<option value="Albania">Albania</option>
@@ -300,7 +301,7 @@
 							</div>
 
 							<div class="form-group">
-								<input type="password" class="form-control" placeholder="Password" />
+								<input type="password" class="form-control" placeholder="Password" id="password"/>
 								<small id="passwordHelpInline" class="text-danger">
 									Password must be 8-20 characters long.
 								</small>
@@ -308,7 +309,7 @@
 							
 
 							<div class="form-group">
-								<input type="password" class="form-control" placeholder="Confirm Password" />
+								<input type="password" class="form-control" placeholder="Confirm Password" id="confirm-password"/>
 								<small id="passwordHelpInline" class="text-danger">
 									Password must be 8-20 characters long.
 								</small>
@@ -320,7 +321,7 @@
 							</div>
 
 							<div class="form-group">
-								<input type="submit" value="Register here" class="form-control btn btn-danger col-md-4" />
+								<input type="submit" value="Register here" class="form-control btn btn-dark col-md-4" id="register-btn"/>
 							</div>
 							<hr>
 							<div class="m-0">
@@ -336,6 +337,11 @@
 	</div>
 	<!-- Container end -->
 	
-<script src="//code.tidio.co/fg841ies8tcsghtpwdb3unsoi8o6sdeg.js" async></script>
+<script src="//code.tidio.co/t6hgilkrcdxropb6neap8rsn9gq6hhbz.js" async></script>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/custom/functions.js"></script>
+<script src="./js/custom/register.js"></script>
+<script>
+</script>
 </body>
 </html>

@@ -77,7 +77,7 @@
 								<i class="icon-credit"></i>
 							</div>
 							<div class="sale-num">
-								<h3>:00</h3>
+								<h3 id="total-deposit">:00</h3>
 								<p class="text-dark">Total Deposit</p>
 							</div>
 						</div>
@@ -88,7 +88,7 @@
 								<i class="icon-credit"></i>
 							</div>
 							<div class="sale-num">
-								<h3>:00</h3>
+								<h3 id="account-balance">:00</h3>
 								<p class="text-dark">Account Balance</p>
 							</div>
 						</div>
@@ -99,7 +99,7 @@
 								<i class="icon-credit"></i>
 							</div>
 							<div class="sale-num">
-								<h3>:00</h3>
+								<h3 id="total-profit-earned">:00</h3>
 								<p class="text-dark">Total Profit Earned</p>
 							</div>
 						</div>
@@ -110,7 +110,7 @@
 								<i class="icon-sentiment_very_satisfied"></i>
 							</div>
 							<div class="sale-num">
-								<h3>:00</h3>
+								<h3 id="total-withdrawal">:00</h3>
 								<p class="text-dark">Total Withdrawal</p>
 							</div>
 						</div>
@@ -125,7 +125,7 @@
 								<i class="icon-import_export"></i>
 							</div>
 							<div class="sale-num">
-								<h3>0</h3>
+								<h3 id="active-investment">0</h3>
 								<p class="text-dark">Active Investment</p>
 							</div>
 						</div>
@@ -136,7 +136,7 @@
 								<i class="icon-credit"></i>
 							</div>
 							<div class="sale-num">
-								<h3>:00</h3>
+								<h3 id="last-deposit">:00</h3>
 								<p class="text-dark">Last Deposited</p>
 							</div>
 						</div>
@@ -147,7 +147,7 @@
 								<i class="icon-sentiment_very_satisfied"></i>
 							</div>
 							<div class="sale-num">
-								<h3>0</h3>
+								<h3 id="last-withdrawal">0</h3>
 								<p class="text-dark">Last Withdrawal</p>
 							</div>
 						</div>
@@ -158,7 +158,7 @@
 								<i class="icon-users"></i>
 							</div>
 							<div class="sale-num">
-								<h3>0</h3>
+								<h3 id="referral-bonus">0</h3>
 								<p class="text-dark">Referal Bonus</p>
 							</div>
 						</div>
@@ -173,8 +173,9 @@
 							</div>
 							<div class="card-body">
 								<!-- <h5>Refferal Link</h5> -->
-								<p class="card-text text-white"><a href="https://stougiesinvestio.com/?refcode=Alexmak"
-										class="text-white bold">https://stougiesinvestio.com/?refcode=Alexmak</a>
+								<p class="card-text text-white">
+									<a href="https://stougiesinvestio.com/?refcode=Alexmak"
+										class="text-white bold" id="referral-link">https://stougiesinvestio.com/?refcode=Alexmak</a>
 								</p>
 								<button class="btn btn-dark">Copy Referral Link</button>
 							</div>
@@ -202,6 +203,8 @@
 	<script src="vendor/lobipanel/js/lobipanel-custom.js"></script>
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
+	<script src="js/custom/functions.js"></script>
+	<script src="js/custom/overview.js"></script>
 	<script>
 		const time = new Date().getHours();
 		let greeting;

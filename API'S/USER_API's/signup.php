@@ -1,5 +1,5 @@
 <?php
-include "connect.php";
+include "../connect.php";
 
 
 if (isset ($_POST['signup'])){
@@ -38,7 +38,7 @@ if (isset ($_POST['signup'])){
                         $sender_name =  $row["site_name"] ;
                         $subject = "Welcome to ".$sender_name;
 
-                        include "sendemail.php";
+                        include "../ADMIN API/sendemail.php";
                         $send_email =  sendmail($sender_email,$sender_gmail_password, $sender_name, $message,$sender_gmail_email,$subject);
                         if ($send_email == 'Record saved successfully and email sent') {
                             echo "Welcome Email sent successfully!"; 
@@ -47,14 +47,26 @@ if (isset ($_POST['signup'])){
                         }
                     }
                 } else {
+                    
                     echo "No results found";
                 }
             } else {
-                echo "Error signing up user: " . mysqli_error($conn);
+                $response = array(
+                    "status"=>false,
+                    "message"=>"Error signing up user",
+                    "others"=> " error: ". mysqli_error($conn)
+                );
+                // Output an error message
+                echo json_encode($response);
             }
 
     }else{
-        echo "Password does not match";
+        $response = array(
+            "status"=>false,
+            "message"=>"password does not match"
+        );
+        // Output an error message
+        echo json_encode($response);
     }
 
 
