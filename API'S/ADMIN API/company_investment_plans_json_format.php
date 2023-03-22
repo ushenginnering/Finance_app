@@ -22,9 +22,18 @@ if ($result->num_rows > 0) {
     $json_data = json_encode($data);
 
     // Output the JSON data
-    echo $json_data;
+    $response = array(
+        "status"=>true,
+        "message"=> $json_data 
+    );
+    echo json_encode($response);
 } else {
-    echo "No data found";
+    // Output the JSON data
+    $response = array(
+        "status"=>false,
+        "message"=> "no data found" 
+    );
+    echo json_encode($response);
 }
 
 
