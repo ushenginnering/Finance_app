@@ -24,10 +24,11 @@
 	<!-- Container start -->
 	<div class="container">
 
-		<form action="">
+		<form action="" id="login-form">
 			<div class="row justify-content-md-center">
 				<div class="col-xl-6 col-lg-5 col-md-6 col-sm-12">
 					<div class="login-screen">
+						<div class="__notification alert"></div>
 						<div class="login-box">
 							<center>
 								<img src="img/logo-dark.png" alt="" width="200" class="m-3" />
@@ -35,10 +36,10 @@
 							</center>
 
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Email Address" />
+								<input type="text" class="form-control" placeholder="Email Address" id="email-address"/>
 							</div>
 							<div class="form-group">
-								<input type="password" class="form-control" placeholder="Password" />
+								<input type="password" class="form-control" placeholder="Password" id="password"/>
 							</div>
 							<div class="custom-control custom-switch mb-3">
 								<input type="checkbox" class="custom-control-input" id="customSwitch1">
@@ -47,7 +48,7 @@
 
 							</div>
 							<!-- <button type="submit" class="btn btn-primary">Login here</button> -->
-							<a href="index.php" class="btn btn-dark">Login here</a>
+							<input type="submit" class="btn btn-dark" value="Login here" id="login-btn"/>
 							<hr>
 							<div class="actions align-left">
 								<span class="additional-link">New here?</span>
@@ -64,4 +65,7 @@
 
 </body>
 <script src="//code.tidio.co/t6hgilkrcdxropb6neap8rsn9gq6hhbz.js" async></script>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/custom/functions.js"></script>
+<script src="./js/custom/login.js"></script>
 </html>

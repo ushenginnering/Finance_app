@@ -1,10 +1,12 @@
 let validate_user_cred = () => {
-  let fullname = $("#fullname").val();
-  let mail = $("#email").val();
-  let phone = $("#phone-number").val();
-  let country = $("#country").val();
-  let password = $("#password").val();
-  let confirm_password = $("#confirm-password").val();
+  let [fullname, mail, phone, country, password, confirm_password] = lowercase(
+    $("#fullname").val(),
+    $("#email").val(),
+    $("#phone-number").val(),
+    $("#country").val(),
+    $("#password").val(),
+    $("#confirm-password").val()
+  );
   let agreement_switch = document.getElementById("customSwitch1").checked;
 
   let status = empty(
@@ -26,7 +28,7 @@ let validate_user_cred = () => {
     } else {
       if (!agreement_switch) {
         notification.warning(
-          "Must fill all field. (agree to terms and condition"
+          "Must fill all field. (agree to terms and condition)"
         );
         return {
           status: false,

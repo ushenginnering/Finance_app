@@ -196,3 +196,17 @@ let loading = {
     $(id).attr("value", text).removeAttr("disabled").removeClass("disable");
   },
 };
+
+let lowercase = (...args) => {
+  let lowerArr = [];
+  if (args.length > 0) {
+    args.forEach((arg) => {
+      if (typeof arg === "string" || arg !== "") {
+        lowerArr?.push(arg?.trim()?.toLowerCase());
+      } else {
+        lowerArr?.push(arg);
+      }
+    });
+    return lowerArr;
+  }
+};
