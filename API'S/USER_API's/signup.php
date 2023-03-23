@@ -3,7 +3,6 @@ include "connect.php";
 $_POST['signup'] = "signup";
 
 if (isset ($_POST['signup'])){ 
-
     // Get form data
     $fullname = $_POST['fullname']  = "john" ;
     $country = $_POST['country'] = "Nigeria";
