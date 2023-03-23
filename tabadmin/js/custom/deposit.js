@@ -1,5 +1,6 @@
 // function to create html table template
 let create_table_html = (items) => {
+  // items = JSON.parse(items)
   let table_append_html = ``;
   if (items.length > 0) {
     items?.forEach((item, index) => {
@@ -112,7 +113,7 @@ create_table_html([
     date_time: new Date(Date.now()),
     deposit_type: "Etherium type",
     transaction_status:'Success',
-    deposit_proof:'../../../tabadmin/img/user24.png'
+    deposit_proof:'../../../../Finance_app/tabadmin/img/user24.png'
   },
   {
     user_id: 2,
@@ -122,7 +123,7 @@ create_table_html([
     date_time: new Date(Date.now()),
     deposit_type: "Bitcoin type",
     transaction_status:'Declined',
-    deposit_proof:'../../../user/img/user12.png'
+    deposit_proof:'../../../../Finance_app/user/img/user12.png'
 
   },
 ]);

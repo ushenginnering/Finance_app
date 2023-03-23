@@ -31,7 +31,10 @@ let notification = {
         .addClass("alert-warning alert-dismissible fade show")
         .css({ width: "fit-content" })
         .show();
-
+        $(".__notification")[0].scrollIntoView({
+          behavior:"smooth",
+          block:"end"
+        })
       setTimeout(() => {
         $(".__notification")
           .hide()
@@ -47,6 +50,10 @@ let notification = {
         .addClass("alert-danger alert-dismissible fade show")
         .css({ width: "fit-content" })
         .show();
+      $(".__notification")[0].scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+      });
 
       setTimeout(() => {
         $(".__notification")
@@ -63,7 +70,10 @@ let notification = {
         .addClass("alert-success alert-dismissible fade show")
         .css({ width: "fit-content" })
         .show();
-
+      $(".__notification")[0].scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+      });
       setTimeout(() => {
         $(".__notification")
           .text("")

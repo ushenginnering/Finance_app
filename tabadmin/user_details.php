@@ -143,6 +143,8 @@
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
+                    <div class="__notification alert" role="alert"></div>
+
                         </div>
                     </div>
                 </div>

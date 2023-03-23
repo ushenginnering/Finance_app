@@ -71,6 +71,7 @@
 
 							</div>
 						</div>
+						<div class="__notification alert" role="alert"></div>
 					</div>
 					
 				</div>

@@ -79,7 +79,18 @@ let handle_submit_registration = (
       }
     )
     .then((data) => {
-      console.log(data);
+      data = JSON.parse(data)
+      if(data?.registration_status){
+        if(data?.email_status){
+          notification.success("User signed up successfully!")
+          notification.success(data?.message)
+        }else{
+          notification.success("User signed up successfully!")
+          notification.warning("Error sending mail to user")
+        }
+      }else{
+        notification.danger(data?.message)
+      }
     })
     .catch((err) => {
       console.log(err);

@@ -64,6 +64,7 @@
 								<!-- <span id="">and Welcome to Acumen Global! </span>--><br>
 								<small>Welcome to Referal, this page shows total referred people that have used your link</small>
 							</div>
+							<div class="__notification alert" role="alert"></div>
 						</div>
 					</div>
 					

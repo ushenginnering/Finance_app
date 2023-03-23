@@ -133,12 +133,12 @@ let handle_add_investment_plan = (
       data = JSON.parse(data);
       if (data?.status) {
         // if succesful
-        alert(data?.message);
+        notification.success(data?.message);
 
         // call function to load investments
         load_investment_plans()
       } else {
-        alert(data?.message);
+        notification.danger(data?.message);
       }
     });
 };
@@ -158,17 +158,17 @@ let handle_add_wallet = (formData) => {
             data = JSON.parse(data);
             if (data?.status) {
               // if succesful
-              alert(data?.message);
+              notification.success(data?.message);
       
               // call function to load wallets
               load_wallets()
             } else {
-              alert(data?.message);
+              notification.danger(data?.message);
             }
         },
         error: (err) => {
             loading.stop_loading(".add-wallet-btn", "update changes")
-            alert("something went wrong. try refreshing page")
+            notification.warning("something went wrong. try refreshing page")
           console.log(err);
         },
       });
@@ -211,7 +211,7 @@ $(function () {
         maximum_value
       );
     } else {
-      alert("Must fill all fields");
+      notification.danger("Must fill all fields");
     }
   });
 
@@ -232,7 +232,7 @@ $(function () {
         formData.append("wallet_avatar", wallet_avatar[0])
         handle_add_wallet(formData)
     }else{
-        alert("Fill in all field")
+        notification.danger("Fill in all field")
     }
   })
 });

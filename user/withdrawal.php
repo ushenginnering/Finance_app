@@ -64,6 +64,8 @@
 								<small>Welcome to Withdrawal section, Please select which of the profit you want to withdraw from.<span class="text-success "> (Referal or Account Balance)</span></small>
 
 							</div>
+							<div class="__notification alert" role="alert"></div>
+
 						</div>
 					</div>
 					

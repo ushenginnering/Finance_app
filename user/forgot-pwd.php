@@ -31,6 +31,8 @@
 			<div class="row justify-content-md-center">
 				<div class="col-xl-5 col-lg-5 col-md-6 col-sm-12">
 					<div class="login-screen">
+                    <div class="__notification alert" role="alert"></div>
+
 						<div class="login-box">
 							<center>
 								<img src="img/logo-dark.png" alt="" width="200"  class="m-3"/>
