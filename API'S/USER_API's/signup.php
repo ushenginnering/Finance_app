@@ -37,7 +37,7 @@ if (isset ($_POST['signup'])){
                         $sender_name =  $row["site_name"] ;
                         $subject = "Welcome to ".$sender_name;
 
-                        include "../ADMIN API/sendemail.php";
+                        include "sendemail.php";
                         $send_email =  sendmail($sender_email,$sender_gmail_password, $sender_name, $message,$sender_gmail_email,$subject);
                         if ($send_email == 'Record saved successfully and email sent') {
                             echo "!"; 
