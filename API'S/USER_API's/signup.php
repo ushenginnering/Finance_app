@@ -1,16 +1,16 @@
 <?php
 include "connect.php";
+$_POST['signup'] = "signup";
 
-
-if (isset ($_POST['signup'])){
+if (isset ($_POST['signup'])){ 
 
     // Get form data
-    $fullname = $_POST['fullname']  ;
-    $country = $_POST['country'];
-    $phone = $_POST['phone'] ;
-    $password = $_POST['password'] ;
-    $confirm_password = $_POST['confirm_password'] ;
-    $mail = $_POST['mail'] ;
+    $fullname = $_POST['fullname']  = "john" ;
+    $country = $_POST['country'] = "Nigeria";
+    $phone = $_POST['phone'] = "091 60 30 81 24" ;
+    $password = $_POST['password'] = "12345";
+    $confirm_password = $_POST['confirm_password'] = "12345" ;
+    $mail = $_POST['mail'] = "let send our mail to the right person";
     $user_id =  rand(89,234324);
 
     if ($password == $confirm_password){
