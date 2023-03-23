@@ -2,9 +2,10 @@
 let update_user_table_html = (details) => {
   if (details) {
     updateUI.selector.all(
+      ["#active-user", details?.fullname?.toUpperCase()],
       ["#full-name", details?.fullname],
       ["#email", details?.mail],
-      ["#avatar", `<img src='${details?.img}' alt="avatar"/>`],
+      ["#avatar", `<img src='${details?.img}' alt="avatar" width="30px"/>`],
       ["#phone-number", details?.phone],
       ["#country", details?.country]
     );
@@ -60,7 +61,7 @@ let create_investment_table_html = (items) => {
             </td>
             </tr>`;
     });
-    updateUI.selector.apppend(["#investment-data", table_append_html]);
+    updateUI.selector.all(["#investment-data", table_append_html]);
   }
 };
 let create_referral_table_html = (items) => {
@@ -74,11 +75,11 @@ let create_referral_table_html = (items) => {
             )?.toLocaleString()}</td>
             </tr>`;
     });
-    updateUI.selector.apppend(["#referral-data", table_append_html]);
+    updateUI.selector.all(["#referral-data", table_append_html]);
   }
 };
 let handle_activate_investment = (id) => {
-  console.log("id");
+  console.log(id);
 };
 let load_data = (filter) => {
   router
@@ -99,9 +100,50 @@ let load_data = (filter) => {
     });
 };
 
+// function to send ajax request to update personal info
+let update_personal_info = (formData) => {
+  $.ajax({
+    url: "http://localhost/finance_app/tabadmin/test.php",
+    type: "POST",
+    data: formData,
+    processData: false,
+    contentType: false,
+    success: (data) => {
+      console.log(data);
+    },
+    error: (err) => {
+      console.log(err);
+    },
+  });
+};
 // function to fire when the page loads
 $(function (e) {
   load_data("active");
+
+  //handle click event to update personal info
+  $("#update-personal-info").submit((e) => {
+    e.preventDefault();
+
+    //convert to lowercase and trim data
+    let [update_fullname, update_phone, update_country] = lowercase(
+      $("#update-fullname").val(),
+      $("#update-phone").val(),
+      $("#update-country").val()
+    );
+    let file = document.getElementById("update-img").files[0];
+
+    let formData = new FormData();
+    update_fullname !== "" &&
+      formData.append("update_fullname", $("#update-fullname").val());
+    update_country !== "" &&
+      formData.append("update_country", $("#update-country").val());
+    update_phone !== "" &&
+      formData.append("update_phone", $("#update-phone").val());
+    file?.name && formData.append("update_img", file);
+
+    // call function to update personal info
+    update_personal_info(formData);
+  });
 });
 
 create_investment_table_html([
@@ -121,3 +163,11 @@ create_referral_table_html([
     referral_bonus: "30000",
   },
 ]);
+
+update_user_table_html({
+  fullname: "Alex Iwobi",
+  mail: "segunade041@gmail.com",
+  country: "Nigeria",
+  phone: "07023432154",
+  img: "../../../../Finance_app/user/img/user10.png",
+});

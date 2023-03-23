@@ -97,6 +97,8 @@ n
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
+						<div class="__notification alert" role="alert"></div>
+
 					</div>
 
 				</div>

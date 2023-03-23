@@ -1,5 +1,5 @@
 <?php
-include "connect.php";
+include "../connect.php";
 
 
 if (isset ($_POST['signup'])){
@@ -19,11 +19,11 @@ if (isset ($_POST['signup'])){
 
             // Execute query
             if (mysqli_query($conn, $sql)) {
-                echo "User signed up successfully!";
+                // echo "User signed up successfully!";
                 // send welcome mail user
             
                 // SQL query to select the desired columns from the company_profile table
-                $sql = "SELECT welcome_mail_draft, active_gmail_address, active_gmail_password FROM company_profile";
+                $sql = "SELECT welcome_mail_draft, active_gmail_address, active_gmail_password, site_name FROM company_profile";
                 
                 // Execute the SQL query and store the result set
                 $result = mysqli_query($conn, $sql);
@@ -38,23 +38,52 @@ if (isset ($_POST['signup'])){
                         $sender_name =  $row["site_name"] ;
                         $subject = "Welcome to ".$sender_name;
 
-                        include "sendemail.php";
+                        include "../ADMIN API/sendemail.php";
                         $send_email =  sendmail($sender_email,$sender_gmail_password, $sender_name, $message,$sender_gmail_email,$subject);
                         if ($send_email == 'Record saved successfully and email sent') {
-                            echo "Welcome Email sent successfully!"; 
+                            echo "!"; 
+                            $response = array(
+                                "registration_status"=>true,
+                                "email_status"=>true,
+                                "message"=>"Welcome Email sent successfully",
+                            );
+                            echo json_encode($response);
+
                         }else{
-                            echo $send_email;
+                            $response = array(
+                                "registration_status"=>true,
+                                "email_status"=>false,
+                                "message"=>$send_email,
+                            );
+                            echo json_encode($response);
                         }
                     }
                 } else {
-                    echo "No results found";
+                    $response = array(
+                        "registration_status"=>true,
+                        "email_status"=>false,
+                        "message"=>"No results found",
+                    );
+                    echo json_encode($response);
                 }
             } else {
-                echo "Error signing up user: " . mysqli_error($conn);
+                $response = array(
+                    "registration_status"=>false,
+                    "message"=>"Error signing up user",
+
+                );
+                // Output an error message
+                echo json_encode($response);
             }
 
     }else{
-        echo "Password does not match";
+        $response = array(
+            "registration_status"=>false,
+            "message"=>"Password does not match",
+
+        );
+        // Output an error message
+        echo json_encode($response);
     }
 
 

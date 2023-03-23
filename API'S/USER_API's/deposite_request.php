@@ -10,16 +10,28 @@ $deposit_type = $_POST['deposit_type'];
 $transaction_status = "pending";
 
 // Get the uploaded deposit proof image file
-$deposit_proof = file_get_contents($_FILES['deposit_proof']['tmp_name']);
+
+// you cant upload the image like this
+$deposit_proof = $_FILES['deposit_proof']['tmp_name'];
 
 // Prepare the SQL statement
 $sql = "INSERT INTO deposit_history (user_id, transaction_id, amount_deposited, deposit_type, transaction_status, deposit_proof) VALUES ( '$user_id', '$transaction_id', '$amount_deposited', '$deposit_type', '$transaction_status', '$deposit_proof')";
 
 // Execute the statement
 if (mysqli_query($conn,$sql)){
-    echo "Working";
+    $response = array(
+        "status"=>true,
+        "message"=>"Deposit submitted succesfully",
+
+    );
+    echo json_encode($response);
 }else{
-    echo "failed";
+    $response = array(
+        "status"=>false,
+        "message"=>"Failed to submit",
+
+    );
+    echo json_encode($response);
 }
 
 ?>

@@ -6319,4 +6319,9 @@ code {
 
   .__notification {
     display: none;
+    outline: 2px solid black;
+
+  }
+  .__notification.alert-danger {
+    background: "#e40000" !important;
   }

@@ -72,6 +72,7 @@
             <div class="main-container">
                 <div class="row gutters">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="__notification alert" role="alert"></div>
                         <div class="card">
                             <div class="card-header">
                                 <div class="card-title">Admin information</div>
@@ -155,54 +156,56 @@
                                 <div class="card-title">Create Investment Plan</div>
                             </div>
                             <div class="card-body">
-                                <div class="form-group row">
-                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Plane
-                                        Name</label>
-                                    <div class="col-sm-10">
-                                        <input type="email" class="form-control form-control-sm" id="colFormLabelSm"
-                                            value="">
+                                <form action="" id="add-investment">
+                                    <div class="form-group row">
+                                        <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Plane
+                                            Name</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control form-control-sm add-plan-name" id="colFormLabelSm"
+                                                value="">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="colFormLabel"
-                                        class="col-sm-2 col-form-label col-form-label-sm">Percentage
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="colFormLabel" value="2%">
+                                    <div class="form-group row">
+                                        <label for="colFormLabel"
+                                            class="col-sm-2 col-form-label col-form-label-sm">Percentage
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control add-percentage" id="colFormLabel" value="">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Plan
-                                        Duration</label>
-                                    <div class="col-sm-10">
-                                        <input type="number" class="form-control " id="colFormLabelLg" value="10days">
+                                    <div class="form-group row">
+                                        <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Plan
+                                            Duration</label>
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control add-duration" id="colFormLabelLg" value="">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm"> Minimum
-                                        value </label>
-                                    <div class="col-sm-10">
-                                        <input type="number" class="form-control " id="colFormLabelLg"
-                                            id="colFormLabelLg" value="">
+                                    <div class="form-group row">
+                                        <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm"> Minimum
+                                            value </label>
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control add-minimum-value" id="colFormLabelLg"
+                                                id="colFormLabelLg" value="">
+                                        </div>
                                     </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm"> Maximum
-                                        value </label>
-                                    <div class="col-sm-10">
-                                        <input type="number" class="form-control " id="colFormLabelLg"
-                                            id="colFormLabelLg" value="">
+    
+                                    <div class="form-group row">
+                                        <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm"> Maximum
+                                            value </label>
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control add-maximum-value" id="colFormLabelLg"
+                                                id="colFormLabelLg" value="">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="text-right">
-                                    <!-- Buttons -->
-                                    <button class="btn btn-primary" type="submit">update changes</button>
-                                </div>
+                                    <div class="text-right">
+                                        <!-- Buttons -->
+                                        <input class="btn btn-primary" type="submit" value="update changes" id="add-investment-btn">
+                                    </div>
+                                </form>
                                 <div class="table-container">
                                     <!--     <div class="t-header">No Search Field</div> -->
                                     <div class="table-responsive">
-                                        <table id="copy-print-csv" class="table custom-table">
+                                        <table id="copy-print-csv" class="table custom-table investment_data">
                                             <thead>
                                                 <tr>
                                                     <th>S/n</th>
@@ -244,35 +247,37 @@
                                 <div class="card-title">Create Company Wallet</div>
                             </div>
                             <div class="card-body">
-                                <div class="form-group row">
-                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Wallet name</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                            value="">
+                                <form action="" id="add-wallet" enctype="multipart/form-data">
+                                    <div class="form-group row">
+                                        <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Wallet name</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control form-control-sm add-wallet-name" id="colFormLabelSm"
+                                                value="">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="colFormLabel"
-                                        class="col-sm-2 col-form-label col-form-label-sm">Wallet Avater
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <input type="file" class="form-control" id="colFormLabel" value="">
+                                    <div class="form-group row">
+                                        <label for="colFormLabel"
+                                            class="col-sm-2 col-form-label col-form-label-sm">Wallet Avater
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input type="file" class="form-control add-wallet-avatar" id="colFormLabel" value="">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Wallet Address</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control " id="colFormLabelLg" value="">
+                                    <div class="form-group row">
+                                        <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Wallet Address</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control add-wallet-address" id="colFormLabelLg" value="">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="text-right">
-                                    <!-- Buttons -->
-                                    <button class="btn btn-primary" type="submit">update changes</button>
-                                </div>
+                                    <div class="text-right">
+                                        <!-- Buttons -->
+                                        <input class="btn btn-primary add-wallet-btn" type="submit" value="update changes" />
+                                    </div>
+                                </form>
                                 <div class="table-container">
                                     <!--     <div class="t-header">No Search Field</div> -->
                                     <div class="table-responsive">
-                                        <table id="copy-print-csv" class="table custom-table">
+                                        <table id="copy-print-csv" class="table custom-table wallet_data">
                                             <thead>
                                                 <tr>
                                                     <th>S/n</th>
@@ -436,6 +441,9 @@
             <script src="js/moment.js"></script>
             <!-- Main JS -->
             <script src="js/main.js"></script>
+            <script src="js/custom/functions.js"></script>
+            <script src="js/custom/settings.js"></script>
+
 </body>
 
 </html>

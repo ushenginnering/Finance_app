@@ -8,8 +8,12 @@ $db_name = "benjamin_finance_app"; // Database name
 
 // Connect to server and select databse.
 $conn = mysqli_connect("$host", "$username", "$password","$db_name") or die(mysqli_error());
-if ($conn){
-    echo "connected";
+if (!$conn){
+    $response = array(
+        "status"=>false,
+        "message"=>"Not connected to database"
+    );
+    echo json_encode($response);
 }
 
 
