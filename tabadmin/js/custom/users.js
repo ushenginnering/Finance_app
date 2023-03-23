@@ -23,7 +23,7 @@ let create_table_html = (items) => {
             </td>
             </tr>`;
       });
-      updateUI.selector.apppend(["#user-data", table_append_html]);
+      updateUI.selector.all(["#user-data", table_append_html]);
     }else{
       notification.warning("No data available.");
     }

@@ -42,7 +42,7 @@ let create_table_html = (items) => {
           </tr>`;
     });
 
-    updateUI.selector.apppend(["#deposit_data", table_append_html]);
+    updateUI.selector.all(["#deposit_data", table_append_html]);
   }else{
     notification.warning('No data available')
   }
@@ -65,7 +65,6 @@ let handle_decline_deposit = (id) => {
 
 // function to load data on when the page is ready
 let load_data = (filter) => {
-
   // custom api to send an ajax request to the server
   router
     .get(`test.php?filter=${filter}`)

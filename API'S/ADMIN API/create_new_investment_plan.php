@@ -1,5 +1,5 @@
 <?php
-include = '../connect.php';
+include '../connect.php';
 
 
 if (isset($_POST['create_new_investment_plan'])){
@@ -23,9 +23,17 @@ $sql = "INSERT INTO company_investment_plan (plan_name, percentage, plan_duratio
 
    // Execute the SQL query and store the result set
    if (mysqli_query($conn, $sql)){
-    echo "email drafts updated successfully";
+    $response = array(
+        "status"=>true,
+        "message"=>"Investment plan added succesfully."
+    );
+    echo json_encode($response);
     }else{
-        echo "failed to update email drafts";
+        $response = array(
+            "status"=>false,
+            "message"=>"Failed to add investment plan"
+        );
+        echo json_encode($response);
     }
 }
 ?>

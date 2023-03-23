@@ -61,7 +61,7 @@ let create_investment_table_html = (items) => {
             </td>
             </tr>`;
     });
-    updateUI.selector.apppend(["#investment-data", table_append_html]);
+    updateUI.selector.all(["#investment-data", table_append_html]);
   }
 };
 let create_referral_table_html = (items) => {
@@ -75,7 +75,7 @@ let create_referral_table_html = (items) => {
             )?.toLocaleString()}</td>
             </tr>`;
     });
-    updateUI.selector.apppend(["#referral-data", table_append_html]);
+    updateUI.selector.all(["#referral-data", table_append_html]);
   }
 };
 let handle_activate_investment = (id) => {
