@@ -10,12 +10,24 @@ if (isset($_POST['update_mailer_info'])){
     $system_reply_email_address = $_POST['system_reply_email_address'];
 
 
-    $sql = "UPDATE company_profile  SET welcome_mail_draft = '$welcome_draft', change_password_mail_draft = '$change_password_draft', forget_password_mail_draft = '$forget_email_draft', receive_payment_mail_draft = '$receive_patment_draft'";
+    $sql = "UPDATE company_profile  SET active_gmail_address = '$active_gmail_address', active_gmail_password = '$active_gmail_password', system_auto_send_from_email_address = '$system_auto_send_from_email_address', system_reply_email_address = '$system_reply_email_address'";
    // Execute the SQL query and store the result set
     if (mysqli_query($conn, $sql)){
-        echo "email drafts updated successfully";
+            // array to return on every request
+     $response = array(
+        "status"=>true,
+        "message"=> "mailer info updated"
+    );
+    // Output a success message
+    echo json_encode($response);
     }else{
-        echo "failed to update email drafts";
+           // array to return on every request
+     $response = array(
+        "status"=>false,
+        "message"=> "failed to update mailer info"
+    );
+    // Output a success message
+    echo json_encode($response);
     }
 
 }

@@ -25,9 +25,21 @@ $meta_description = "This is an example of a meta description.";
         VALUES ( '$welcome_mail', '$change_password', '$forget_password', '$receive_payment', '$active_gmail_address', '$active_gmail_password', '$system_auto_send_from_email_address', '$system_reply_email_address', '$admin_email', '$admin_password', '$site_url','$site_name', '$meta_keywords', '$meta_description')";
 
 if (mysqli_query($conn, $sql)){
-    echo "working";
+        // array to return on every request
+        $response = array(
+            "status"=>true,
+            "message"=>"succesful"
+        );
+        // Output a success message
+        echo json_encode($response);
 }else{
-    echo "failed";
+        // array to return on every request
+        $response = array(
+            "status"=>false,
+            "message"=>"failed"
+        );
+        // Output a success message
+        echo json_encode($response);
 }
 
 ?>
