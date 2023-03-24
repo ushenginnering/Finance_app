@@ -63,7 +63,8 @@ let handle_uploading_proof = (formData) => {
     processData: false,
     contentType: false,
     success: (data) => {
-      data = JSON.parse(data)
+      data = parse_json_response(data)
+      console.log(data)
       if(data?.status){
         notification.success(data?.message)
       }else{
@@ -87,7 +88,6 @@ $(function () {
       $("#payment-type").val()
     );
     let file = document.getElementById("proof").files;
-    console.log(empty(amount_deposited, payment_type, file?.length));
     let status = empty(amount_deposited, payment_type, file?.length).status;
     if (status) {
       var formData = new FormData();

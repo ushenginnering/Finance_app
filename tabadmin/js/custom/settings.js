@@ -130,7 +130,7 @@ let handle_add_investment_plan = (
       () => loading.stop_loading("#add-investment-btn", "Update Changes")
     )
     .then((data) => {
-      data = JSON.parse(data);
+      data = parse_json_response(data);
       if (data?.status) {
         // if succesful
         notification.success(data?.message);
@@ -155,7 +155,7 @@ let handle_add_wallet = (formData) => {
         contentType: false,
         success: (data) => {
             loading.stop_loading(".add-wallet-btn", "update changes")
-            data = JSON.parse(data);
+            data = parse_json_response(data);
             if (data?.status) {
               // if succesful
               notification.success(data?.message);

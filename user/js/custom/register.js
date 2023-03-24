@@ -79,17 +79,23 @@ let handle_submit_registration = (
       }
     )
     .then((data) => {
-      data = parse_json_response(data)
-      if(data?.registration_status){
-        if(data?.email_status){
-          notification.success("User signed up successfully!")
-          notification.success(data?.message)
+      data = parse_json_response(data, "registration_status")
+      if(data){
+        if(data?.registration_status){
+          if(data?.email_status){
+            notification.success("User signed up successfully!")
+            setTimeout(() => {
+              notification.success(data?.message)
+            }, 7000);
+          }else{
+            notification.success("User signed up successfully!")
+            setTimeout(() => {
+              notification.warning("Error sending mail to user")
+            }, 7000);
+          }
         }else{
-          notification.success("User signed up successfully!")
-          notification.warning("Error sending mail to user")
+          notification.danger(data?.message)
         }
-      }else{
-        notification.danger(data?.message)
       }
     })
     .catch((err) => {
