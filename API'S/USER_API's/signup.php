@@ -9,7 +9,7 @@ if (isset ($_POST['signup'])){
     $phone = $_POST['phone'] = "091 60 30 81 24" ;
     $password = $_POST['password'] = "12345";
     $confirm_password = $_POST['confirm_password'] = "12345" ;
-    $mail = $_POST['mail'] = "let send our mail to the right person";
+    $user_mail = $_POST['mail'] // collect the email address of the user here
     $user_id =  rand(89,234324);
 
     if ($password == $confirm_password){
@@ -37,7 +37,7 @@ if (isset ($_POST['signup'])){
                         $sender_name =  $row["site_name"] ;
                         $subject = "Welcome to ".$sender_name;
                         include "sendemail.php";
-                        $send_email =  sendmail($sender_email,$sender_gmail_password, $sender_name, $message,$sender_gmail_email,$subject);
+                        $send_email =  sendmail($sender_email,$sender_gmail_password, $sender_name, $message,$sender_gmail_email,$subject, $user_mail,$fullname);
                         if ($send_email == 'Record saved successfully and email sent') {
                             echo "!"; 
                             $response = array(

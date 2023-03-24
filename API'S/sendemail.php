@@ -1,5 +1,5 @@
 <?php
-function sendmail($sender_email,$sender_gmail_password, $sender_name, $message,$sender_gmail_email,$subject){
+function sendmail($sender_email,$sender_gmail_password, $sender_name, $message,$sender_gmail_email,$subject, $user_mail, $user_name){
        
     require 'PHPMailer/src/Exception.php';
     require 'PHPMailer/src/PHPMailer.php';
@@ -22,6 +22,7 @@ function sendmail($sender_email,$sender_gmail_password, $sender_name, $message,$
         //Recipients
         $mail->setFrom($sender_email, $sender_name);
         $mail->addAddress($sender_email, $sender_name);     // Add a recipient
+        $mail->addAddress($user_email, $user_name);     // Add a recipient
 
         // Content
         $mail->isHTML(true);                                  // Set email format to HTML
