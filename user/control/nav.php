@@ -1,3 +1,8 @@
+<?php
+    session_start();
+?>
+
+
 <!-- Sidebar wrapper start  will get back to this later-->
 <nav id="sidebar" class="sidebar-wrapper">
 
@@ -119,7 +124,7 @@
 						<li class="dropdown">
 							<a href="#" id="userSettings" class="user-settings" data-toggle="dropdown"
 								aria-haspopup="true">
-								<span class="user-name">User</span>
+								<span class="user-name"><?php echo $_SESSION['fullname']; ?></span>
 								<span class="avatar">
 									<img src="img/user24.png" alt="avatar">
 									<span class="status online"></span>

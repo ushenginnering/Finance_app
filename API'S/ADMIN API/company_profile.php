@@ -20,7 +20,7 @@ $meta_description = "This is an example of a meta description.";
 
 
 // Prepare the SQL statement
-$sql = "INSERT INTO company_profile 
+ $sql = "INSERT INTO company_profile 
         (welcome_mail_draft, change_password_mail_draft, forget_password_mail_draft, receive_payment_mail_draft, active_gmail_address, active_gmail_password, system_auto_send_from_email_address, system_reply_email_address, admin_email, admin_password, site_url,site_name, meta_keywords, meta_description) 
         VALUES ( '$welcome_mail', '$change_password', '$forget_password', '$receive_payment', '$active_gmail_address', '$active_gmail_password', '$system_auto_send_from_email_address', '$system_reply_email_address', '$admin_email', '$admin_password', '$site_url','$site_name', '$meta_keywords', '$meta_description')";
 
