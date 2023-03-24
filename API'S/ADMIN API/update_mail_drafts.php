@@ -13,9 +13,21 @@ if (isset($_POST['update_email_drafts'])){
     $sql = "UPDATE company_profile  SET welcome_mail_draft = '$welcome_draft', change_password_mail_draft = '$change_password_draft', forget_password_mail_draft = '$forget_email_draft', receive_payment_mail_draft = '$receive_patment_draft'";
    // Execute the SQL query and store the result set
     if (mysqli_query($conn, $sql)){
-        echo "email drafts updated successfully";
+           // array to return on every request
+        $response = array(
+            "status"=>true,
+            "message"=> "success"
+        );
+        // Output a success message
+        echo json_encode($response);
     }else{
-        echo "failed to update email drafts";
+        // array to return on every request
+        $response = array(
+            "status"=>true,
+            "message"=> "failed"
+        );
+        // Output a success message
+        echo json_encode($response);
     }
 
 }

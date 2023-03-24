@@ -12,9 +12,21 @@ if (isset($_POST['update_meta_info'])){
     $sql = "UPDATE company_profile  SET site_url = '$site_url', site_name = '$site_name',meta_keywords = '$meta_keywords', meta_description = '$meta_description' ";
    // Execute the SQL query and store the result set
     if (mysqli_query($conn, $sql)){
-        echo "meta info updated successfully";
+          // array to return on every request
+     $response = array(
+        "status"=>true,
+        "message"=> "success"
+    );
+    // Output a success message
+    echo json_encode($response);
     }else{
-        echo "failed to update meta info";
+           // array to return on every request
+     $response = array(
+        "status"=> false,
+        "message"=> "failed to update"
+    );
+    // Output a success message
+    echo json_encode($response);
         
     }
 

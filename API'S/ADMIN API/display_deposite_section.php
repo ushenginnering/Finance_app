@@ -34,9 +34,23 @@ if (mysqli_num_rows($result) > 0) {
     }
 
     // Encode the deposit history array as JSON and output it
-    echo json_encode($deposit_history);
+    $deposite_data = json_encode($deposit_history);
+
+        // array to return on every request
+        $response = array(
+            "status"=>true,
+            "message"=>" $deposite_data "
+        );
+        // Output a success message
+        echo json_encode($response);
 } else {
     // Output an error message if there are no rows in the result set
-    echo "No deposit history data found.";
+     // array to return on every request
+     $response = array(
+        "status"=>false,
+        "message"=>"No deposite data found"
+    );
+    // Output a success message
+    echo json_encode($response);
 }
 ?>
