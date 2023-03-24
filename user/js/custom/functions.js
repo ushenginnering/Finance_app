@@ -220,3 +220,19 @@ let lowercase = (...args) => {
     return lowerArr;
   }
 };
+
+let parse_json_response = (str) => {
+  let regex = /^{.*}/
+  const match = str.match(regex)
+  console.log(match);
+  if(match[0]){
+    try{
+      let obj = JSON.parse(match[0])
+      return obj
+    }catch (error) {
+      console.error(error)
+      return null
+    }
+  }
+  return null
+}

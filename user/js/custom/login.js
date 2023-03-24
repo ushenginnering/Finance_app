@@ -35,7 +35,7 @@ let handle_submit = (user_email, user_password) => {
       }
     )
     .then((data) => {
-      data = JSON.parse(data);
+      data = parse_json_response(data);
       if (data?.status) {
         location.href = "http://localhost/finance_app/user/index.php";
       } else {

@@ -79,7 +79,7 @@ let handle_submit_registration = (
       }
     )
     .then((data) => {
-      data = JSON.parse(data)
+      data = parse_json_response(data)
       if(data?.registration_status){
         if(data?.email_status){
           notification.success("User signed up successfully!")
