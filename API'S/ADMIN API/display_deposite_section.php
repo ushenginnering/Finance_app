@@ -18,7 +18,6 @@ if (mysqli_num_rows($result) > 0) {
         // Add the row data to the deposit history array
         $deposit_history[] = $row;
         // get full name and email from transaction user_id
-        // Build the SQL query to retrieve data from the deposit_history table
          $user_id =  $row['user_id'];
           $sql_user = "SELECT fullname, mail  FROM users where user_id = '$user_id'";
         
