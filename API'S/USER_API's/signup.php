@@ -4,12 +4,12 @@ $_POST['signup'] = "signup";
 
 if (isset ($_POST['signup'])){ 
     // Get form data
-    $fullname = $_POST['fullname']  /*= "john"*/ ;
-    $country = $_POST['country'] /*= "Nigeria"*/;
-    $phone = $_POST['phone'] /*= "091 60 30 81 24"*/ ;
-    $password = $_POST['password'] /*= "12345"*/;
-    $confirm_password = $_POST['confirm_password'] /*= "12345"*/ ;
-    $user_mail = $_POST['mail'] // collect the email address of the user here
+    $fullname = $_POST['fullname']  = "john" ;
+    $country = $_POST['country'] = "Nigeria";
+    $phone = $_POST['phone'] = "091 60 30 81 24";
+    $password = $_POST['password'] = "12345";
+    $confirm_password = $_POST['confirm_password'] = "12345" ;
+    $user_mail = $_POST['mail'] = "martinmavin22@gmail.com" ;// collect the email address of the user here
     $user_id =  rand(89,234324);
 
 
@@ -55,7 +55,7 @@ if (mysqli_num_rows($result) > 0) {
                             $sender_gmail_password =  $row["active_gmail_password"] ;
                             $sender_name =  $row["site_name"] ;
                             $subject = "Welcome to ".$sender_name;
-                            include "sendemail.php";
+                            include "../sendemail.php";
                             $send_email =  sendmail($sender_email,$sender_gmail_password, $sender_name, $message,$sender_gmail_email,$subject, $user_mail,$fullname);
                             if ($send_email == 'Record saved successfully and email sent') {
                                 //echo "!"; 
