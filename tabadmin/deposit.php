@@ -109,7 +109,7 @@
 							<div class="table-responsive">
 								<select id="filter">
 									<option value="succesful">Succesful</option>
-									<option value="processed" selected>Processed</option>
+									<option value="pending" selected>Pending</option>
 									<option value="declined">Declined</option>
 									<option value="all">All</option>
 								</select>
@@ -130,7 +130,7 @@
 									</thead>
 									<tbody id="deposit_data">
 										<tr >
-											<td>1</td>
+											<!-- <td>1</td>
 											<td>Tiger Nixon</td>
 											<td>text@gmail.com</td>
 											<td><span>$</span>320,800</td>
@@ -150,7 +150,7 @@
 													<a href=""><span title="Decline Deposit"class="btn btn-warning icon-cancel"></span></a>
 													<a href=""><span title="Approved Deposit"class="btn btn-success icon-check2"></span></a>
 												</div>
-											</td>
+											</td> -->
 										</tr>
 									</tbody>
 								</table>

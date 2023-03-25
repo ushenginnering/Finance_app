@@ -1,186 +1,64 @@
-// function to fetch investment plans from server
-let load_investment_plans = () => {
-  router
-    .get(
-      "http://localhost/finance_app/API'S/ADMIN%20API/company_investment_plans_json_format.php"
-    )
-    .then((data) => {
-      data = JSON.parse(data);
-      if (data?.status) {
-        create_investment_table_template(data?.message);
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
-
-// function to fetch wallets from server
-let load_wallets = () => {
-  router
-    .get(
-      "http://localhost/finance_app/API'S/ADMIN%20API/company_wallet_json_format.php"
-    )
-    .then((data) => {
-      data = JSON.parse(data);
-      if (data?.status) {
-        create_wallet_table_template(data?.message);
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
-
-// table template
-let create_investment_table_template = (items) => {
-  items = JSON.parse(items);
-  let table_append_html;
-  if (items.length > 0) {
-    items?.forEach((item, index) => {
-      table_append_html += `<tr>
-          <td>${index + 1}</td>
-          <td>${item?.plan_name}</td>
-          <td>${item?.percentage}%</td>
-          <td>${item?.plan_duration} Days</td>
-          <td>${item?.minimum_value}</td>
-          <td>${item?.maximum_value}</td>
-          <td>
-              <div>
-                  <a href="javascript:void(0)">
-                  <span title="Delete Plan from system"
-                    class="btn btn-danger icon-delete" onClick="handle_plan_delete(${
-                      item?.id
-                    })">
-                    </span>
-                          </a>
-              </div>
-          </td>
-      </tr>`;
-    });
-
-    updateUI.selector.all([".investment_data", table_append_html]);
-  } else {
-    notification.warning("No data available");
-  }
-};
-
-// table template
-let create_wallet_table_template = (items) => {
-  items = JSON.parse(items);
-  let table_append_html;
-  if (items.length > 0) {
-    items?.forEach((item, index) => {
-      table_append_html += `<tr>
-          <td>${index + 1}</td>
-        <td>${item?.wallet_name}</td>
-        <td><img src="${item?.wallet_avatar}" width="50" alt="${
-        item?.wallet_name
-      } image"/></td>
-        <td>${item?.wallet_address}</td>
-        <td>
-        <div>
-            <a href="javascript:void(0)"><span title="Delete Wallet from system"
-                    class="btn btn-danger icon-delete" onClick="handle_wallet_delete(${
-                      item?.id
-                    })"></span></a>
-        </div>
-    </td>
-      </tr>`;
-    });
-
-    updateUI.selector.all([".wallet_data", table_append_html]);
-  } else {
-    notification.warning("No data available");
-  }
-};
-
-// handle delete event on investment plan
-let handle_plan_delete = (id) => {
-  console.log("delete plan");
-};
-
-// handle delete event on wallets
-let handle_wallet_delete = (id) => {
-  console.log("delete wallet");
-};
-
-// function to handle add investment
-let handle_add_investment_plan = (
-  plan_name,
-  percentage,
-  plan_duration,
-  minimum_value,
-  maximum_value
-) => {
-  loading?.start_loading("#add-investment-btn");
-
-//   ajax request
-  router
-    .post(
-      "http://localhost/finance_app/API'S/ADMIN%20API/create_new_investment_plan.php",
-      {
-        create_new_investment_plan: true,
-        plan_name,
-        percentage,
-        plan_duration,
-        minimum_value,
-        maximum_value,
-      },
-      () => loading.stop_loading("#add-investment-btn", "Update Changes")
-    )
-    .then((data) => {
-      data = parse_json_response(data);
-      if (data?.status) {
-        // if succesful
-        notification.success(data?.message);
-
-        // call function to load investments
-        load_investment_plans()
-      } else {
-        notification.danger(data?.message);
-      }
-    });
-};
-
-// function to add new wallet 
-let handle_add_wallet = (formData) => {
-    // showing loading state on button
-    loading.start_loading(".add-wallet-btn")
-    $.ajax({
-        url: "http://localhost/finance_app/API'S/ADMIN%20API/create_new_company_wallet.php",
-        type: "POST",
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: (data) => {
-            loading.stop_loading(".add-wallet-btn", "update changes")
-            data = parse_json_response(data);
-            if (data?.status) {
-              // if succesful
-              notification.success(data?.message);
-      
-              // call function to load wallets
-              load_wallets()
-            } else {
-              notification.danger(data?.message);
-            }
-        },
-        error: (err) => {
-            loading.stop_loading(".add-wallet-btn", "update changes")
-            notification.warning("something went wrong. try refreshing page")
-          console.log(err);
-        },
-      });
-}
-
 // function to run when page loads
 $(function () {
   load_investment_plans();
 
   load_wallets();
 
+  load_admin_details();
+
+  load_site_info();
+
+  load_mailer_info();
+
+  load_auto_mailer_template()
+
   // event to handle submition
+  $("#update-password").submit((e) => {
+    e.preventDefault();
+
+    let [new_password, confirm_new_password] = lowercase(
+      $(".new-password").val(),
+      $(".confirm-new-password").val()
+    );
+    let old_password = $(".old-password").val();
+    let status = empty(new_password, confirm_new_password).status;
+
+    if (status) {
+      let password_status = validate_passwords(
+        new_password,
+        confirm_new_password,
+        4
+      );
+      if (password_status.status) {
+        handle_password_update(
+          new_password,
+          confirm_new_password,
+          old_password
+        );
+      } else {
+        notification.danger(password_status?.message);
+      }
+    } else {
+      notification.danger("Must fill all field");
+    }
+  });
+
+  $("#site-info").submit((e) => {
+    e.preventDefault();
+    // process data
+    let [site_name, site_url, meta_keywords, meta_description] = lowercase(
+      $(".site-name").val(),
+      $(".site-url").val(),
+      $(".meta-keywords").val(),
+      $(".meta-description").val()
+    );
+    handle_update_site_info(
+      site_name,
+      site_url,
+      meta_keywords,
+      meta_description
+    );
+  });
   $("#add-investment").submit((e) => {
     e.preventDefault();
     // process data
@@ -192,8 +70,8 @@ $(function () {
         $(".add-minimum-value").val(),
         $(".add-maximum-value").val()
       );
-      
-      let status = empty(
+
+    let status = empty(
       plan_name,
       percentage,
       plan_duration,
@@ -202,7 +80,7 @@ $(function () {
     ).status;
 
     if (status) {
-        // if all the fields are not empty 
+      // if all the fields are not empty
       handle_add_investment_plan(
         plan_name,
         percentage,
@@ -215,24 +93,95 @@ $(function () {
     }
   });
 
-// event to add submition
+  // event to add submition
   $("#add-wallet").submit((e) => {
-    e.preventDefault()
-    let [wallet_name, wallet_address] = lowercase($(".add-wallet-name").val(), $(".add-wallet-address").val())
+    e.preventDefault();
+    let [wallet_name, wallet_address] = lowercase(
+      $(".add-wallet-name").val(),
+      $(".add-wallet-address").val()
+    );
 
-    let wallet_avatar = document.getElementsByClassName("add-wallet-avatar")[0].files
-    let status = empty(wallet_name, wallet_address, wallet_avatar?.length).status
+    let wallet_avatar =
+      document.getElementsByClassName("add-wallet-avatar")[0].files;
+    let status = empty(
+      wallet_name,
+      wallet_address,
+      wallet_avatar?.length
+    ).status;
 
-    if(status){
-        let formData = new FormData()
+    if (status) {
+      let formData = new FormData();
 
-        formData.append("wallet_name", $(".add-wallet-name").val())
-        formData.append("wallet_address", $(".add-wallet-address").val())
-        formData.append("create_new_company_wallet", true)
-        formData.append("wallet_avatar", wallet_avatar[0])
-        handle_add_wallet(formData)
-    }else{
-        notification.danger("Fill in all field")
+      formData.append("wallet_name", $(".add-wallet-name").val());
+      formData.append("wallet_address", $(".add-wallet-address").val());
+      formData.append("create_new_company_wallet", true);
+      formData.append("wallet_avatar", wallet_avatar[0]);
+      handle_add_wallet(formData);
+    } else {
+      notification.danger("Fill in all field");
     }
-  })
+  });
+
+  $("#mailer-info").submit((e) => {
+    e.preventDefault();
+    let [
+      active_gmail_address,
+      active_gmail_password,
+      system_auto_send_from_email_address,
+      system_reply_email_address,
+    ] = lowercase(
+      $(".a-gmail").val(),
+      $(".a-gmail-password").val(),
+      $(".system-auto-send-from-email-address").val(),
+      $(".system-reply-email-address").val()
+    );
+    let status = empty(
+      active_gmail_address,
+      active_gmail_password,
+      system_auto_send_from_email_address,
+      system_reply_email_address
+    ).status;
+
+    if (status) {
+      handle_update_mailer(
+        active_gmail_address,
+        active_gmail_password,
+        system_auto_send_from_email_address,
+        system_reply_email_address
+      );
+    } else {
+      notification.danger("Fill in all field");
+    }
+  });
+  $("#auto-email-template").submit((e) => {
+    e.preventDefault();
+    let [
+      welcome_mail_draft,
+      change_password_mail_draft,
+      forget_password_mail_draft,
+      receive_payment_mail_draft,
+    ] = lowercase(
+      $(".welcome_mail_draft").val(),
+      $(".change_password_mail_draft").val(),
+      $(".forget_password_mail_draft").val(),
+      $(".receive_payment_mail_draft").val()
+    );
+    let status = empty(
+      welcome_mail_draft,
+      change_password_mail_draft,
+      forget_password_mail_draft,
+      receive_payment_mail_draft
+    ).status;
+
+    if (status) {
+      handle_update_auto_mailer_template(
+        welcome_mail_draft,
+        change_password_mail_draft,
+        forget_password_mail_draft,
+        receive_payment_mail_draft
+      );
+    } else {
+      notification.danger("Fill in all field");
+    }
+  });
 });

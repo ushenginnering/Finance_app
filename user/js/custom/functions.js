@@ -188,7 +188,7 @@ let validate_passwords = (password1, password2, length_of_passwords = 0) => {
     ) {
       return {
         status: false,
-        message: "Passwords must be 8-20 characters long.",
+        message: `Passwords must be ${length_of_passwords}-20 characters long.`,
       };
     } else {
       if (password1 === password2) {

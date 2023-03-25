@@ -77,33 +77,35 @@
                             <div class="card-header">
                                 <div class="card-title">Admin information</div>
                             </div>
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Old
-                                        Password</label>
-                                    <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="colFormLabelSm" value="">
+                            <form action="" id="update-password">
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Old
+                                            Password</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" class="form-control  old-password" id="colFormLabelSm" readonly value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">New
+                                            Password</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" class="form-control new-password" id="colFormLabel" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Confirm
+                                            New Password</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" class="form-control confirm-new-password" id="colFormLabelLg" value="">
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <!-- Buttons -->
+                                        <input class="btn btn-primary" type="submit" value="update changes" id="update-pass-btn"/>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">New
-                                        Password</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="colFormLabel" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Confirm
-                                        New Password</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="colFormLabelLg" value="">
-                                    </div>
-                                </div>
-                                <div class="text-right">
-                                    <!-- Buttons -->
-                                    <button class="btn btn-primary" type="submit">update changes</button>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -111,42 +113,45 @@
                             <div class="card-header">
                                 <div class="card-title">Website information</div>
                             </div>
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Site
-                                        Title</label>
-                                    <div class="col-sm-10">
-                                        <input type="email" class="form-control form-control-sm" id="colFormLabelSm"
-                                            value="example">
+                            <form action="" id="site-info">
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Site
+                                            Title</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control form-control-sm site-name" id="colFormLabelSm"
+                                                placeholder="example">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Site
+                                            Url</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control site-url" id="colFormLabel" placeholder="example.com">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Meta
+                                            Keywords</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control meta-keywords" id="colFormLabelLg" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm"> Meta
+                                            Description </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control meta-description" id="colFormLabelLg" id="colFormLabelLg"
+                                                value="">
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <!-- Buttons -->
+                                        <input class="btn btn-primary update-site-btn" type="submit" value="update changes" />
+
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Site
-                                        Url</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="colFormLabel" value="example.com">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm">Meta
-                                        Keywords</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control " id="colFormLabelLg" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="colFormLabel" class="col-sm-2 col-form-label col-form-label-sm"> Meta
-                                        Description </label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control " id="colFormLabelLg" id="colFormLabelLg"
-                                            value="">
-                                    </div>
-                                </div>
-                                <div class="text-right">
-                                    <!-- Buttons -->
-                                    <button class="btn btn-primary" type="submit">update changes</button>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
 
@@ -320,48 +325,49 @@
                                                     title="Active Gmail Account Email Address (require for SMTP)">Active
                                                     Mailer information</div>
                                             </div>
-                                            <div class="card-body">
-                                                <div class="form-group row">
-                                                    <label for="colFormLabelSm"
-                                                        class="col-sm-2 col-form-label col-form-label-sm">Active Gmail
-                                                        Address</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="email" class="form-control form-control-sm"
-                                                            id="colFormLabelSm" value="example@gmail.com">
+                                            <form action="" id="mailer-info">
+                                                <div class="card-body">
+                                                    <div class="form-group row">
+                                                        <label for="colFormLabelSm"
+                                                            class="col-sm-2 col-form-label col-form-label-sm">Active Gmail
+                                                            Address</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="email" class="form-control form-control-sm a-gmail"
+                                                                id="colFormLabelSm" placeholder="example@gmail.com">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="colFormLabel"
+                                                            class="col-sm-2 col-form-label col-form-label-sm">Active Gmail
+                                                            Password</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="password" class="form-control a-gmail-password" id="colFormLabel"
+                                                                placeholder="example.com">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="colFormLabel"
+                                                            class="col-sm-2 col-form-label col-form-label-sm">System
+                                                            auto-send from email address</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control system-auto-send-from-email-address" id="colFormLabelLg"
+                                                                placeholder="system@example.com">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="colFormLabel" class="col-sm-2 col-form-label-sm"> System
+                                                            Reply-Email Address</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control form-control-sm system-reply-email-address"
+                                                                id="colFormLabelLg" placeholder="info@example.com">
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-right">
+                                                        <!-- Buttons -->
+                                                        <input class="btn btn-primary a-mailer-btn" type="submit" value="update changes" />
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label for="colFormLabel"
-                                                        class="col-sm-2 col-form-label col-form-label-sm">Active Gmail
-                                                        Password</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="password" class="form-control" id="colFormLabel"
-                                                            value="example.com">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="colFormLabel"
-                                                        class="col-sm-2 col-form-label col-form-label-sm">System
-                                                        auto-send from email address</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control " id="colFormLabelLg"
-                                                            value="system@example.com">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="colFormLabel" class="col-sm-2 col-form-label-sm"> System
-                                                        Reply-Email Address</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control form-control-sm"
-                                                            id="colFormLabelLg" value="info@example.com">
-                                                    </div>
-                                                </div>
-                                                <div class="text-right">
-                                                    <!-- Buttons -->
-                                                    <button class="btn btn-primary" type="submit">update
-                                                        changes</button>
-                                                </div>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -375,62 +381,64 @@
                             <div class="card-header">
                                 <div class="card-title">Mailers</div>
                             </div>
-                            <div class="card-body">
-                                <div class=" p-10">
-                                    <p>Auto-example shortcodes: use this key to auto generate required value</p>
-                                    <span>[__SITE_TITLE__]</span> <span>[__SITE_URL__]</span>
-                                    <span>[__USER_FULLNAME__]</span> <span>[__USER_LASTNAME__]</span>
-                                    <span>[__USER_FIRSTNAME__] </span> <span>[__USER_EMAIL__]</span>
+                            <form id="auto-email-template">
+                                <div class="card-body">
+                                    <div class=" p-10">
+                                        <p>Auto-example shortcodes: use this key to auto generate required value</p>
+                                        <span>[__SITE_TITLE__]</span> <span>[__SITE_URL__]</span>
+                                        <span>[__USER_FULLNAME__]</span> <span>[__USER_LASTNAME__]</span>
+                                        <span>[__USER_FIRSTNAME__] </span> <span>[__USER_EMAIL__]</span>
+                                    </div>
+                                    <!-- use this div below to create space in between two element -->
+                                    <div class="spacer"></div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Welcome Mailer</label>
+                                        <textarea class="form-control is-valid welcome_mail_draft" rows="2"
+                                            placeholder="Valid state">Dear [__USER_LASTNAME__] Welcome to example, thanks...... Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque molestiae illo ipsa alias tenetur in accusamus perspiciatis asperiores assumenda ut molestias, mollitia neque, atque incidunt quia ipsum veritatis officia quibusdam maiores. Culpa harum quasi labore possimus eveniet nulla voluptate voluptates, voluptas natus consequatur ex quam. Dolorum maiores repudiandae ad nemo laborum ipsum tempore. Nobis nesciunt ad cupiditate laudantium recusandae iure iusto quaerat veniam? Illo quasi ab sed, natus delectus dignissimos rem nostrum fugit impedit praesentium laborum eum? Dolorem tempora voluptatibus autem quasi quis, ducimus pariatur sit, praesentium mollitia molestiae maiores nemo commodi obcaecati omnis incidunt, repudiandae nisi nam? Ducimus, delectus! </textarea>
+                                        <span class="colorred">Email to be sent to a user upon successful
+                                            registration.</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Chnage default password Mailer</label>
+                                        <textarea class="form-control is-valid change_password_mail_draft" rows="2"
+                                            placeholder="Valid state">click the link to verify your email [__CONFIRMATION_LINK__] </textarea>
+                                        <span class="colorred">Email to be sent to a user upon successful registration to
+                                            change thier default account password.</span>
+                                    </div>
+                                    <div class=" p-10">
+                                        <p>Auto-example shortcodes: use this key to auto generate required value</p>
+                                        <span>[__CONFIRMATION_LINK__]</span>
+                                    </div>
+                                    <!-- use this div below to create space in between two element -->
+                                    <div class="spacer"></div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Forgot Password Mailer</label>
+                                        <textarea class="form-control is-valid forget_password_mail_draft" rows="2"
+                                            placeholder="Valid state">click the link to verify your email [__CONFIRMATION_LINK__] </textarea>
+                                        <span class="colorred">Email to be sent to a user for password recovery</span>
+                                    </div>
+                                    <div class=" p-10">
+                                        <p>Auto-example shortcodes: use this key to auto generate required value</p>
+                                        <span>[__RECOVERY_LINK__]</span>
+                                    </div>
+                                    <!-- use this div below to create space in between two element -->
+                                    <div class="spacer"></div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Payment Recieved Mailer</label>
+                                        <textarea class="form-control is-valid receive_payment_mail_draft" rows="2"
+                                            placeholder="Valid state">click the link to verify your email [__USER_NAME__] </textarea>
+                                        <span class="colorred">Email to be sent to a user after successful payment</span>
+                                    </div>
+                                    <div class=" p-10">
+                                        <p>Auto-example shortcodes: use this key to auto generate required value</p>
+                                        <span>[__RECOVERY_LINK__]</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <!-- Buttons -->
+                                        <input class="btn btn-primary auto-mailer-btn" type="submit" value="update changes" />
+                                    </div>
                                 </div>
-                                <!-- use this div below to create space in between two element -->
-                                <div class="spacer"></div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Welcome Mailer</label>
-                                    <textarea class="form-control is-valid" rows="2"
-                                        placeholder="Valid state">Dear [__USER_LASTNAME__] Welcome to example, thanks...... Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque molestiae illo ipsa alias tenetur in accusamus perspiciatis asperiores assumenda ut molestias, mollitia neque, atque incidunt quia ipsum veritatis officia quibusdam maiores. Culpa harum quasi labore possimus eveniet nulla voluptate voluptates, voluptas natus consequatur ex quam. Dolorum maiores repudiandae ad nemo laborum ipsum tempore. Nobis nesciunt ad cupiditate laudantium recusandae iure iusto quaerat veniam? Illo quasi ab sed, natus delectus dignissimos rem nostrum fugit impedit praesentium laborum eum? Dolorem tempora voluptatibus autem quasi quis, ducimus pariatur sit, praesentium mollitia molestiae maiores nemo commodi obcaecati omnis incidunt, repudiandae nisi nam? Ducimus, delectus! </textarea>
-                                    <span class="colorred">Email to be sent to a user upon successful
-                                        registration.</span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Chnage default password Mailer</label>
-                                    <textarea class="form-control is-valid" rows="2"
-                                        placeholder="Valid state">click the link to verify your email [__CONFIRMATION_LINK__] </textarea>
-                                    <span class="colorred">Email to be sent to a user upon successful registration to
-                                        change thier default account password.</span>
-                                </div>
-                                <div class=" p-10">
-                                    <p>Auto-example shortcodes: use this key to auto generate required value</p>
-                                    <span>[__CONFIRMATION_LINK__]</span>
-                                </div>
-                                <!-- use this div below to create space in between two element -->
-                                <div class="spacer"></div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Forgot Password Mailer</label>
-                                    <textarea class="form-control is-valid" rows="2"
-                                        placeholder="Valid state">click the link to verify your email [__CONFIRMATION_LINK__] </textarea>
-                                    <span class="colorred">Email to be sent to a user for password recovery</span>
-                                </div>
-                                <div class=" p-10">
-                                    <p>Auto-example shortcodes: use this key to auto generate required value</p>
-                                    <span>[__RECOVERY_LINK__]</span>
-                                </div>
-                                <!-- use this div below to create space in between two element -->
-                                <div class="spacer"></div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Payment Recieved Mailer</label>
-                                    <textarea class="form-control is-valid" rows="2"
-                                        placeholder="Valid state">click the link to verify your email [__USER_NAME__] </textarea>
-                                    <span class="colorred">Email to be sent to a user after successful payment</span>
-                                </div>
-                                <div class=" p-10">
-                                    <p>Auto-example shortcodes: use this key to auto generate required value</p>
-                                    <span>[__RECOVERY_LINK__]</span>
-                                </div>
-                                <div class="text-right">
-                                    <!-- Buttons -->
-                                    <button class="btn btn-primary" type="submit">update changes</button>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -443,6 +451,7 @@
             <script src="js/main.js"></script>
             <script src="js/custom/functions.js"></script>
             <script src="js/custom/settings.js"></script>
+            <script src="js/custom/settings_functions.js"></script>
 
 </body>
 
