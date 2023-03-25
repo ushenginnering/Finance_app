@@ -51,7 +51,7 @@ if (isset ($_POST['signup'])){
                             $response = array(
                                 "registration_status"=>true,
                                 "email_status"=>false,
-                                "message"=>$send_email,
+                                "message"=>"Email could not be sent",
                             );
                             echo json_encode($response);
                         }

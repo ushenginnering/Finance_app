@@ -5,7 +5,7 @@ include "../connect.php";
 if (isset($_POST['update_mailer_info'])){
     // Get form data
     $active_gmail_address = $_POST['active_gmail_address'];
-    $active_gmail_password = $_POST['active_gmail_passsword'];
+    $active_gmail_password = $_POST['active_gmail_password'];
     $system_auto_send_from_email_address = $_POST['system_auto_send_from_email_address'];
     $system_reply_email_address = $_POST['system_reply_email_address'];
 

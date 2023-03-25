@@ -1,6 +1,6 @@
 // function to create html table template
 let create_table_html = (items) => {
-  // items = JSON.parse(items)
+  items = JSON.parse(items)
   let table_append_html = ``;
   if (items.length > 0) {
     items?.forEach((item, index) => {
@@ -68,9 +68,9 @@ let handle_decline_deposit = (id) => {
 let load_data = (filter) => {
   // custom api to send an ajax request to the server
   router
-    .get(`test.php?filter=${filter}`)
+    .get(`http://localhost/finance_app/API'S/ADMIN%20API/display_deposite_section.php?filter=${filter}`)
     .then((data) => {
-      console.log(data);
+      data = JSON.parse(data)
       if (data.status) {
         if (data.message) {
           create_table_html(data.message);
@@ -94,7 +94,7 @@ let handle_action = (action, id) => {
 
 // fetch data on load of the page
 $(function () {
-  load_data("processed");
+  load_data("pending");
 });
 
 // onchange function for filter
@@ -104,26 +104,26 @@ document.getElementById("filter").addEventListener("change", (e) => {
 });
 
 
-create_table_html([
-  {
-    user_id: 1,
-    fullname: "Jehoshaphat",
-    mail: "segunade041@gmail.com",
-    amount_deposited: "50000",
-    date_time: new Date(Date.now()),
-    deposit_type: "Etherium type",
-    transaction_status:'Success',
-    deposit_proof:'../../../../Finance_app/tabadmin/img/user24.png'
-  },
-  {
-    user_id: 2,
-    fullname: "Tee Jay",
-    mail: "jehoshaphatadediran@gmail.com",
-    amount_deposited: "100000",
-    date_time: new Date(Date.now()),
-    deposit_type: "Bitcoin type",
-    transaction_status:'Declined',
-    deposit_proof:'../../../../Finance_app/user/img/user12.png'
+// create_table_html([
+//   {
+//     user_id: 1,
+//     fullname: "Jehoshaphat",
+//     mail: "segunade041@gmail.com",
+//     amount_deposited: "50000",
+//     date_time: new Date(Date.now()),
+//     deposit_type: "Etherium type",
+//     transaction_status:'Success',
+//     deposit_proof:'../../../../Finance_app/tabadmin/img/user24.png'
+//   },
+//   {
+//     user_id: 2,
+//     fullname: "Tee Jay",
+//     mail: "jehoshaphatadediran@gmail.com",
+//     amount_deposited: "100000",
+//     date_time: new Date(Date.now()),
+//     deposit_type: "Bitcoin type",
+//     transaction_status:'Declined',
+//     deposit_proof:'../../../../Finance_app/user/img/user12.png'
 
-  },
-]);
+//   },
+// ]);

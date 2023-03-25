@@ -27,8 +27,10 @@ let notification = {
   warning: (message) => {
     if ($(".__notification")) {
       $(".__notification")
+      .removeClass("alert-success")
+      .removeClass("alert-danger")
         .text(message)
-        .addClass("alert-warning alert-dismissible fade show")
+        .addClass("alert-warning")
         .css({ width: "fit-content" })
         .show();
         $(".__notification")[0].scrollIntoView({
@@ -39,15 +41,17 @@ let notification = {
         $(".__notification")
           .hide()
           .text("")
-          .removeClass("alert-warning alert-dismissible fade show");
+          .removeClass("alert-warning");
       }, 10000);
     }
   },
   danger: (message) => {
     if ($(".__notification")) {
       $(".__notification")
+      .removeClass("alert-warning")
+        .removeClass("alert-success")
         .text(message)
-        .addClass("alert-danger alert-dismissible fade show")
+        .addClass("alert-danger")
         .css({ width: "fit-content" })
         .show();
       $(".__notification")[0].scrollIntoView({
@@ -58,7 +62,7 @@ let notification = {
       setTimeout(() => {
         $(".__notification")
           .text("")
-          .removeClass("alert-danger alert-dismissible fade show")
+          .removeClass("alert-danger")
           .hide();
       }, 10000);
     }
@@ -66,8 +70,10 @@ let notification = {
   success: (message) => {
     if ($(".__notification")) {
       $(".__notification")
+      .removeClass("alert-warning")
+      .removeClass("alert-danger")
         .text(message)
-        .addClass("alert-success alert-dismissible fade show")
+        .addClass("alert-success")
         .css({ width: "fit-content" })
         .show();
       $(".__notification")[0].scrollIntoView({
@@ -77,7 +83,7 @@ let notification = {
       setTimeout(() => {
         $(".__notification")
           .text("")
-          .removeClass("alert-success alert-dismissible fade show")
+          .removeClass("alert-success")
           .hide();
       }, 10000);
     }
@@ -182,7 +188,7 @@ let validate_passwords = (password1, password2, length_of_passwords = 0) => {
     ) {
       return {
         status: false,
-        message: "Passwords must be 8-20 characters long.",
+        message: `Passwords must be ${length_of_passwords}-20 characters long.`,
       };
     } else {
       if (password1 === password2) {
@@ -221,18 +227,25 @@ let lowercase = (...args) => {
   }
 };
 
-let parse_json_response = (str) => {
-  let regex = /^{.*}/
-  const match = str.match(regex)
-  console.log(match);
-  if(match[0]){
-    try{
-      let obj = JSON.parse(match[0])
-      return obj
-    }catch (error) {
-      console.error(error)
-      return null
+let parse_json_response = (jsonString, searchTerm="status") => {
+    const regex = /{[^{}]*}/g;
+    const matches = jsonString.match(regex) || [];
+    let json_match = matches.filter(match => match.includes(searchTerm))
+    function isValidJson(jsonString) {
+      try {
+        JSON.parse(jsonString);
+        return true;
+      } catch (error) {
+        return false;
+      }
+    }
+    if(matches?.length > 0){
+      if(isValidJson(json_match[0])){
+        return JSON.parse(json_match[0])
+      }else{
+        return []
+      }
+    }else{
+      return []
     }
   }
-  return null
-}
