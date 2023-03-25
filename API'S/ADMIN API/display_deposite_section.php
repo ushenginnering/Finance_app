@@ -1,6 +1,5 @@
 <?php
 include "../connect.php";
-$_GET["filter"] = "Pending";
 if(isset($_GET["filter"])){
     $filter = $_GET["filter"];
 }
@@ -18,22 +17,23 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = $result->fetch_assoc()) {
         // Add the row data to the deposit history array
         $deposit_history[] = $row;
-        print_r($row);
-       echo "<br>";
         // get full name and email from transaction user_id
         // Build the SQL query to retrieve data from the deposit_history table
-        //echo $user_id =  $row['user_id'];
-       // echo "<br>";
-           $sql_user = "SELECT fullname, mail  FROM users where user_id = '$user_id'";
+         $user_id =  $row['user_id'];
+          $sql_user = "SELECT fullname, mail  FROM users where user_id = '$user_id'";
+        
         // Execute the query
         $result_user = mysqli_query($conn, $sql_user);
 
         if  (mysqli_num_rows($result_user) > 0){
+
+           // echo "enter here";
             // Loop through each row of the result set
-            while ($row_user = $result->fetch_assoc()) {
+            while ($row_user = $result_user->fetch_assoc()) {
                 // Add the row data to the deposit history array
-                $deposit_history[] = $row_user;
+                 $deposit_history[] = $row_user;
             }
+        }else{
         }
 
     }
