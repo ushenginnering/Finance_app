@@ -124,8 +124,8 @@
 						<li class="dropdown">
 							<a href="#" id="userSettings" class="user-settings" data-toggle="dropdown"
 								aria-haspopup="true">
-								<span class="user-name"><?php echo $_SESSION['fullname']; ?></span>
-								<span class="avatar">
+								<span class="user-name"><?php echo ucfirst(explode(" ", $_SESSION['fullname'])[0]); ?></span>
+								<span class="avatar"> 
 									<img src="img/user24.png" alt="avatar">
 									<span class="status online"></span>
 								</span>

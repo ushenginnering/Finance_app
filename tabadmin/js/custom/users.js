@@ -36,13 +36,16 @@ let handle_action = (id) => {
 // function to load data when page loads with filter
 let load_data = (filter) => {
     router
-      .get(`test.php?filter=${filter}`)
+      .get(`http://localhost/finance_app/API'S/USER_API's/users_json_wallet.php?filter=${filter}`)
       .then((data) => {
+        data = JSON.parse(data)
         console.log(data);
         if (data.status) {
           if (data.message) {
             create_table_html(data.message);
           }
+        }else{
+          notification.warning(data?.message)
         }
       })
       .catch((err) => {
@@ -52,7 +55,7 @@ let load_data = (filter) => {
 
   // function to fire when the page loads
   $(function (e) {
-    load_data("active");
+    load_data("INACTIVE");
 
     // onchange event to trigger when the filter is changed
     document.getElementById("filter").addEventListener("change", (e) => {
@@ -62,22 +65,22 @@ let load_data = (filter) => {
   });
 
 
-  create_table_html([
-    {
-      user_id: 1,
-      fullname: "Jehoshaphat",
-      mail: "segunade041@gmail.com",
-      phone: "09078785538",
-      country: "Nigeria",
-      account_status: "active",
-    },
-    {
-      user_id: 2,
-      fullname: "segun",
-      mail: "jeoh@gmail.com",
-      phone: "09043781138",
-      country: "Argentina",
-      account_status: "suspended",
-    },
-  ]);
+  // create_table_html([
+  //   {
+  //     user_id: 1,
+  //     fullname: "Jehoshaphat",
+  //     mail: "segunade041@gmail.com",
+  //     phone: "09078785538",
+  //     country: "Nigeria",
+  //     account_status: "active",
+  //   },
+  //   {
+  //     user_id: 2,
+  //     fullname: "segun",
+  //     mail: "jeoh@gmail.com",
+  //     phone: "09043781138",
+  //     country: "Argentina",
+  //     account_status: "suspended",
+  //   },
+  // ]);
   

@@ -1,6 +1,6 @@
 let load_data = () => {
   router
-    .get("../../../tabadmin/test.php")
+    .get("../../../../Finance_app/tabadmin/test.php")
     .then((data) => {
       console.log(data);
       if (data?.status) {

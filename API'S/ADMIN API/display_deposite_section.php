@@ -12,6 +12,7 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     // Create an array to hold the deposit history data
     $deposit_history = array();
+    $deposit_username = array();
 
     // Loop through each row of the result set
     while ($row = $result->fetch_assoc()) {
@@ -30,7 +31,7 @@ if (mysqli_num_rows($result) > 0) {
             // Loop through each row of the result set
             while ($row_user = $result_user->fetch_assoc()) {
                 // Add the row data to the deposit history array
-                 $deposit_history[] = $row_user;
+                 $deposit_username[] = $row_user;
             }
         }else{
         }
@@ -43,7 +44,8 @@ if (mysqli_num_rows($result) > 0) {
         // array to return on every request
         $response = array(
             "status"=>true,
-            "message"=>" $deposite_data "
+            "message"=>$deposite_data,
+            "others"=> $deposit_username
         );
         // Output a success message
         echo json_encode($response);
