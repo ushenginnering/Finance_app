@@ -1,5 +1,5 @@
 <?php
-function sendmail($sender_email,$sender_gmail_password, $sender_name, $message,$sender_gmail_email,$subject, $user_mail, $user_name){
+function sendmail($sender_email,$sender_gmail_password, $sender_name, $message,$sender_gmail_email,$subject, $user_email, $user_name){
        
     require 'PHPMailer/src/Exception.php';
     require 'PHPMailer/src/PHPMailer.php';
