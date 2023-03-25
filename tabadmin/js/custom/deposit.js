@@ -1,13 +1,14 @@
 // function to create html table template
-let create_table_html = (items) => {
+let create_table_html = (items, others) => {
   items = JSON.parse(items)
+  // others = JSON.parse(others)
   let table_append_html = ``;
   if (items.length > 0) {
     items?.forEach((item, index) => {
       table_append_html += `<tr> 
           <td class="sn">${index + 1}</td>
-          <td class="full_name">${item.fullname}</td>
-          <td class="email">${item.mail}</td>
+          <td class="full_name">${others[index]?.fullname}</td>
+          <td class="email">${others[index]?.mail}</td>
           <td class="amount"><span>$</span>${parseInt(
             Number(item.amount_deposited)
           )?.toLocaleString()}</td>
@@ -25,15 +26,15 @@ let create_table_html = (items) => {
           <a href="#" data-id="${
             item?.user_id
           }" class="decline-deposit" onClick="handle_action('decline', ${
-        item?.user_id
+        item?.transaction_id
       })">
           <span title="Decline Deposit"class="btn btn-warning icon-cancel" >
           </span>
           </a>
           <a href="#" data-id="${
-            item?.user_id
+            item?.transaction_id
           } class="approve-deposit" onClick="handle_action('approve', ${
-        item?.user_id
+        item?.transaction_id
       })">
           <span title="Approved Deposit"class="btn btn-success icon-check2">
           </span>
@@ -49,19 +50,21 @@ let create_table_html = (items) => {
   }
 };
 
-// function to approve a deposit
-let handle_approve_deposit = (id) => {
-  console.log("clicked approve");
-};
 
 let show_img_popup = (e) => {
   let btn = $(e);
   let src = btn.prev('img').attr('src')
   document.getElementById('show-img-popup').src = src
 }
+
+// function to approve a deposit
+let handle_approve_deposit = (id) => {
+  console.log("clicked approve", id);
+};
+
 // function to decline a deposit
 let handle_decline_deposit = (id) => {
-  console.log("clicked decline");
+  console.log("clicked decline", id);
 };
 
 // function to load data on when the page is ready
@@ -73,8 +76,10 @@ let load_data = (filter) => {
       data = JSON.parse(data)
       if (data.status) {
         if (data.message) {
-          create_table_html(data.message);
+          create_table_html(data?.message, data?.others);
         }
+      }else{
+        notification.warning(data?.message)
       }
     })
     .catch((err) => {
