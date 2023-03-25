@@ -18,19 +18,22 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = $result->fetch_assoc()) {
         // Add the row data to the deposit history array
         $deposit_history[] = $row;
-
-        // get full name and email etrieve data from the deposit_history table
-        $user_id =  $row['user_id'];
-        $sql_user = "SELECT fullname, mail  FROM users where user_id = '$user_id'";
+        // get full name and email from transaction user_id
+         $user_id =  $row['user_id'];
+          $sql_user = "SELECT fullname, mail  FROM users where user_id = '$user_id'";
+        
         // Execute the query
         $result_user = mysqli_query($conn, $sql_user);
 
         if  (mysqli_num_rows($result_user) > 0){
+
+           // echo "enter here";
             // Loop through each row of the result set
             while ($row_user = $result_user->fetch_assoc()) {
                 // Add the row data to the deposit history array
-                $deposit_username[] = $row_user;
+                 $deposit_username[] = $row_user;
             }
+        }else{
         }
 
     }

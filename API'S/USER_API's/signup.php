@@ -12,9 +12,28 @@ if (isset ($_POST['signup'])){
     $mail = $_POST['mail']; // collect the email address of the user here
     $user_id =  rand(89,234324);
 
-    if ($password == $confirm_password){
-            // SQL query to insert data into table
-            $sql = "INSERT INTO users (fullname, country, phone, password, mail, user_id) VALUES ('$fullname', '$country', '$phone', '$password', '$mail', '$user_id')";
+
+    
+// SQL query to select the desired columns from the company_profile table
+$sql = "SELECT * FROM users where mail  = '$user_mail'";
+                
+// Execute the SQL query and store the result set
+$result = mysqli_query($conn, $sql);
+                
+// Check if there are any rows returned
+if (mysqli_num_rows($result) > 0) {
+    $response = array(
+        "registration_status"=>false,
+        "email_status"=>false,
+        "message"=>"Email already Exist",
+    );
+    echo json_encode($response);
+    }
+    else
+    {
+        if ($password == $confirm_password){
+                // SQL query to insert data into table
+                $sql = "INSERT INTO users (fullname, country, phone, password, mail, user_id) VALUES ('$fullname', '$country', '$phone', '$password', '$mail', '$user_id')";
 
             // Execute query
             if (mysqli_query($conn, $sql)) {
@@ -39,7 +58,7 @@ if (isset ($_POST['signup'])){
                         include "../sendemail.php";
                         $send_email =  sendmail($sender_email,$sender_gmail_password, $sender_name, $message,$sender_gmail_email,$subject, $user_mail,$fullname);
                         if ($send_email == 'Record saved successfully and email sent') {
-                            echo "!"; 
+                            // echo "!"; 
                             $response = array(
                                 "registration_status"=>true,
                                 "email_status"=>true,
@@ -74,16 +93,14 @@ if (isset ($_POST['signup'])){
                 echo json_encode($response);
             }
 
-    }else{
-        $response = array(
-            "registration_status"=>false,
-            "message"=>"Password does not match",
-
-        );
-        // Output an error message
-        echo json_encode($response);
+        }else{
+            $response = array(
+                "registration_status"=>false,
+                "message"=>"Password does not match",
+            );
+            // Output an error message
+            echo json_encode($response);
+        }
     }
-
-
 }
 ?>
