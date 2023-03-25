@@ -4,11 +4,11 @@ $_POST['signup'] = "signup";
 
 if (isset ($_POST['signup'])){ 
     // Get form data
-    $fullname = $_POST['fullname'];  /*= "john"*/ ;
-    $country = $_POST['country']; /*= "Nigeria"*/;
-    $phone = $_POST['phone']; /*= "091 60 30 81 24"*/ ;
-    $password = $_POST['password']; /*= "12345"*/;
-    $confirm_password = $_POST['confirm_password']; /*= "12345"*/ ;
+    $fullname = $_POST['fullname'];  /*= "john"*/
+    $country = $_POST['country']; /*= "Nigeria"*/
+    $phone = $_POST['phone']; /*= "091 60 30 81 24"*/ 
+    $password = $_POST['password']; /*= "12345"*/
+    $confirm_password = $_POST['confirm_password']; /*= "12345"*/ 
     $user_mail = $_POST['mail']; // collect the email address of the user here
     $user_id =  rand(89,234324);
 
