@@ -91,7 +91,7 @@ $(function () {
   $("#invest").submit((e) => {
     e.preventDefault();
 
-    let [invest_amount, invest_plan] = lowercase(
+    let [invest_plan, invest_amount] = lowercase(
       $("#investment-plan").val(),
       $(".invest-amount").val()
     );

@@ -2,7 +2,7 @@
 include "connect.php";
 // Define the transaction ID to update
 
-if (!isset($_POST['transaction_id']))
+if (isset($_POST['transaction_id']))
 {
     $transaction_id = $_POST['transaction_id'];
 

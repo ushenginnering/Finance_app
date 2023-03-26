@@ -2,15 +2,12 @@
 session_start();
 include "connect.php";
 // Define the transaction ID to update
-$_POST['approve'] = true;
-$_POST['transaction_id'] = 55450;
-
 
 if (isset($_POST['approve']))
 {
     $transaction_id = $_POST['transaction_id'];
 
-    $script = "SELECT amount_investment FROM investment_history WHERE transaction_id = '$transaction_id' and transaction_status = 'pending'";
+    $script = "SELECT amount_invested FROM investment_history WHERE transaction_id = '$transaction_id' and transaction_status = 'pending'";
     $result = mysqli_query($conn, $script);
 
     // check if query returned any rows

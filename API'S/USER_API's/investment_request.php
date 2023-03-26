@@ -16,9 +16,9 @@ $todayDateTime = date('Y-m-d H:i:s'); // current date and time
 $futureDateTime = date('Y-m-d H:i:s', strtotime('+10 days')); // date and time 10 days from now
 
 	
-$sql = "INSERT INTO investment_history (user_id, transaction_id,investment_plan,amount_invested,profit, transaction_status,created_at, end_date) 
+$sql = "INSERT INTO investment_history (user_id, transaction_id, investment_plan, amount_invested, profit, transaction_status, created_at, end_date) 
 VALUES ( '$user_id', '$transaction_id',  '$investment_plan', '$amount_invested','0', 'pending','$todayDateTime','$futureDateTime')";
-
+echo $sql;
 // Execute the statement
 if (mysqli_query($conn,$sql)){
     $response = array(
