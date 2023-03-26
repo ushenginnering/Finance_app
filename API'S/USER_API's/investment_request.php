@@ -1,11 +1,12 @@
 <?php
 session_start();
 include "../connect.php";
+if(isset($_POST["investment_plan"])){
 
-// Get the user ID, transaction ID, deposit amount, deposit type, and transaction status from the form
+    // Get the user ID, transaction ID, deposit amount, deposit type, and transaction status from the form
 $user_id = $_SESSION['user_id'] = '215864' ;
 $transaction_id = rand(3490,58888); 
-$amount_invested = $_POST['amount_invested'] = '12000';
+$amount_invested = $_POST['amount_invested'];
 $investment_plan = $_POST['investment_plan'];
 $transaction_status = "pending";
 
@@ -33,6 +34,8 @@ if (mysqli_query($conn,$sql)){
 
     );
     echo json_encode($response);
+}
+
 }
 
 ?>
