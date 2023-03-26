@@ -105,11 +105,11 @@ if(mysqli_query($conn, $sql)){
 $sql = "CREATE TABLE investment_history (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user_id INT(6) NOT NULL,
-    investment_plan VARCHAR(255) NOT NULL,
-    active_investments INT(6) NOT NULL,
-    profit DECIMAL(10,2) NOT NULL,
+    transaction_id VARCHAR(30) NOT NULL,
+    investment_plan VARCHAR(50) NOT NULL,
     amount_invested DECIMAL(10,2) NOT NULL,
-    investment_type ENUM('NEW', 'RE-NEWAL') NOT NULL
+    profit DECIMAL(10,2) NOT NULL,
+    transaction_status VARCHAR(20) NOT NULL
 )";
 
 // Execute the query
