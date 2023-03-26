@@ -1,9 +1,10 @@
 <?php
+
 include "../connect.php";
 if(isset($_GET["filter"])){
     $filter = $_GET["filter"];
 }
-// Build the SQL query to retrieve data from the deposit_history table
+// Build the SQL query to retrieve data from the deposit_history tabl
 $sql = "SELECT id, user_id, transaction_id, date_time, amount_deposited, deposit_type, transaction_status, deposit_proof FROM deposit_history WHERE transaction_status = '$filter'";
 
 // Execute the query

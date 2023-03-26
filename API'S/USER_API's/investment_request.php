@@ -3,11 +3,11 @@ session_start();
 include "../connect.php";
 if(isset($_POST["investment_plan"])){
 
-    // Get the user ID, transaction ID, deposit amount, deposit type, and transaction status from the form
-$user_id = $_SESSION['user_id'] = '215864' ;
+// Get the user ID, transaction ID, deposit amount, deposit type, and transaction status from the form
+$user_id = $_SESSION['user_id']   ; /* = '215864'*/
 $transaction_id = rand(3490,58888); 
-$amount_invested = $_POST['amount_invested'];
-$investment_plan = $_POST['investment_plan'];
+$amount_invested = $_POST['amount_invested'] ; /*= '12000'*/
+$investment_plan = $_POST['investment_plan'] ;/*= '1234'*/
 $transaction_status = "pending";
 
 
