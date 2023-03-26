@@ -104,12 +104,14 @@ if(mysqli_query($conn, $sql)){
 // SQL query to create table
 $sql = "CREATE TABLE investment_history (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    user_id INT(6) NOT NULL,
-    transaction_id VARCHAR(30) NOT NULL,
+    user_id INT(6) UNSIGNED NOT NULL,
+    transaction_id INT(6) UNSIGNED NOT NULL,
     investment_plan VARCHAR(50) NOT NULL,
     amount_invested DECIMAL(10,2) NOT NULL,
     profit DECIMAL(10,2) NOT NULL,
-    transaction_status VARCHAR(20) NOT NULL
+    transaction_status VARCHAR(20) NOT NULL,
+    created_at DATE NOT NULL,
+    end_date DATE NOT NULL
 )";
 
 // Execute the query

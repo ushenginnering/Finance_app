@@ -6,12 +6,11 @@ $_POST['approve'] = true;
 $_POST['transaction_id'] = 55450;
 
 
-
 if (isset($_POST['approve']))
 {
     $transaction_id = $_POST['transaction_id'];
 
-    $script = "SELECT amount_deposited FROM deposit_history WHERE transaction_id = '$transaction_id' and transaction_status = 'pending'";
+    $script = "SELECT amount_investment FROM investment_history WHERE transaction_id = '$transaction_id' and transaction_status = 'pending'";
     $result = mysqli_query($conn, $script);
 
     // check if query returned any rows
@@ -19,13 +18,14 @@ if (isset($_POST['approve']))
 
                     
                 // Update the transaction status to "approved"
-                $sql = "UPDATE deposit_history SET transaction_status='approved' WHERE transaction_id=$transaction_id and transaction_status = 'pending'";
+                $sql = "UPDATE investment_history SET transaction_status='approved' WHERE transaction_id = $transaction_id and transaction_status = 'pending'";
 
                 if (mysqli_query($conn, $sql)) {
                     // add sum to the existing wallet value of this patient
                     
                    
-                    $script = "SELECT amount_deposited FROM deposit_history WHERE transaction_id = '$transaction_id'";
+
+                    $script = "SELECT amount_invested, user_id FROM investment_history WHERE transaction_id = '$transaction_id'";
                     $result = mysqli_query($conn, $script);
 
                     // check if query returned any rows
@@ -33,24 +33,15 @@ if (isset($_POST['approve']))
                         // fetch the result row as an associative array
                         $row = mysqli_fetch_assoc($result);
                         // access the value of amount_deposited column
-                        $amount_deposited = $row['amount_deposited'];
+                        $amount_invested = $row['amount_invested'];
                         $user_id = $row['user_id'] ; // set user_id
                     }else{
-                        $amount_deposited = 0;
+                        $amount_invested = 0;
                     }
-                    
-                    // check if user has a row in the company's_wallet table
-                    $sql = "SELECT * FROM accounts_info WHERE user_id = '$user_id'";
-                    $result = mysqli_query($conn, $sql);
-                    
-                    if (mysqli_num_rows($result) == 0) {
-                        // if no row exists, create a new row for user with balance
-                    echo  $sql = "INSERT INTO accounts_info (user_id, balance) VALUES ('$user_id', '$amount_deposited')";
-                    }else{
+                   
                         // update the balance with the sum of balance and amount_deposited
-                    echo  $sql = "UPDATE accounts_info SET balance = balance + $amount_deposited WHERE user_id = '$user_id'";      
-                    }
-                
+                        $sql = "UPDATE accounts_info SET balance = balance - $amount_invested WHERE user_id = '$user_id'";      
+                    
                     if (mysqli_query($conn, $sql)) {
                         // array to return on every request
                         $response = array(
