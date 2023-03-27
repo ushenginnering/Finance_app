@@ -1,18 +1,37 @@
 <?php
-include '../connect.php';
+include "../connect.php";
 
-read all investment... if the end_date is equal to or greater than end investment date
-// end investment
+// Get all pending investment history entries where end_date < today's date
+$sql = "SELECT * FROM investment_history WHERE transaction_status = 'pending' AND end_date < CURDATE()";
+if (mysqli_query($conn,$sql)){
 
-loop through investments get investment that are on going 
-change investment_history transaction status to completed that end_date is past 
+// Loop through each entry
+while($row = $result->fetch_assoc()) {
 
-get profit based on investment class add to profit column
-
-
-filter and transaction 
-on end 
-add profit + investment sum to balance 
-
-
-?>
+  
+    $amount_invested = $row["amount_invested"];
+    $investment_plan = $row["investment_plan"];
+    $user_id = $row["user_id"];
+  
+    // Get percentage from company_investment_plan table
+    
+    $sql = "SELECT percentage FROM company_investment_plan WHERE investment_plan = '$investment_plan'";
+    $percentage_result = $conn->query($sql);
+    $percentage_row = $percentage_result->fetch_assoc();
+    $percentage = $percentage_row["percentage"];
+  
+    // Calculate profit and update investment history entry
+    $profit = ($amount_invested * $percentage) / 100;
+    $investment_history_id = $row["id"];
+    $sql = "UPDATE investment_history SET profit = '$profit', transaction_status = 'closed' WHERE id = '$investment_history_id'";
+    mysqli_query($conn,$sql);
+    $new  = $profit + $amount_invested;
+    $sql = "UPDATE account_info SET balance  =  balance + '$new', profit = profit + '$profit' WHERE user_id = '$user_id'";
+    mysqli_query($conn,$sql);
+  }
+  
+  // Close database connection
+  $conn->close();
+  
+}
+  ?>

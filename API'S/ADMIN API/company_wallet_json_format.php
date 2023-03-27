@@ -25,7 +25,7 @@ if ($result->num_rows > 0) {
     $response = array(
         "status"=>true,
         "message"=> $json_data,
-    );
+    ); 
     echo json_encode($response);
 
 } else {

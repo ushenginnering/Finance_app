@@ -2,12 +2,13 @@
 include "connect.php";
 // Define the transaction ID to update
 
-if (isset($_POST['transaction_id']))
+if (isset($_POST['withdrawal_id']))
 {
-    $transaction_id = $_POST['transaction_id'];
+    $transaction_id = $_POST['withdrawal_id'];
 
     // Update the transaction status to "approved"
-    $sql = "UPDATE investment_history SET transaction_status = 'declined' WHERE transaction_id = '$transaction_id'";
+    $sql = "UPDATE withdrawal_history SET transaction_status='declined' WHERE withdrawal_id= '$transaction_id'";
+
     if (mysqli_query($conn, $sql)) {
         // array to return on every request
         $response = array(
