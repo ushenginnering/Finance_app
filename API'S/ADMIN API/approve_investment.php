@@ -2,9 +2,10 @@
 session_start();
 include "connect.php";
 // Define the transaction ID to update
+/*
 $_POST['approve'] = true;
 $_POST['transaction_id'] = 55450;
-
+*/
 
 if (isset($_POST['approve']))
 {
@@ -22,8 +23,6 @@ if (isset($_POST['approve']))
 
                 if (mysqli_query($conn, $sql)) {
                     // add sum to the existing wallet value of this patient
-                    
-                   
 
                     $script = "SELECT amount_invested, user_id FROM investment_history WHERE transaction_id = '$transaction_id'";
                     $result = mysqli_query($conn, $script);
@@ -39,8 +38,8 @@ if (isset($_POST['approve']))
                         $amount_invested = 0;
                     }
                    
-                        // update the balance with the sum of balance and amount_deposited
-                        $sql = "UPDATE accounts_info SET balance = balance - $amount_invested WHERE user_id = '$user_id'";      
+                    // update the balance with the sum of balance and amount_deposited
+                    $sql = "UPDATE accounts_info SET balance = balance - $amount_invested WHERE user_id = '$user_id'";      
                     
                     if (mysqli_query($conn, $sql)) {
                         // array to return on every request

@@ -68,7 +68,7 @@ if (mysqli_num_rows($result) > 0) {
      // array to return on every request
      $response = array(
         "status"=>false,
-        "message"=>"No deposite data found"
+        "message"=>"No Investment data found"
     );
     // Output a success message
     echo json_encode($response);

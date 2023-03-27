@@ -1,5 +1,4 @@
 <?php
-
 include "../connect.php";
 if(isset($_GET["filter"])){
     $filter = $_GET["filter"];
@@ -34,7 +33,6 @@ if (mysqli_num_rows($result) > 0) {
                 // Add the row data to the deposit history array
                  $deposit_username[] = $row_user;
             }
-        }else{
         }
 
     }

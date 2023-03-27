@@ -7,7 +7,7 @@ if (!isset($_POST['transaction_id']))
     $transaction_id = $_POST['transaction_id'];
 
     // Update the transaction status to "approved"
-    $sql = "UPDATE deposit_history SET transaction_status='declined' WHERE transaction_id=$transaction_id";
+    $sql = "UPDATE deposit_history SET transaction_status='declined' WHERE transaction_id= '$transaction_id'";
 
     if (mysqli_query($conn, $sql)) {
         // array to return on every request
