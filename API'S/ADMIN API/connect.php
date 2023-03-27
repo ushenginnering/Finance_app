@@ -6,12 +6,13 @@ $username="root"; // Mysql username
 $password=""; // Mysql password 
 $db_name = "benjamin_finance_app"; // Database name 
 
-$sql = "CREATE DATABASE IF NOT EXISTS $db_name";
-if (mysqli_query($conn, $sql)) {
-    echo "Database created successfully\n";
-} else {
-    echo "Error creating database: " . mysqli_error($conn) . "\n";
-}
+// conn does not exist here 
+// $sql = "CREATE DATABASE IF NOT EXISTS $db_name";
+// if (mysqli_query($conn, $sql)) {
+//     echo "Database created successfully\n";
+// } else {
+//     echo "Error creating database: " . mysqli_error($conn) . "\n";
+// }
 
 
 // Connect to server and select databse.

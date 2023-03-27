@@ -13,11 +13,12 @@ if (mysqli_num_rows($result) > 0) {
     // Create an array to hold the deposit history data
     $investment_history = array();
     $investment_username = array();
+    $investment_plan_arr = array();
 
     // Loop through each row of the result set
     while ($row = $result->fetch_assoc()) {
         // Add the row data to the deposit history array
-        $deposit_history[] = $row;
+        $investment_history[] = $row;
         // get full name and email from transaction user_id
         $user_id =  $row['user_id'];
         $investment_plan = $row['investment_plan'];
@@ -44,9 +45,9 @@ if (mysqli_num_rows($result) > 0) {
 
            // echo "enter here";
             // Loop through each row of the result set
-            while ($row_user = $result_user->fetch_assoc()) {
+            while ($row_plan = $result_plan->fetch_assoc()) {
                 // Add the row data to the deposit history array
-                 $investment_username[] = $row_plan;
+                 $investment_plan_arr[] = $row_plan;
             }
         }
 
@@ -59,7 +60,8 @@ if (mysqli_num_rows($result) > 0) {
         $response = array(
             "status"=>true,
             "message"=>$investment_data,
-            "others"=> $investment_username
+            "others"=> $investment_username,
+            "percentages"=> $investment_plan_arr
         );
         // Output a success message
         echo json_encode($response);

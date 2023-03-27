@@ -108,10 +108,17 @@ n
 						<div class="table-container">
 							<!--     <div class="t-header">No Search Field</div> -->
 							<div class="table-responsive">
+							<select id="filter">
+									<option value="succesful">Succesful</option>
+									<option value="pending" selected>Pending</option>
+									<option value="declined">Declined</option>
+									<option value="all">All</option>
+								</select>
 								<table id="copy-print-csv" class="table custom-table">
 									<thead>
 										<tr>
-                                            <th>S/n</th>
+                                            <th>S/N</th>
+                                            <th>Name</th>
 											<th>Email</th>
 											<th>Investment Plan</th>
 											<th>Percentage %</th>
@@ -124,9 +131,10 @@ n
 
 										</tr>
 									</thead>
-									<tbody>
+									<tbody id="invest_data">
 										<tr>
                                             <td>1</td>
+                                            <td>Name</td>
 											<td>text@gmail.com</td>
                                             <td>Starter plan</td>
                                             <td>2.5</td>
@@ -137,7 +145,6 @@ n
 											<td>Processed</td>
 											<td>
 												<div>
-													<span title="" class=" btn btn-danger icon-delete"></span>
 													<a href=""><span title="Decline Investment Transactions"class="btn btn-warning icon-cancel"></span></a>
 													<a href=""><span title="Approved Investment Transactions"class="btn btn-success icon-check2"></span></a>
 												</div>
@@ -183,6 +190,8 @@ n
 
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
+	<script src="js/custom/functions.js"></script>
+	<script src="js/custom/invest.js"></script>
 
 
 </body>

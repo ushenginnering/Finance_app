@@ -77,7 +77,7 @@
 				</div>
 				<!-- Row end -->
 				<!-- Row start -->
-				<div class="row gutters">
+				<div class="row gutters invest-info-container">
 					<div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
 						<div class="pricing-plan">
 							<div class="pricing-header">
@@ -140,23 +140,25 @@
 							<div class="card-header">
 								<div class="card-title text-danger">Investment Form</div>
 							</div>
-							<div class="card-body">
-								<div class="form-group">
-									<label>Investment Plan <small class="text-danger">Select Investment of your
-											choice</small></label>
-									<select class="form-control">
-										<option>Starter Plan</option>
-										<option>Trader Plan</option>
-										<option>Investor Plan</option>
-									</select>
+							<form id="invest">
+								<div class="card-body">
+									<div class="form-group">
+										<label>Investment Plan <small class="text-danger">Select Investment of your
+												choice</small></label>
+										<select class="form-control" id="investment-plan">
+											<option>Starter Plan</option>
+											<option>Trader Plan</option>
+											<option>Investor Plan</option>
+										</select>
+									</div>
+	
+									<div class="form-group">
+										<label>Amount <small class="text-danger">Invest an amount within your preferred choice of Investment</small></label>
+										<input type="text" class="form-control invest-amount" placeholder="Amount" />
+									</div>
+									<input type="submit" class="btn btn-dark investment-submit" value="Start Investment" />
 								</div>
-
-								<div class="form-group">
-									<label>Amount <small class="text-danger">Invest an amount within your preferred choice of Investment</small></label>
-									<input type="text" class="form-control" placeholder="Amount" />
-								</div>
-								<button class="btn btn-dark">Start Investment</button>
-							</div>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -181,6 +183,8 @@
 	<script src="vendor/lobipanel/js/lobipanel-custom.js"></script>
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
+	<script src="js/custom/functions.js"></script>
+	<script src="js/custom/invest.js"></script>
 	<script>
 		const time = new Date().getHours();
 		let greeting;

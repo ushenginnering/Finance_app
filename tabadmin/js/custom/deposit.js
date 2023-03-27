@@ -28,7 +28,7 @@ let create_table_html = (items, others) => {
           }" class="decline-deposit" onClick="handle_action('decline', ${
         item?.transaction_id
       })">
-          <span title="Decline Deposit"class="btn btn-warning icon-cancel" >
+          <span title="Decline Deposit"class="btn btn-warning icon-cancel decline-icon" >
           </span>
           </a>
           <a href="#" data-id="${
@@ -36,7 +36,7 @@ let create_table_html = (items, others) => {
           } class="approve-deposit" onClick="handle_action('approve', ${
         item?.transaction_id
       })">
-          <span title="Approved Deposit"class="btn btn-success icon-check2">
+          <span title="Approved Deposit"class="btn btn-success icon-check2 accept-icon-${item?.transaction_id}">
           </span>
           </a>
           </div>
@@ -46,7 +46,10 @@ let create_table_html = (items, others) => {
 
     updateUI.selector.all(["#deposit_data", table_append_html]);
   }else{
-    notification.warning('No data available')
+    setTimeout(() => {
+      notification.warning('No data available')
+    }, 3000);
+    $("#deposit_data").html("")
   }
 };
 
@@ -59,12 +62,50 @@ let show_img_popup = (e) => {
 
 // function to approve a deposit
 let handle_approve_deposit = (id) => {
-  console.log("clicked approve", id);
+  $(`.accept-icon-${id}`).removeClass("icon-check2").text("...")
+  // console.log("clicked approve", id);
+  router.post("http://localhost/finance_app/API'S/ADMIN%20API/approve_deposite.php", {
+    transaction_id:id,
+    approve:true,
+  }, () => $(`.accept-icon-${id}`).addClass("icon-check2").text(""))
+  .then((data) => {
+    data = parse_json_response(data)
+    if (data.status) {
+      if (data.message) {
+        notification.success(data?.message)
+        load_data('pending', false)
+      }
+    }else{
+      notification.warning(data?.message)
+    }
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 };
 
 // function to decline a deposit
 let handle_decline_deposit = (id) => {
-  console.log("clicked decline", id);
+  // console.log("clicked decline", id);
+  $(`.decline-icon-${id}`).removeClass("icon-cancel").text("...")
+  // console.log("clicked approve", id);
+  router.post("http://localhost/finance_app/API'S/ADMIN%20API/decline_deposite.php", {
+    transaction_id:id,
+  }, () => $(`.accept-icon-${id}`).addClass("icon-cancel").text(""))
+  .then((data) => {
+    data = parse_json_response(data)
+    if (data.status) {
+      if (data.message) {
+        notification.success(data?.message)
+        load_data('pending', false)
+      }
+    }else{
+      notification.warning(data?.message)
+    }
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 };
 
 // function to load data on when the page is ready
