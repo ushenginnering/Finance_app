@@ -324,6 +324,7 @@ let handle_update_auto_mailer_template = (
     });
 };
 
+
 // handle delete event on investment plan
 let handle_plan_delete = (id) => {
   console.log("deactivate plan");
