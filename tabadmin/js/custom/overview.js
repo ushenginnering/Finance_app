@@ -1,8 +1,9 @@
 // fetch data on load of the page
 let load_data = () => {
   router
-    .get("test.php")
+    .get("http://localhost/finance_app/API'S/ADMIN%20API/overview.php")
     .then((data) => {
+      data = JSON.parse(data);
       if (data?.status) {
         Update_overview(data?.message);
       }
@@ -32,9 +33,9 @@ $(function (e) {
 
   load_notification();
 });
-Update_overview({
-  total_deposit: 1000000,
-  total_users: 1000,
-  total_withdrawal: 500000,
-  total_investment: 90,
-});
+// Update_overview({
+//   total_deposit: 1000000,
+//   total_users: 1000,
+//   total_withdrawal: 500000,
+//   total_investment: 90,
+// });

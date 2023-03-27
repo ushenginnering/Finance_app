@@ -156,21 +156,17 @@
 							<div class="card-body">
 								<div class="form-group">
 									<label>Select Withdrawal Option <small class="text-danger">Select Withdrawal option that suits you</small></label>
-									<select class="form-control">
-										<option>Bitcoin</option>
-										<option>Ethereum</option>
-										<option>Perfect Money</option>
+									<select class="form-control" id="payment-type">
 									</select>
 								</div>
-
 								<div class="form-group">
 									<label>Amount <small class="text-danger">You can only withdraw from either Account Balance or Referal Bonus</small></label>
 									<input type="text" class="form-control" placeholder="Amount" />
 								</div>
 
 								<div class="form-group">
-									<label>Wallet Address <small class="text-danger">bitcoin address, etheruem address, perfect Money</small></label>
-									<input type="text" class="form-control" placeholder="Bitcoin, etheruem, perfect Money" />
+									<label>Wallet Address <small class="text-danger"></small></label>
+									<input type="text" class="form-control" placeholder="" />
 								</div>
 								<button class="btn btn-dark">Complete Withdrawal</button>
 							</div>
@@ -198,6 +194,8 @@
 	<script src="vendor/lobipanel/js/lobipanel-custom.js"></script>
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
+	<script src="js/custom/functions.js"></script>
+	<script src="js/custom/withdrawal.js"></script>
 	<script>
 		const time = new Date().getHours();
 		let greeting;
