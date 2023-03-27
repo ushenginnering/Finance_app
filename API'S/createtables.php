@@ -8,7 +8,7 @@ $sql = "CREATE TABLE users (
     fullname VARCHAR(255) NOT NULL,
     country VARCHAR(255) NOT NULL,
     phone VARCHAR(20) NOT NULL,
-    account_status ENUM('ACTIVE', 'INACTIVE') DEFAULT 'INACTIVE',
+    account_status ENUM('ACTIVE', 'INACTIVE') DEFAULT 'ACTIVE',
     password VARCHAR(255) NOT NULL,
     mail VARCHAR(255) NOT NULL,
     user_id  VARCHAR(20) NOT NULL,

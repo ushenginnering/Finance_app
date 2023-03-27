@@ -33,11 +33,21 @@ if (isset($_POST['approve']))
                     }else{
                         $amount_invested = 0;
                     }
-                   
+                        // update amount of active investments
+                        $sql_active_investments = "SELECT COUNT(*) AS total_investment FROM investment_history WHERE user_id = '$user_id' AND transaction_status = 'approved' GROUP BY '$user_id'";
+
+                        $result_count = mysqli_query($conn, $sql_active_investments);
+                        if (mysqli_num_rows($result_count) > 0) {
+                            // fetch the result row as an associative array
+                            $row_count = mysqli_fetch_assoc($result_count);
+                            $total_investment = $row_count['total_investment'];
+                        }else{
+                            $total_investment = 0;
+                        }
                     // update the balance with the sum of balance and amount_deposited
-                    $sql = "UPDATE accounts_info SET balance = balance - $amount_invested WHERE user_id = '$user_id'";      
+                    $sql_2 = "UPDATE accounts_info SET balance = balance - $amount_invested, active_investments = '$total_investment' WHERE user_id = '$user_id'";      
                     
-                    if (mysqli_query($conn, $sql)) {
+                    if (mysqli_query($conn, $sql_2)) {
                         // array to return on every request
                         $response = array(
                             "status"=>true,

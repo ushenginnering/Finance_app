@@ -49,6 +49,12 @@ if (mysqli_num_rows($result) > 0) {
                     // Check if there are any rows returned
                     if (mysqli_num_rows($result) > 0) {
                         // Loop through each row and output the data
+
+                        $sql_create_account_info = "INSERT INTO accounts_info (user_id, active_investments, total_profit, balance, referral_link) VALUES ('$user_id', 'NULL', '0', '0', 'https://stougiesinvestio.com/?ref=$user_id')";
+                        
+                        if(mysqli_query($conn, $sql_create_account_info)){
+                            echo 'set';
+                        }
                         while ($row = mysqli_fetch_assoc($result)) {
                             $message =  $row["welcome_mail_draft"] ;
                             $sender_email =  $sender_gmail_email = $row["active_gmail_address"] ;
