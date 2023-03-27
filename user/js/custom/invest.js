@@ -1,3 +1,4 @@
+const checkers = []
 let load_investment_plans = () => {
   router
     .get(
@@ -36,6 +37,11 @@ let create_wallet_card_template = (items) => {
             </ul>
         </div>
     </div>`;
+    checkers.push({
+      plan_name:item?.plan_name,
+      min:item?.minimum_value,
+      max:item?.maximum_value,
+    })
     });
 
     updateUI.selector.all([".invest-info-container", card_append_html]);
@@ -85,6 +91,27 @@ let suscribe_investment_plan = (amount_invested, investment_plan) => {
       });
 }
 
+let check_min_max = (amount, plan_name) => {
+  let plan = checkers.find((plans) => plans?.plan_name === plan_name?.toLowerCase())
+  // console.log(plan, amount);
+  if(parseInt(amount) < parseInt(plan?.min)){
+    notification.warning("Amount to small")
+    return {
+      status:false
+    }
+  }
+  if(parseInt(amount) > parseInt(plan?.max)){
+    notification.warning("Amount to big")
+    return {
+      status:false,
+    }
+  }
+  return {
+    status:true
+  }
+
+}
+
 $(function () {
   load_investment_plans();
 
@@ -97,7 +124,10 @@ $(function () {
     );
     let status = empty(invest_amount, invest_plan).status;
     if (status) {
-      suscribe_investment_plan(invest_amount, invest_plan);
+      let amount_validity = check_min_max(invest_amount, invest_plan).status;
+      if(amount_validity){
+        suscribe_investment_plan(invest_amount, invest_plan);
+      }
     } else {
       notification.danger("Must fill all field");
     }

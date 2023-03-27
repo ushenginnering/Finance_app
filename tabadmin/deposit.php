@@ -108,7 +108,7 @@
 							<!--     <div class="t-header">No Search Field</div> -->
 							<div class="table-responsive">
 								<select id="filter">
-									<option value="succesful">Succesful</option>
+									<option value="approved">Succesful</option>
 									<option value="pending" selected>Pending</option>
 									<option value="declined">Declined</option>
 									<option value="all">All</option>

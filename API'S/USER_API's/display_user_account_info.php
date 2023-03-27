@@ -9,7 +9,7 @@ if(isset($_SESSION['user_id'])){
 $sql_balance = "SELECT balance FROM accounts_info WHERE user_id = '$user_id'";
 $sql_profit = "SELECT total_profit FROM accounts_info WHERE user_id = '$user_id'";
 $sql_withdrawal = "SELECT SUM(amount_withdrawn) as total_withdraws FROM withdrawal_history WHERE transaction_status = 'approved' AND user_id = '$user_id'";
-$sql_invests = "SELECT SUM(amount_invested) as total_invests FROM investment_history WHERE transaction_status = 'approved' AND user_id = '$user_id'";
+$sql_invests = "SELECT SUM(amount_deposited) as total_deposit FROM deposit_history WHERE transaction_status = 'approved' AND user_id = '$user_id'";
 $sql_active_investment = "SELECT COUNT(*) as total_investments FROM investment_history WHERE transaction_status = 'approved' AND user_id = '$user_id'";
 $sql_last_deposit = "SELECT amount_deposited FROM deposit_history WHERE transaction_status = 'approved' AND user_id = '$user_id' ORDER BY id DESC LIMIT 1";
 $sql_last_withdrawal = "SELECT amount_withdrawn FROM withdrawal_history WHERE transaction_status = 'approved' AND user_id = '$user_id' ORDER BY id DESC LIMIT 1";
@@ -48,7 +48,7 @@ $result_invests = mysqli_query($conn, $sql_invests);
 if (mysqli_num_rows($result_invests) > 0) {
     // fetch the result row as an associative array
     $row_invests = mysqli_fetch_assoc($result_invests);
-    $total_invests = $row_invests['total_invests'];
+    $total_invests = $row_invests['total_deposit'];
 }else{
     $total_invests = 0;
 }

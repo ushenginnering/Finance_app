@@ -108,7 +108,7 @@ n
 							<!--     <div class="t-header">No Search Field</div> -->
 							<div class="table-responsive">
 							<select id="filter">
-									<option value="succesful">Succesful</option>
+									<option value="approved">Succesful</option>
 									<option value="pending" selected>Pending</option>
 									<option value="declined">Declined</option>
 									<option value="all">All</option>
@@ -129,7 +129,7 @@ n
 										</tr>
 									</thead>
 									<tbody id="withdrawal_data">
-										<tr>
+										<!-- <tr>
                                             <td>1</td>
 											<td>Tiger Nixon</td>
 											<td>text@gmail.com</td>
@@ -145,7 +145,7 @@ n
 													<a href=""><span title="Approved withdrawal"class="btn btn-success icon-check2"></span></a>
 												</div>
 											</td>
-										</tr>
+										</tr> -->
 									</tbody>
 								</table>
 							</div>

@@ -109,7 +109,7 @@
                                         </tr>
                                     </thead>
                                     <tbody id="user-data">
-                                        <tr>
+                                        <!-- <tr>
                                             <td>1</td>
                                             <td>samuel alex</td>
                                             <td>titi@gmail.com</td>
@@ -124,7 +124,7 @@
                                                             class=" btn btn-info icon-eye"></span></a>
                                                 </div>
                                             </td>
-                                        </tr>
+                                        </tr> -->
                                        
                                     </tbody>
                                 </table>
