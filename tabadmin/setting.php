@@ -233,8 +233,8 @@
                                                     <td>$99999</td>
                                                     <td>
                                                         <div>
-                                                            <a href=""><span title="Delete Plan from system"
-                                                                    class="btn btn-danger icon-delete"></span></a>
+                                                            <a href=""><span title="De-activate Plan from system"
+                                                                    class="btn btn-danger icon-cancel"></span></a>
                                                         </div>
                                                     </td>
                                                 </tr>

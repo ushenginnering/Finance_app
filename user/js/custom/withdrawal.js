@@ -14,7 +14,9 @@ let load_data = () => {
         console.log(err);
       });
   };
-
+let load_account_details = () => {
+    router.get("")
+}
   let create_select_option_template = (items) => {
     items = JSON.parse(items);
     let options_append_html = ``;

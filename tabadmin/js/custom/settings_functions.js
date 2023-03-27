@@ -133,8 +133,8 @@ let create_investment_table_template = (items) => {
             <td>
                 <div>
                     <a href="javascript:void(0)">
-                    <span title="Delete Plan from system"
-                      class="btn btn-danger icon-delete" onClick="handle_plan_delete(${
+                    <span title="De-activate Plan from system"
+                      class="btn btn-warning icon-cancel" onClick="handle_plan_delete(${
                         item?.id
                       })">
                       </span>
@@ -326,7 +326,7 @@ let handle_update_auto_mailer_template = (
 
 // handle delete event on investment plan
 let handle_plan_delete = (id) => {
-  console.log("delete plan");
+  console.log("deactivate plan");
 };
 
 // function to add new wallet

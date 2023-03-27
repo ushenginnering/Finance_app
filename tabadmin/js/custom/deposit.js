@@ -150,26 +150,3 @@ document.getElementById("filter").addEventListener("change", (e) => {
 });
 
 
-// create_table_html([
-//   {
-//     user_id: 1,
-//     fullname: "Jehoshaphat",
-//     mail: "segunade041@gmail.com",
-//     amount_deposited: "50000",
-//     date_time: new Date(Date.now()),
-//     deposit_type: "Etherium type",
-//     transaction_status:'Success',
-//     deposit_proof:'../../../../Finance_app/tabadmin/img/user24.png'
-//   },
-//   {
-//     user_id: 2,
-//     fullname: "Tee Jay",
-//     mail: "jehoshaphatadediran@gmail.com",
-//     amount_deposited: "100000",
-//     date_time: new Date(Date.now()),
-//     deposit_type: "Bitcoin type",
-//     transaction_status:'Declined',
-//     deposit_proof:'../../../../Finance_app/user/img/user12.png'
-
-//   },
-// ]);

@@ -106,6 +106,12 @@ n
 						<div class="table-container">
 							<!--     <div class="t-header">No Search Field</div> -->
 							<div class="table-responsive">
+							<select id="filter">
+									<option value="succesful">Succesful</option>
+									<option value="pending" selected>Pending</option>
+									<option value="declined">Declined</option>
+									<option value="all">All</option>
+								</select>
 								<table id="copy-print-csv" class="table custom-table">
 									<thead>
 										<tr>
@@ -121,7 +127,7 @@ n
 
 										</tr>
 									</thead>
-									<tbody>
+									<tbody id="withdrawal_data">
 										<tr>
                                             <td>1</td>
 											<td>Tiger Nixon</td>
@@ -181,6 +187,8 @@ n
 
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
+	<script src="js/custom/functions.js"></script>
+	<script src="js/custom/withdrawal.js"></script>
 
 
 </body>
