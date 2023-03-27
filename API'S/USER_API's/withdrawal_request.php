@@ -7,6 +7,7 @@ $withdraw_type = $_POST["withdraw_type"];
 $amount = $_POST['amount_withdrawn'];
 $transaction_id = rand(234, 90999);
 
+
 // Generate withdrawal ID (e.g. using a timestamp)
 $withdrawal_id = time();
 
