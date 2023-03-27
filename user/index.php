@@ -176,8 +176,8 @@
 							<div class="card-body">
 								<!-- <h5>Refferal Link</h5> -->
 								<p class="card-text text-white">
-									<a href="https://stougiesinvestio.com/?refcode=Alexmak"
-										class="text-white bold" id="referral-link">https://stougiesinvestio.com/?refcode=Alexmak</a>
+									<a href=""
+										class="text-white bold" id="referral-link"></a>
 								</p>
 								<button class="btn btn-dark">Copy Referral Link</button>
 							</div>

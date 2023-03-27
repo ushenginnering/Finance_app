@@ -1,8 +1,8 @@
 let load_data = () => {
   router
-    .get("../../../../Finance_app/tabadmin/test.php")
+    .get("http://localhost/finance_app/API'S/USER_API's/display_user_account_info.php")
     .then((data) => {
-      console.log(data);
+      data = JSON.parse(data)
       if (data?.status) {
       }
       update_overview(data?.message);
@@ -14,15 +14,16 @@ let load_data = () => {
 
 let update_overview = (details) => {
   updateUI.selector.all(
-    ["#total-deposit", Number(10000)?.toLocaleString()],
-    ["#account-balance", Number(30000)?.toLocaleString()],
-    ["#total-profit-earned", Number(2000)?.toLocaleString()],
-    ["#total-withdrawal", Number(90000)?.toLocaleString()],
-    ["#active-investment", Number(3)?.toLocaleString()],
-    ["#last-deposit", Number(4000)?.toLocaleString()],
-    ["#last-withdrawal", Number(3500)?.toLocaleString()],
-    ["#referral-bonus", Number(1200)?.toLocaleString()]
+    ["#total-deposit", Number(details?.total_deposit)?.toLocaleString()],
+    ["#account-balance", Number(details?.total_balance)?.toLocaleString()],
+    ["#total-profit-earned", Number(details?.total_profit)?.toLocaleString()],
+    ["#total-withdrawal", Number(details?.total_withdrawal)?.toLocaleString()],
+    ["#active-investment", Number(details?.total_active_investment)?.toLocaleString()],
+    ["#last-deposit", Number(details?.last_deposit)?.toLocaleString()],
+    ["#last-withdrawal", Number(details?.last_withdrawal)?.toLocaleString()],
+    ["#referral-bonus", Number(details?.referral_bonus)?.toLocaleString()],
   );
+  $("#referral-link").attr("href", details?.referral_link).html(details?.referral_link)
 };
 
 $(function () {

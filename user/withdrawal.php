@@ -64,9 +64,9 @@
 								<small>Welcome to Withdrawal section, Please select which of the profit you want to withdraw from.<span class="text-success "> (Referal or Account Balance)</span></small>
 
 							</div>
-							<div class="__notification alert" role="alert"></div>
-
+							
 						</div>
+							<div class="__notification alert" role="alert"></div>
 					</div>
 					
 				</div>
@@ -121,11 +121,11 @@
 								<i class="icon-credit"></i>
 							</div>
 							<div class="sale-num">
-								<h3>:00</h3>
+								<h3 id="account-balance">:00</h3>
 								<p class="text-dark">Account Balance</p>
 								</p>
 								<div class="custom-control custom-switch mb-3">
-									<input type="checkbox" class="custom-control-input" id="accbalance">
+									<input type="radio" class="custom-control-input" name="amount" checked id="accbalance">
 									<label class="custom-control-label" for="accbalance"></label>
 								</div>
 							</div>
@@ -137,10 +137,10 @@
 								<i class="icon-users"></i>
 							</div>
 							<div class="sale-num">
-								<h3>0</h3>
+								<h3 id="referral-bonus">0</h3>
 								<p class="text-dark">Referal Bonus</p>
 								<div class="custom-control custom-switch mb-3">
-									<input type="checkbox" class="custom-control-input" id="refbonus">
+									<input type="radio" class="custom-control-input" id="refbonus" name="amount">
 									<label class="custom-control-label" for="refbonus"></label>
 								</div>
 							</div>
@@ -153,23 +153,25 @@
 							<div class="card-header">
 								<div class="card-title text-danger">Withdrawal Details form</div>
 							</div>
-							<div class="card-body">
-								<div class="form-group">
-									<label>Select Withdrawal Option <small class="text-danger">Select Withdrawal option that suits you</small></label>
-									<select class="form-control" id="payment-type">
-									</select>
+							<form action="" id="withdraw">
+								<div class="card-body">
+									<div class="form-group">
+										<label>Select Withdrawal Option <small class="text-danger">Select Withdrawal option that suits you</small></label>
+										<select class="form-control" id="payment-type">
+										</select>
+									</div>
+									<div class="form-group">
+										<label>Amount <small class="text-danger">You can only withdraw from either Account Balance or Referal Bonus</small></label>
+										<input type="text" class="form-control amount" placeholder="Amount" />
+									</div>
+	
+									<div class="form-group">
+										<label>Wallet Address <small class="text-danger"></small></label>
+										<input type="text" class="form-control wallet-address" placeholder="" />
+									</div>
+									<input  type="submit" class="btn btn-dark withdrawal-btn" value="Complete Withdrawal"/>
 								</div>
-								<div class="form-group">
-									<label>Amount <small class="text-danger">You can only withdraw from either Account Balance or Referal Bonus</small></label>
-									<input type="text" class="form-control" placeholder="Amount" />
-								</div>
-
-								<div class="form-group">
-									<label>Wallet Address <small class="text-danger"></small></label>
-									<input type="text" class="form-control" placeholder="" />
-								</div>
-								<button class="btn btn-dark">Complete Withdrawal</button>
-							</div>
+							</form>
 						</div>
 					</div>
 				</div>
