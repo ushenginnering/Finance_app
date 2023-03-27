@@ -21,17 +21,17 @@ let create_table_html = (items, others) => {
             <td class="action_btns">
             <div>
             <a href="javascript:void(0)" data-id="${
-              item?.transaction_id
+              item?.withdrawal_id
             }" class="decline-withdrawal" onClick="handle_action('decline', ${
-          item?.transaction_id
+          item?.withdrawal_id
         })">
             <span title="Decline Withdrawal"class="btn btn-warning icon-cancel decline-icon" >
             </span>
             </a>
-            <a href="#" data-id="${
-              item?.transaction_id
+            <a href="javascript:void(0)" data-id="${
+              item?.withdrawal_id
             } class="approve-withdrawal" onClick="handle_action('approve', ${
-          item?.transaction_id
+          item?.withdrawal_id
         })">
             <span title="Approved Withdrawal"class="btn btn-success icon-check2 accept-icon-${item?.transaction_id}">
             </span>
@@ -61,8 +61,8 @@ let create_table_html = (items, others) => {
   let handle_approve_deposit = (id) => {
     $(`.accept-icon-${id}`).removeClass("icon-check2").text("...")
     // console.log("clicked approve", id);
-    router.post("http://localhost/finance_app/API'S/ADMIN%20API/approve_deposite.php", {
-      transaction_id:id,
+    router.post("http://localhost/finance_app/API'S/ADMIN%20API/approve_withdrawal.php", {
+      withdraw_id:id,
       approve:true,
     }, () => $(`.accept-icon-${id}`).addClass("icon-check2").text(""))
     .then((data) => {
@@ -86,8 +86,8 @@ let create_table_html = (items, others) => {
     // console.log("clicked decline", id);
     $(`.decline-icon-${id}`).removeClass("icon-cancel").text("...")
     // console.log("clicked approve", id);
-    router.post("http://localhost/finance_app/API'S/ADMIN%20API/decline_deposite.php", {
-      transaction_id:id,
+    router.post("http://localhost/finance_app/API'S/ADMIN%20API/decline_withdrawal.php", {
+      withdrawal_id:id,
     }, () => $(`.accept-icon-${id}`).addClass("icon-cancel").text(""))
     .then((data) => {
       data = parse_json_response(data)

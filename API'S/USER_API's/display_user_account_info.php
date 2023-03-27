@@ -13,7 +13,7 @@ $sql_invests = "SELECT SUM(amount_invested) as total_invests FROM investment_his
 $sql_active_investment = "SELECT COUNT(*) as total_investments FROM investment_history WHERE transaction_status = 'approved' AND user_id = '$user_id'";
 $sql_last_deposit = "SELECT amount_deposited FROM deposit_history WHERE transaction_status = 'approved' AND user_id = '$user_id' ORDER BY id DESC LIMIT 1";
 $sql_last_withdrawal = "SELECT amount_withdrawn FROM withdrawal_history WHERE transaction_status = 'approved' AND user_id = '$user_id' ORDER BY id DESC LIMIT 1";
-$sql_referral = "SELECT SUM(referral_bonus) AS referral_bonus FROM referrals WHERE user_id = '$user_id'";
+$sql_referral = "SELECT referral_bonus FROM accounts_info WHERE user_id = '$user_id'";
 $sql_referral_link = "SELECT referral_link FROM accounts_info WHERE user_id = '$user_id'";
 
 

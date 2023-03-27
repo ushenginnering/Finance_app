@@ -31,7 +31,8 @@ $sql = "CREATE TABLE accounts_info (
     active_investments FLOAT(10, 2),
     total_profit FLOAT(10, 2),
     balance FLOAT(10, 2),
-    referral_link VARCHAR(255)
+    referral_link VARCHAR(255),
+    referral_bonus FLOAT(10, 2)
     )";
 
 // Execute the query
@@ -90,7 +91,8 @@ $sql = "CREATE TABLE withdrawal_history (
     amount_withdrawn DECIMAL(10,2) NOT NULL,
     withdrawal_type VARCHAR(50) NOT NULL,
     transaction_status VARCHAR(50) NOT NULL,
-    withdrawal_address VARCHAR(255) NOT NULL
+    withdrawal_address VARCHAR(255) NOT NULL,
+    withdraw_from VARCHAR(50) NOT NULL
 )";
 
 // Execute the query
