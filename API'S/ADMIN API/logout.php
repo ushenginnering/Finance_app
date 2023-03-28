@@ -1,5 +1,10 @@
 <?php
-session_abort();
-header("location:../index.php");  //put the correct path here
+session_start();
+
+if(isset($_GET['logout'])){
+unset($_SESSION['admin_email']);
+
+header("location:http://localhost/finance_app/tabadmin/login.php");
+}
 
 ?>

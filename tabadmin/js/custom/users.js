@@ -55,7 +55,7 @@ let load_data = (filter) => {
 
   // function to fire when the page loads
   $(function (e) {
-    load_data("INACTIVE");
+    load_data("ACTIVE");
 
     // onchange event to trigger when the filter is changed
     document.getElementById("filter").addEventListener("change", (e) => {

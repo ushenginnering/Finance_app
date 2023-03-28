@@ -73,7 +73,7 @@
 				<!-- Row end -->
 				<!-- Row start -->
 				<div class="row gutters wallet-info-container">
-					<div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+					<!-- <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
 						<div class="pricing-plan">
 							<div class="pricing-header">
 								<h4 class="pricing-title">Bitcoin wallet Address</h4>
@@ -111,7 +111,7 @@
 							</div>
 							
 						</div>
-					</div>
+					</div> -->
 				
 				</div>
 				<!-- Row end -->
@@ -134,9 +134,9 @@
 									<div class="form-group">
 										<label>Payment Type</label>
 										 <select class="form-control" id="payment-type" name="deposit_type">
-											<option value="bitcoin wallet">Bitcoin wallet</option>
+											<!-- <option value="bitcoin wallet">Bitcoin wallet</option>
 											<option value="ethereum wallet">Ethereum wallet</option>
-											<option value="perfect money">Perfect Money</option>
+											<option value="perfect money">Perfect Money</option> -->
 										 </select>
 									</div>
 	

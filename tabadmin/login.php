@@ -38,7 +38,7 @@
                                     <input type="checkbox" class="custom-control-input" id="remember_pwd">
                                     <label class="custom-control-label" for="remember_pwd">Remember me</label>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Login here</button>
+                                <input type="submit" class="btn btn-primary login" value="Login here" />
                             </div>
                         </div>
                     </div>

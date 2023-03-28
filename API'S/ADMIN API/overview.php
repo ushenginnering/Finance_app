@@ -4,8 +4,8 @@ include "connect.php";
 // Define the transaction ID to update
 
 $sql_users = "SELECT COUNT(user_id) as total_users FROM users WHERE account_status = 'ACTIVE'";
-$sql_deposit = "SELECT COUNT(user_id) as total_deposit FROM deposit_history WHERE transaction_status = 'approved'";
-$sql_withdrawal = "SELECT COUNT(user_id) as total_withdrawal FROM withdrawal_history WHERE transaction_status = 'approved'";
+$sql_deposit = "SELECT SUm(amount_deposited) as total_deposit FROM deposit_history WHERE transaction_status = 'approved'";
+$sql_withdrawal = "SELECT SUM(amount_withdrawn) as total_withdrawal FROM withdrawal_history WHERE transaction_status = 'approved'";
 $sql_investment = "SELECT COUNT(user_id) as total_investments FROM investment_history WHERE transaction_status = 'approved'";
 
 

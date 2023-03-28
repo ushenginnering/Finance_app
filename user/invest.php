@@ -78,7 +78,7 @@
 				<!-- Row end -->
 				<!-- Row start -->
 				<div class="row gutters invest-info-container">
-					<div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+					<!-- <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
 						<div class="pricing-plan">
 							<div class="pricing-header">
 								<h4 class="pricing-title">Starter Plan</h4>
@@ -116,7 +116,7 @@
 								<li>10% refferal commission</li>
 							</ul>
 						</div>
-					</div>
+					</div> -->
 				</div>
 				<!-- Row end -->
 				<div class="row gutters">
@@ -146,9 +146,9 @@
 										<label>Investment Plan <small class="text-danger">Select Investment of your
 												choice</small></label>
 										<select class="form-control" id="investment-plan">
-											<option>Starter Plan</option>
+											<!-- <option>Starter Plan</option>
 											<option>Trader Plan</option>
-											<option>Investor Plan</option>
+											<option>Investor Plan</option> -->
 										</select>
 									</div>
 	

@@ -107,7 +107,7 @@
                             </div>
                             <div class="table-container">
                                 <!--     <div class="t-header">No Search Field</div> -->
-                                <div class="table-responsive">
+                                <!-- <div class="table-responsive">
                                     <table id="copy-print-csv" class="table custom-table">
                                         <thead>
                                             <tr>
@@ -133,7 +133,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
