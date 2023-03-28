@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css" />
 
 	<!-- Main CSS -->
-	<link rel="stylesheet" href="css/main.css" />
+	<link rel="stylesheet" href="user/css/main.css" />
 
 </head>
 
@@ -338,9 +338,9 @@
 	<!-- Container end -->
 	
 <script src="//code.tidio.co/t6hgilkrcdxropb6neap8rsn9gq6hhbz.js" async></script>
-<script src="./js/jquery.min.js"></script>
-<script src="./js/custom/functions.js"></script>
-<script src="./js/custom/register.js"></script>
+<script src="user/js/jquery.min.js"></script>
+<script src="user/js/custom/functions.js"></script>
+<script src="user/js/custom/register.js"></script>
 <script>
 </script>
 </body>
