@@ -35,23 +35,20 @@ let update_overview_table_html = (details) => {
 };
 
 // update investment table
-let create_investment_table_html = (items) => {
+let create_investment_table_html = (items, others) => {
+  console.log(others);
   let table_append_html = ``;
   if (items.length > 0) {
     items?.forEach((item, index) => {
       table_append_html += `<tr> 
             <td class="sn">${index + 1}</td>
             <td class="investment_plan">${item?.investment_plan}</td>
-            <td class="percentage">${item?.percentage}</td>
+            <td class="percentage">${others[index]?.percentage}</td>
             <td class="amount_invested">${item?.amount_invested}</td>
-            <td class="duration">${item?.duration} days</td>
-            <td class="start_date">${new Date(item?.start_date)
-              .toJSON()
-              .slice(0, 10)}</td>
-            <td class="end_date">${new Date(item?.end_date)
-              .toJSON()
-              .slice(0, 10)}</td>
-            <td class="status">${item?.investment_status}</td>
+            <td class="duration">${others[index]?.plan_duration} days</td>
+            <td class="start_date">${item?.created_at}</td>
+            <td class="end_date">${item?.end_date}</td>
+            <td class="status">${item?.transaction_status}</td>
             <td class="action_btns">
             <div>
             <a href="#" onclick="handle_activate_investment(${item?.id})">
@@ -65,6 +62,7 @@ let create_investment_table_html = (items) => {
   }
 };
 let create_referral_table_html = (items) => {
+  console.log(items);
   let table_append_html = ``;
   if (items.length > 0) {
     items?.forEach((item, index) => {
@@ -81,16 +79,16 @@ let create_referral_table_html = (items) => {
 let handle_activate_investment = (id) => {
   console.log(id);
 };
-let load_data = (filter) => {
+let load_data = () => {
   router
-    .get(`test.php?filter=${filter}`)
+    .get(`http://localhost/finance_app/API'S/ADMIN%20API/user-details.php?user_id=87862`)
     .then((data) => {
-      console.log(data);
+      data = JSON.parse(data)
       if (data.status) {
         if (data.message) {
           update_user_table_html(data.message.user);
-          update_overview_table_html(data.message.overview);
-          create_investment_table_html(data.message.investment);
+          // update_overview_table_html(data.message.overview);
+          create_investment_table_html(data.message.investment, data?.message.plan_info);
           create_referral_table_html(data.message.referral);
         }
       }
@@ -118,7 +116,7 @@ let update_personal_info = (formData) => {
 };
 // function to fire when the page loads
 $(function (e) {
-  load_data("active");
+  load_data();
 
   //handle click event to update personal info
   $("#update-personal-info").submit((e) => {
@@ -146,28 +144,28 @@ $(function (e) {
   });
 });
 
-create_investment_table_html([
-  {
-    investment_plan: "Beginners plan",
-    percentage: "2%",
-    amount_invested: 20000,
-    duration: 10,
-    start_date: new Date(Date.now()),
-    end_date: new Date(Date.now()),
-    investment_status: "success",
-  },
-]);
-create_referral_table_html([
-  {
-    referral_name: "Lorem apsum",
-    referral_bonus: "30000",
-  },
-]);
+// create_investment_table_html([
+//   {
+//     investment_plan: "Beginners plan",
+//     percentage: "2%",
+//     amount_invested: 20000,
+//     duration: 10,
+//     start_date: new Date(Date.now()),
+//     end_date: new Date(Date.now()),
+//     investment_status: "success",
+//   },
+// ]);
+// create_referral_table_html([
+//   {
+//     referral_name: "Lorem apsum",
+//     referral_bonus: "30000",
+//   },
+// ]);
 
-update_user_table_html({
-  fullname: "Alex Iwobi",
-  mail: "segunade041@gmail.com",
-  country: "Nigeria",
-  phone: "07023432154",
-  img: "../../../../Finance_app/user/img/user10.png",
-});
+// update_user_table_html({
+//   fullname: "Alex Iwobi",
+//   mail: "segunade041@gmail.com",
+//   country: "Nigeria",
+//   phone: "07023432154",
+//   img: "../../../../Finance_app/user/img/user10.png",
+// });

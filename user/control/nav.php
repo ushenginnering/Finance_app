@@ -71,7 +71,7 @@
             </li> -->
 
             <li>
-                <a href="login.php">
+                <a href="http://localhost/finance_app/API'S/USER_API's/logout.php?logout=1">
                     <i class="icon-log-out"></i>
                     <span class="menu-text">Logout</span>
                 </a>

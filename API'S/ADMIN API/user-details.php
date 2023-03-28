@@ -1,0 +1,53 @@
+<?php
+include "connect.php";
+if(isset($_GET["user_id"])){
+    $user_id = $_GET["user_id"];
+
+$sql_users = "SELECT * FROM users WHERE user_id = '$user_id'";
+// $sql_deposit = "SELECT SUm(amount_deposited) as total_deposit FROM deposit_history WHERE transaction_status = 'approved'";
+$sql_referral = "SELECT referral_name, referral_bonus FROM referrals WHERE user_id = '$user_id'";
+$sql_investment = "SELECT * FROM investment_history WHERE user_id = '$user_id'";
+
+
+$result_users = mysqli_query($conn, $sql_users);
+if (mysqli_num_rows($result_users) > 0) {
+    // fetch the result row as an associative array
+    $row_users = mysqli_fetch_assoc($result_users);
+    $total_users = $row_users;
+}else{
+    $total_users = "";
+}
+
+
+$result_referral = mysqli_query($conn, $sql_referral);
+if (mysqli_num_rows($result_referral) > 0) {
+    // fetch the result row as an associative array
+    $row_referral = mysqli_fetch_assoc($result_referral);
+    $total_referral[] = $row_referral;
+}else{
+    $total_referral[] = [];
+}
+$result_investment = mysqli_query($conn, $sql_investment);
+if (mysqli_num_rows($result_investment) > 0) {
+    // fetch the result row as an associative array
+    $row_investment = mysqli_fetch_assoc($result_investment);
+    $total_investment[] = $row_investment;
+    $plan = $row_investment['investment_plan'];
+    $plan_sql = "SELECT plan_name, percentage, plan_duration FROM company_investment_plan WHERE plan_name = '$plan'";
+    $plan_result =  mysqli_query($conn, $plan_sql);
+    if (mysqli_num_rows($plan_result) > 0) {
+        // fetch the result row as an associative array
+        $row_plan = mysqli_fetch_assoc($plan_result);
+        $plans[] = $row_plan;
+    }
+}else{
+    $total_investment[] = [];
+}
+$message = array("user" => $total_users, "referral" => $total_referral, "investment" => $total_investment, "plan_info" => $plans);
+$response = array(
+    "status" => true,
+    "message" => $message,
+);
+echo json_encode($response);
+}
+?>

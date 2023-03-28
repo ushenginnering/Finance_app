@@ -1,3 +1,10 @@
+<?php
+    session_start();
+  //  echo $_SESSION['user_id'];
+    if (!isset($_SESSION['admin_email']) or ($_SESSION['admin_email'] == "") or ($_SESSION['admin_email'] == "0")){
+        header("location:http://localhost/finance_app/tabadmin/login.php");
+    }
+?>
 <!-- Sidebar wrapper start -->
 <nav id="sidebar" class="sidebar-wrapper">
 
@@ -63,7 +70,7 @@
             </li>
 
             <li>
-                <a href="login.php">
+                <a href="http://localhost/finance_app/API'S/ADMIN%20API/logout.php?logout=1">
                     <i class="icon-settings1"></i>
                     <span class="menu-text">logout</span>
                 </a>

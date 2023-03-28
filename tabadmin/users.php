@@ -91,9 +91,9 @@
                             
                             <div class="table-responsive">
                             <select id="filter">
-									<option value="ACTIVE">Active</option>
+									<option value="ACTIVE" selected>Active</option>
 									<option value="SUSPENDED" >Suspended</option>
-									<option value="INACTIVE" selected>Inactive</option>
+									<option value="INACTIVE">Inactive</option>
 									<option value="all">All</option>
 								</select>
                                 <table id="basicExample" class="table custom-table">
