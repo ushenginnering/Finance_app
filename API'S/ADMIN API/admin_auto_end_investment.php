@@ -32,19 +32,31 @@ while($row = $result->fetch_assoc())
 
     //update referal balance of that user refered by person, if that person exist
     // Get all pending investment history entries where end_date < today's date
-    $sql = "SELECT refered_by FROM users WHERE user_id = '$user_id' ";
-    if (mysqli_query($conn,$sql)){
+      $sql = "SELECT refered_by FROM users WHERE user_id = '$user_id' ";
+      if (mysqli_query($conn,$sql)){
 
-    // Loop through each entry
-    while($row = $result->fetch_assoc()) 
-      {
-        $refered_by = $row["refered_by"];
-        $sql = "UPDATE account_info SET referral_bonus  =  referral_bonus  + '$referral_bonus'  WHERE user_id = '$refered_by'";
-        mysqli_query($conn,$sql);
+      // Loop through each entry
+      while($row_w = $result->fetch_assoc()) 
+        {
+          $refered_by = $row_w["refered_by"];
+          $sql = "UPDATE account_info SET referral_bonus  =  referral_bonus  + '$referral_bonus'  WHERE user_id = '$refered_by'";
+          mysqli_query($conn,$sql);
 
-        $sql = "UPDATE referral_history SET balance  =  balance + '$new', total_profit = profit + '$profit' WHERE user_id = '$user_id'";
-        mysqli_query($conn,$sql);
-      }
+          $sql = "SELECT COUNT(*) FROM referral_history WHERE user_id = '$user_id'";
+          $result = mysqli_query($conn, $sql);
+          $row_p = mysqli_fetch_array($result);
+          
+          if ($row_p[0] > 0) {
+              // If the row already exists, update it.
+              $sql = "UPDATE referral_history SET referred_by = '$refered_by', referral_bonus = '$referral_bonus', amount_invested = '$amount_invested', investment_history_id = '$investment_history_id' WHERE user_id = '$user_id'";
+              mysqli_query($conn, $sql);
+          } else {
+              // If the row doesn't exist, insert a new one.
+              $sql = "INSERT INTO referral_history (user_id, referred_by, referral_bonus, amount_invested, investment_history_id) VALUES ('$user_id', '$refered_by', '$referral_bonus', '$amount_invested', '$investment_history_id')";
+              mysqli_query($conn, $sql);
+          }
+          
+        }
     }
 
   
