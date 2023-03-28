@@ -342,7 +342,6 @@
 <script src="./js/custom/functions.js"></script>
 <script src="./js/custom/register.js"></script>
 <script>
-	// $("gg").removeAttr()
 </script>
 </body>
 </html>

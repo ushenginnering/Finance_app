@@ -7,15 +7,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<!-- Meta -->
-	<link rel="shortcut icon" href="img/fav.png" />
+	<link rel="shortcut icon" href="user/img/fav.png" />
 
 	<!-- Title -->
 	<title>Stoutgies international | User Login</title>
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="user/css/bootstrap.min.css" />
 
 	<!-- Main CSS -->
-	<link rel="stylesheet" href="css/main.css" />
+	<link rel="stylesheet" href="user/css/main.css" />
 
 </head>
 
@@ -52,7 +52,7 @@
 							<hr>
 							<div class="actions align-left">
 								<span class="additional-link">New here?</span>
-								<a href="signup.php" class="btn btn-dark">Create an Account</a>
+								<a href="user/signup.php" class="btn btn-dark">Create an Account</a>
 							</div>
 						</div>
 					</div>
@@ -65,7 +65,7 @@
 
 </body>
 <script src="//code.tidio.co/t6hgilkrcdxropb6neap8rsn9gq6hhbz.js" async></script>
-<script src="./js/jquery.min.js"></script>
-<script src="./js/custom/functions.js"></script>
-<script src="./js/custom/login.js"></script>
+<script src="user/js/jquery.min.js"></script>
+<script src="user/js/custom/functions.js"></script>
+<script src="user/js/custom/login.js"></script>
 </html>
