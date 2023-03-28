@@ -126,7 +126,7 @@
 								<i class="icon-credit"></i>
 							</div>
 							<div class="sale-num">
-								<h3>:00</h3>
+								<h3 id="account-balance">:00</h3>
 								<p class="text-dark">Account Balance</p>
 								<p class="text-danger"><a href="deposit.html" class="text-danger">Deposit funds here</a>
 								</p>

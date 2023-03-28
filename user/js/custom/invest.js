@@ -112,8 +112,30 @@ let check_min_max = (amount, plan_name) => {
 
 }
 
+let load_account_details = () => {
+  router
+    .get(
+      "http://localhost/finance_app/API'S/USER_API's/display_user_account_info.php"
+    )
+    .then((data) => {
+      data = JSON.parse(data);
+      if (data?.status) {
+      }
+      update_overview(data?.message);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+let update_overview = (details) => {
+  updateUI.selector.all(
+    ["#account-balance", Number(details?.total_balance)?.toLocaleString()],
+  );
+};
 $(function () {
   load_investment_plans();
+  
+  load_account_details()
 
   $("#invest").submit((e) => {
     e.preventDefault();
