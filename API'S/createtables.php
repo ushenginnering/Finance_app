@@ -12,7 +12,8 @@ $sql = "CREATE TABLE users (
     password VARCHAR(255) NOT NULL,
     mail VARCHAR(255) NOT NULL,
     user_id  VARCHAR(20) NOT NULL,
-    USER_IMAGE VARCHAR(100)
+    USER_IMAGE VARCHAR(100),
+    refered_by VARCHAR(20)
 )";
 
 // Execute the query
@@ -126,14 +127,13 @@ if(mysqli_query($conn, $sql)){
 
 
 // SQL query to create table
-$sql = "CREATE TABLE referrals (
+$sql = "CREATE TABLE referral_history (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    user_id INT(6) NOT NULL,
-    referral_name VARCHAR(255) NOT NULL,
-    referral_email VARCHAR(255) NOT NULL,
+    user_id INT(30) NOT NULL,
+    referred_by VARCHAR(255) NOT NULL,
     referral_bonus DECIMAL(10, 2) NOT NULL,
     amount_invested DECIMAL(10, 2) NOT NULL,
-    investment_type ENUM('new', 'renewal') NOT NULL
+    investment_history_id ENUM('new', 'renewal') NOT NULL
 )";
 
 // Execute the query

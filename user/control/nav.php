@@ -1,9 +1,11 @@
 <?php
     session_start();
-  //  echo $_SESSION['user_id'];
+    //  echo $_SESSION['user_id'];
     if (!isset($_SESSION['user_id']) or ($_SESSION['user_id'] == "") or ($_SESSION['user_id'] == "0")){
         header("location:login.php");
     }
+
+    include '../../ADMIN API/admin_auto_end_investment.php';
 ?>
 
 

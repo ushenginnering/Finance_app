@@ -11,6 +11,7 @@ if (isset ($_POST['signup'])){
     $confirm_password = $_POST['confirm_password']; /*= "12345"*/ 
     $user_mail = $_POST['mail']; // collect the email address of the user here
     $user_id =  rand(89,234324);
+    $refered_by = $_POST['refered_by']; // collect the email address of the user here
 
 
     
@@ -33,7 +34,7 @@ if (mysqli_num_rows($result) > 0) {
     {
         if ($password == $confirm_password){
                 // SQL query to insert data into table
-                $sql = "INSERT INTO users (fullname, country, phone, password, mail, user_id) VALUES ('$fullname', '$country', '$phone', '$password', '$user_mail', '$user_id')";
+                $sql = "INSERT INTO users (fullname, country, phone, password, mail, user_id, refered_by) VALUES ('$fullname', '$country', '$phone', '$password', '$user_mail', '$user_id','$refered_by')";
 
                 // Execute query
                 if (mysqli_query($conn, $sql)) {
