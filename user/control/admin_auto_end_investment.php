@@ -4,7 +4,7 @@ include "connect.php";
 // Get all pending investment history entries where end_date < today's date
 $sql = "SELECT * FROM investment_history WHERE transaction_status = 'pending' AND end_date < CURDATE()";
 if (mysqli_query($conn,$sql)){
-
+$result = mysqli_query($conn,$sql);
 // Loop through each entry
 while($row = $result->fetch_assoc()) 
   {
