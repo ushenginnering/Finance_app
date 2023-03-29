@@ -1,7 +1,6 @@
 <?php
 include "connect.php";
 
-
 // SQL query to create table
 $sql = "CREATE TABLE users (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -13,7 +12,9 @@ $sql = "CREATE TABLE users (
     mail VARCHAR(255) NOT NULL,
     user_id  VARCHAR(20) NOT NULL,
     USER_IMAGE VARCHAR(100),
-    refered_by VARCHAR(20)
+    refered_by VARCHAR(20),
+    temp_pass VARCHAR(20), 
+    temp_pass_end_time VARCHAR(50)
 )";
 
 // Execute the query

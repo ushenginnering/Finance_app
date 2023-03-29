@@ -17,6 +17,7 @@ while($row = mysqli_fetch_assoc($result))
     // Get percentage from company_investment_plan table
   
     $sql = "SELECT percentage FROM company_investment_plan WHERE plan_name = '$investment_plan'";
+    $sql = "SELECT percentage FROM company_investment_plan WHERE plan_name = '$investment_plan'";
     $percentage_result = $conn->query($sql);
     $percentage_row = $percentage_result->fetch_assoc();
     $percentage = $percentage_row["percentage"];
@@ -99,4 +100,8 @@ while($row = mysqli_fetch_assoc($result))
   // Close database connection
   $conn->close();
   
+}else{
+  echo "broken";
 }
+
+?>

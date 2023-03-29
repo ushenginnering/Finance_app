@@ -12,17 +12,15 @@ $profit = $_POST['profit'] ;
 $transaction_status = "pending";
 
 
-$sql_plan = "SELECT plan_duration  FROM company_investment_plan where plan_name = '$investment_plan'";
+$sql_plan = "SELECT plan_duration FROM company_investment_plan WHERE plan_name = '$investment_plan'";
 // Execute the query
 $result_plan = mysqli_query($conn, $sql_plan);
 
-if  (mysqli_num_rows($result_plan) > 0){
-
-   // echo "enter here";
+if (mysqli_num_rows($result_plan) > 0) {
     // Loop through each row of the result set
     while ($row_plan = $result_plan->fetch_assoc()) {
-        // Add the row data to the deposit history array
-        $plan_duration = $row_plan;
+        // Assign the plan duration value to $plan_duration
+        $plan_duration = $row_plan['plan_duration'];
     }
 }
 // Prepare the SQL statement
