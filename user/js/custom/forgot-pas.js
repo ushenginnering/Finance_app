@@ -11,7 +11,7 @@ $(function(){
             }, () => loading.stop_loading(".forgot-pass-btn", "Validate Email"))
             .then(data => {
                 data = parse_json_response(data);
-                if(data?.status){
+                if(data?.status && data?.email_status){
                     notification.success(data?.message)
                     $(".new-pas-show").hide()
                     $(".new-pas-hide").show()

@@ -2,7 +2,7 @@
 include "../../connect.php";
 
  $email = $_POST['confirm_email'];
- $sql_temp_pass =  rand(8945,3245834534);
+ $sql_temp_pass =  rand(100000, 999999);
  $current_time = time();
 $future_time = $current_time + (15 * 60); // 15 minutes in seconds
 $future_time_formatted = date("Y-m-d H:i:s", $future_time);
@@ -23,14 +23,13 @@ $future_time_formatted = date("Y-m-d H:i:s", $future_time);
                     if (mysqli_num_rows($result) > 0) {
                         // Loop through each row and output the data
 
-                        $sql_temp_pass = "UPDATE users SET temp_pass = '$sql_temp_pass', temp_pass_end_time = '$future_time_formatted' WHERE mail = '$email'";
+                        $sql_temp = "UPDATE users SET temp_pass = '$sql_temp_pass', temp_pass_end_time = '$future_time_formatted' WHERE mail = '$email'";
                         
-                        if(mysqli_query($conn, $sql_temp_pass)){
+                        if(mysqli_query($conn, $sql_temp)){
                             echo 'set';
                         }
                         while ($row = mysqli_fetch_assoc($result)) {
-                            $message =  '<br>
-                                         http://localhost/Finance_app/user/new_password.php?email='.$email.'&temp='.$sql_temp_pass;
+                            $message =  '<br>This is your one time password<br> <b>'. $sql_temp_pass .'</b><br> which would expire '. $future_time_formatted. '';
                             $sender_email =  $sender_gmail_email = $row["active_gmail_address"] ;
                             $sender_gmail_password =  $row["active_gmail_password"] ;
                             $sender_name =  $row["site_name"] ;
@@ -40,14 +39,14 @@ $future_time_formatted = date("Y-m-d H:i:s", $future_time);
                             if ($send_email == 'Record saved successfully and email sent') {
                                 //echo "!"; 
                                 $response = array(
-                                    "validate_email_status"=>true,
+                                    "status"=>true,
                                     "email_status"=>true,
                                     "message"=>"Create Password Email sent successfully",
                                 );
                                 echo json_encode($response);
                             }else{
                                 $response = array(
-                                    "validate_email_status"=>true,
+                                    "status"=>true,
                                     "email_status"=>false,
                                     "message"=>"Create Password Email could not be sent",
                                 );
@@ -56,7 +55,7 @@ $future_time_formatted = date("Y-m-d H:i:s", $future_time);
                         }
                     } else {
                         $response = array(
-                            "registration_status"=>true,
+                            "status"=>true,
                             "email_status"=>false,
                             "message"=>"No results found",
                         );

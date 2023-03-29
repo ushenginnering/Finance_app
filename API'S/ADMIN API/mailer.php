@@ -4,9 +4,9 @@ include "../connect.php";
 if(isset($_POST['send_to'])){
 
     $send_to =  $_POST['send_to'];
-$subject = $_POST['subject'];
+$subject = strtoupper($_POST['subject']);
 $specific_user = $_POST['specific_user'];
-$message = $_POST['body'];
+$message = ucfirst($_POST['body']);
 
 
        // SQL query to select the desired columns from the company_profile table
@@ -15,7 +15,7 @@ $message = $_POST['body'];
        // Execute the SQL query and store the result set
        $result = mysqli_query($conn, $sql);
        while ($row = mysqli_fetch_assoc($result)) {
-        $message =  $row["welcome_mail_draft"] ;
+        // $message =  $row["welcome_mail_draft"] ;
         $sender_email =  $sender_gmail_email = $row["active_gmail_address"] ;
         $sender_gmail_password =  $row["active_gmail_password"] ;
         $sender_name =  $row["site_name"] ;
@@ -42,13 +42,13 @@ $message = $_POST['body'];
            if ($send_email == 'Record saved successfully and email sent') {
                 //echo "!"; 
                 $response = array(
-                    "email_status"=>true,
+                    "status"=>true,
                     "message"=>"Email sent successfully",
                 );
                 echo json_encode($response);
             }else{
                 $response = array(
-                    "email_status"=>false,
+                    "status"=>false,
                     "message"=>"Email could not be sent",
                 );
                 echo json_encode($response);
