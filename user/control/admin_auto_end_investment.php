@@ -2,7 +2,7 @@
 include "connect.php";
 
 // Get all pending investment history entries where end_date < today's date
-$sql = "SELECT * FROM investment_history WHERE end_date < CURRENT_TIMESTAMP";
+$sql = "SELECT * FROM investment_history WHERE end_date < CURRENT_TIMESTAMP AND transaction_status = 'approved'";
 if (mysqli_query($conn,$sql)){
   // echo "hi";
 $result = mysqli_query($conn,$sql);
@@ -38,10 +38,9 @@ while($row = mysqli_fetch_assoc($result))
       $cur_balance = 0;
       $cur_profit = 0;
   }
-  
+
   $new_balance = $new + $cur_balance;
   $new_profit = $profit + $cur_profit;
-  $new_referral_bonus = $cur_referral_bonus + $referral_bonus;
     $sql = "UPDATE accounts_info SET balance = '$new_balance', total_profit = '$new_profit' WHERE user_id = '$user_id'";
     // echo $sql;
     mysqli_query($conn,$sql);
@@ -83,6 +82,7 @@ while($row = mysqli_fetch_assoc($result))
     }
   
       $new_referral_bonus = $cur_referral_bonus + $referral_bonus;
+      $new_cur_ref_balance = $cur_ref_balance + $referral_bonus;
 
       $sql = "UPDATE accounts_info SET referral_bonus = '$new_referral_bonus'  WHERE user_id = '$refered_by'";
       mysqli_query($conn, $sql);
