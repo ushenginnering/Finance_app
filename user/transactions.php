@@ -52,7 +52,7 @@
 					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 						<div class="card lobipanel-close">
 							<div class="card-header">
-								<span id="greating"></span> Alex👋
+								<span id="greating"></span> <?php echo isset($_SESSION['fullname']) ? ucfirst(explode(" ", $_SESSION['fullname'])[0]) : ""?> 👋
 								<!-- <span id="">and Welcome to Acumen Global! </span>--><br>
 								<small>Welcome to Transaction History, this page shows total all transactions carried
 									out on this platform</small>
@@ -88,7 +88,7 @@
 														<th>Status</th>
 													</tr>
 												</thead>
-												<tbody>
+												<tbody id="deposit-data">
 													<tr>
 														<td></td>
 														<td></td>
@@ -122,9 +122,10 @@
 															<th>Due Date</th>
 															<th>Invested Amount</th>
 															<th>Profit</th>
+															<th>Status</th>
 														</tr>
 													</thead>
-													<tbody>
+													<tbody id="investment-data">
 														<tr>
 															<td></td>
 															<td></td>
@@ -155,7 +156,6 @@
 												<table id="basicExample" class="table custom-table">
 													<thead>
 														<tr>
-															<th>Name</th>
 															<th>Amount</th>
 															<th>Payment Options</th>
 															<th>Wallet address</th>
@@ -163,9 +163,8 @@
 															<th>Status</th>
 														</tr>
 													</thead>
-													<tbody>
+													<tbody id="withdrawal-data">
 														<tr>
-															<td></td>
 															<td></td>
 															<td></td>
 															<td></td>
@@ -203,7 +202,7 @@
 															<th>Status</th> -->
 														</tr>
 													</thead>
-													<tbody>
+													<tbody id="referral-data">
 														<tr>
 															<td></td>
 															<td></td>
@@ -266,6 +265,8 @@
 
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
+	<script src="js/custom/functions.js"></script>
+	<script src="js/custom/transactions_history.js"></script>
 	<script>
 		const time = new Date().getHours();
 		let greeting;

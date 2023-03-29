@@ -112,6 +112,7 @@ $sql = "CREATE TABLE investment_history (
     investment_plan VARCHAR(50) NOT NULL,
     amount_invested DECIMAL(10,2) NOT NULL,
     profit DECIMAL(10,2) NOT NULL,
+    profit_to_get DECIMAL(10,2) NOT NULL,
     transaction_status VARCHAR(20) NOT NULL,
     created_at DATE NOT NULL,
     end_date DATE NOT NULL
@@ -131,6 +132,8 @@ $sql = "CREATE TABLE referral_history (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user_id INT(30) NOT NULL,
     referred_by VARCHAR(255) NOT NULL,
+    referral_name VARCHAR(255) NOT NULL,
+    referral_email VARCHAR(255) NOT NULL,
     referral_bonus DECIMAL(10, 2) NOT NULL,
     amount_invested DECIMAL(10, 2) NOT NULL,
     investment_history_id ENUM('new', 'renewal') NOT NULL

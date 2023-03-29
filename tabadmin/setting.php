@@ -224,7 +224,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
+                                                <!-- <tr>
                                                     <td>1</td>
                                                     <td>Starter Plan</td>
                                                     <td>2%</td>
@@ -237,7 +237,7 @@
                                                                     class="btn btn-danger icon-cancel"></span></a>
                                                         </div>
                                                     </td>
-                                                </tr>
+                                                </tr> -->
                                             </tbody>
                                         </table>
                                     </div>
@@ -293,7 +293,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
+                                                <!-- <tr>
                                                     <td>1</td>
                                                     <td>Ethereum</td>
                                                     <td><img src="" width="50"/></td>
@@ -304,7 +304,7 @@
                                                                     class="btn btn-danger icon-delete"></span></a>
                                                         </div>
                                                     </td>
-                                                </tr>
+                                                </tr> -->
                                             </tbody>
                                         </table>
                                     </div>

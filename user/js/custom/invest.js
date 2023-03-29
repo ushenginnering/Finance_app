@@ -41,6 +41,7 @@ let create_wallet_card_template = (items) => {
       plan_name:item?.plan_name,
       min:item?.minimum_value,
       max:item?.maximum_value,
+      percentage:item?.percentage,
     })
     });
 
@@ -64,7 +65,7 @@ let create_select_option_template = (items) => {
   }
 };
 
-let suscribe_investment_plan = (amount_invested, investment_plan) => {
+let suscribe_investment_plan = (amount_invested, investment_plan, profit) => {
     loading.start_loading(".invest-amount");
 
     router
@@ -73,6 +74,7 @@ let suscribe_investment_plan = (amount_invested, investment_plan) => {
         {
           amount_invested,
           investment_plan,
+          profit,
         },
         () => {
           loading.stop_loading(".invest-amount", "Start investment");
@@ -82,6 +84,7 @@ let suscribe_investment_plan = (amount_invested, investment_plan) => {
         data = parse_json_response(data);
         if (data?.status) {
           notification.success(data?.message)
+          load_account_details()
         } else {
           notification.danger(data?.message || "error");
         }
@@ -106,8 +109,10 @@ let check_min_max = (amount, plan_name) => {
       status:false,
     }
   }
+  let profit = (parseInt(amount) * parseInt(plan?.percentage)) / 100;
   return {
-    status:true
+    status:true,
+    profit,
   }
 
 }
@@ -146,9 +151,9 @@ $(function () {
     );
     let status = empty(invest_amount, invest_plan).status;
     if (status) {
-      let amount_validity = check_min_max(invest_amount, invest_plan).status;
-      if(amount_validity){
-        suscribe_investment_plan(invest_amount, invest_plan);
+      let amount_validity = check_min_max(invest_amount, invest_plan);
+      if(amount_validity.status){
+        suscribe_investment_plan(invest_amount, invest_plan, amount_validity?.profit);
       }
     } else {
       notification.danger("Must fill all field");

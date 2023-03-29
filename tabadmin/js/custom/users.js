@@ -39,7 +39,6 @@ let load_data = (filter) => {
       .get(`http://localhost/finance_app/API'S/USER_API's/users_json_wallet.php?filter=${filter}`)
       .then((data) => {
         data = JSON.parse(data)
-        console.log(data);
         if (data.status) {
           if (data.message) {
             create_table_html(data.message);

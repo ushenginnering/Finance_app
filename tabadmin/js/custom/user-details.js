@@ -9,6 +9,11 @@ let update_user_table_html = (details) => {
       ["#phone-number", details?.phone],
       ["#country", details?.country]
     );
+    updateUI.selector.all(
+      $("#update-fullname").val(details?.fullname),
+      $("#update-phone").val(details?.phone),
+      $("#update-country").val(details?.country),
+    );
   }
 };
 
@@ -16,7 +21,7 @@ let update_user_table_html = (details) => {
 let update_overview_table_html = (details) => {
   if (details) {
     updateUI.selector.all(
-      ["#total-deposit", Number(details?.total - deposit)?.toLocaleString()],
+      ["#total-deposit", Number(details?.total)?.toLocaleString()],
       ["#account-balance", Number(details?.balance)?.toLocaleString()],
       ["#total-profit-earned", Number(details?.total_profit)?.toLocaleString()],
       [
@@ -31,12 +36,33 @@ let update_overview_table_html = (details) => {
       ["#last-withdrawal", Number(details?.last_withdrawal)?.toLocaleString()],
       ["#referral-bonus", Number(details?.referral_bonus)?.toLocaleString()]
     );
+    $(".total-deposit").val(details?.total)
+    $(".account-balance").val( details?.balance)
+    $(".total-profit-earned").val( details?.total_profit)
+    $(".total-withdrawal").val(details?.total_withdrawal)
+    $(".active-investment").val(details?.active_investments)
+    $(".last-deposit").val( details?.last_deposit)
+    $(".last-withdrawal").val( details?.last_withdrawal)
+    $(".referral-bonus").val( details?.referral_bonus)
   }
+  console.log("hi");
 };
+
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
 
 // update investment table
 let create_investment_table_html = (items, others) => {
-  console.log(others);
   let table_append_html = ``;
   if (items.length > 0) {
     items?.forEach((item, index) => {
@@ -51,9 +77,6 @@ let create_investment_table_html = (items, others) => {
             <td class="status">${item?.transaction_status}</td>
             <td class="action_btns">
             <div>
-            <a href="#" onclick="handle_activate_investment(${item?.id})">
-            <span class="btn btn-success">activate</span
-            ></a>
             </div>
             </td>
             </tr>`;
@@ -62,7 +85,6 @@ let create_investment_table_html = (items, others) => {
   }
 };
 let create_referral_table_html = (items) => {
-  console.log(items);
   let table_append_html = ``;
   if (items.length > 0) {
     items?.forEach((item, index) => {
@@ -80,8 +102,9 @@ let handle_activate_investment = (id) => {
   console.log(id);
 };
 let load_data = () => {
+  let user_id = getUrlVars()["user_id"];
   router
-    .get(`http://localhost/finance_app/API'S/ADMIN%20API/user-details.php?user_id=87862`)
+    .get(`http://localhost/finance_app/API'S/ADMIN%20API/user-details.php?user_id=${user_id}`)
     .then((data) => {
       data = JSON.parse(data)
       if (data.status) {
@@ -96,6 +119,43 @@ let load_data = () => {
     .catch((err) => {
       console.error(err);
     });
+};
+
+let load_account_overview = () => {
+  let user_id = getUrlVars()["user_id"];
+
+  router
+  .get(`http://localhost/finance_app/API'S/ADMIN%20API/display_user_account_info.php?user_id=${user_id}`)
+  .then((data) => {
+    data = JSON.parse(data)
+    if (data?.status) {
+    }
+    update_overview(data?.message);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+};
+
+let update_overview = (details) => {
+updateUI.selector.all(
+  ["#total-deposit", Number(details?.total_deposit)?.toLocaleString()],
+  ["#account-balance", Number(details?.total_balance)?.toLocaleString()],
+  ["#total-profit-earned", Number(details?.total_profit)?.toLocaleString()],
+  ["#total-withdrawal", Number(details?.total_withdrawal)?.toLocaleString()],
+  ["#active-investment", Number(details?.total_active_investment)?.toLocaleString()],
+  ["#last-deposit", Number(details?.last_deposit)?.toLocaleString()],
+  ["#last-withdrawal", Number(details?.last_withdrawal)?.toLocaleString()],
+  ["#referral-bonus", Number(details?.referral_bonus)?.toLocaleString()],
+);
+$(".total-deposit").val(details?.total_deposit)
+$(".account-balance").val( details?.total_balance)
+$(".total-profit-earned").val( details?.total_profit)
+$(".total-withdrawal").val(details?.total_withdrawal)
+$(".active-investment").val(details?.active_investments)
+$(".last-deposit").val( details?.last_deposit)
+$(".last-withdrawal").val( details?.last_withdrawal)
+$(".referral-bonus").val( details?.referral_bonus || 0)
 };
 
 // function to send ajax request to update personal info
@@ -117,6 +177,8 @@ let update_personal_info = (formData) => {
 // function to fire when the page loads
 $(function (e) {
   load_data();
+
+  load_account_overview()
 
   //handle click event to update personal info
   $("#update-personal-info").submit((e) => {
@@ -143,29 +205,3 @@ $(function (e) {
     update_personal_info(formData);
   });
 });
-
-// create_investment_table_html([
-//   {
-//     investment_plan: "Beginners plan",
-//     percentage: "2%",
-//     amount_invested: 20000,
-//     duration: 10,
-//     start_date: new Date(Date.now()),
-//     end_date: new Date(Date.now()),
-//     investment_status: "success",
-//   },
-// ]);
-// create_referral_table_html([
-//   {
-//     referral_name: "Lorem apsum",
-//     referral_bonus: "30000",
-//   },
-// ]);
-
-// update_user_table_html({
-//   fullname: "Alex Iwobi",
-//   mail: "segunade041@gmail.com",
-//   country: "Nigeria",
-//   phone: "07023432154",
-//   img: "../../../../Finance_app/user/img/user10.png",
-// });

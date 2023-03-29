@@ -265,27 +265,10 @@
                                                             <th>Start Date</th>
                                                             <th>End Date</th>
                                                             <th>Status</th>
-                                                            <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody id="investment-data">
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>Starter Plan</td>
-                                                            <td>2%</td>
-                                                            <td>100</td>
-                                                            <td>10 Days</td>
-                                                            <td>1/1/2020</td>
-                                                            <td>10/1/2023</td>
-                                                            <td>Pending</td>
-                                                            <td>
-                                                                <div>
-                                                                    <a href="#">
-                                                                        <span
-                                                                            class="btn btn-success">Activate</span></a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+                                                       
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -389,7 +372,7 @@
                     </div>
                     <div class="divider"></div>
                     <div class="right-side">
-                        <input type="submit" class="btn btn-link success" value="SAVE INFORMATION"/>
+                        <input type="submit" class="btn btn-link success save-info-btn" value="SAVE INFORMATION"/>
                     </div>
                 </div>
                 </form>
@@ -416,39 +399,34 @@
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label for="" class="col-form-label">Total Deposit</label>
-                                <input type="text" class="form-control" id="" />
+                                <input type="text" class="form-control total-deposit" id="" />
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="" class="col-form-label">Account Balance</label>
-                                <input type="text" class="form-control" id="" />
+                                <input type="text" class="form-control account-balance" id="" />
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="" class="col-form-label">Total Profit Earned:</label>
-                                <input type="text" class="form-control" id="" />
+                                <input type="text" class="form-control total-profit-earned" id="" />
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="" class="col-form-label">Total Withdrawal:</label>
-                                <input type="text" class="form-control" id="" />
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label for="" class="col-form-label">Total Withdrawal:</label>
-                                <input type="text" class="form-control" id="" />
+                                <input type="text" class="form-control total-withdrawal" id="" />
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="" class="col-form-label">Last Deposited</label>
-                                <input type="text" class="form-control" id="" />
+                                <input type="text" class="form-control last-deposit" id="" />
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="" class="col-form-label">Last Withdrawal</label>
-                                <input type="text" class="form-control" id="" />
+                                <input type="text" class="form-control last-withdrawal" id="" />
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="" class="col-form-label">Referal Bonus</label>
-                                <input type="text" class="form-control" id="" />
+                                <input type="text" class="form-control referral-bonus" id="" />
                             </div>
                         </div>
                     </div>

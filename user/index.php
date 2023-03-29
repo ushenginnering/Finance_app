@@ -64,7 +64,7 @@
 					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 						<div class="card lobipanel-close">
 							<div class="card-header">
-								<span id="greating"></span> Alex👋
+								<span id="greating"></span> <?php echo isset($_SESSION['fullname']) ? ucfirst(explode(" ", $_SESSION['fullname'])[0]) : ""?> 👋
 								<span id="">and Welcome to Stougies International! </span><br>
 								<small>We glad to have you here as you start your Journey to Financial freedom</small>
 

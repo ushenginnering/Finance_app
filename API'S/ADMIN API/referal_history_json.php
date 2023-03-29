@@ -1,5 +1,6 @@
 <?php
 include "../sendemail.php";
+include 'connect.php';
     $sql = "SELECT * FROM referral_history ";  
     $result = mysqli_query($conn, $sql);
     $referal_history =  array();

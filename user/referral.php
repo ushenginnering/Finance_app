@@ -60,7 +60,7 @@
 					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 						<div class="card lobipanel-close">
 							<div class="card-header">
-								<span id="greating"></span> Alex👋
+								<span id="greating"></span> <?php echo isset($_SESSION['fullname']) ? ucfirst(explode(" ", $_SESSION['fullname'])[0]) : ""?> 👋
 								<!-- <span id="">and Welcome to Acumen Global! </span>--><br>
 								<small>Welcome to Referal, this page shows total referred people that have used your link</small>
 							</div>

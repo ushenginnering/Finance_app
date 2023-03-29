@@ -2,7 +2,7 @@
     session_start();
   //  echo $_SESSION['user_id'];
     if (!isset($_SESSION['admin_email']) or ($_SESSION['admin_email'] == "") or ($_SESSION['admin_email'] == "0")){
-        header("location:http://localhost/finance_app/tabadmin/login.php");
+        header("location:../../../../../Finance_app/tabadmin/login.php");
     }
 ?>
 <!-- Sidebar wrapper start -->
