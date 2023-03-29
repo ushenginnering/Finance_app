@@ -1,63 +1,81 @@
 <?php
-include "../connect.php";
+include "connect.php";
 
 // Get all pending investment history entries where end_date < today's date
-$sql = "SELECT * FROM investment_history WHERE transaction_status = 'pending' AND end_date < CURDATE()";
-$result = mysqli_query($conn,$sql);
+$sql = "SELECT * FROM investment_history WHERE end_date < CURRENT_TIMESTAMP AND transaction_status = 'approved'";
 if (mysqli_query($conn,$sql)){
-
+  // echo "hi";
+$result = mysqli_query($conn,$sql);
 // Loop through each entry
-while($row = $result->fetch_assoc()) 
+while($row = mysqli_fetch_assoc($result)) 
   {
 
     $amount_invested = $row["amount_invested"];
     $investment_plan = $row["investment_plan"];
     $user_id = $row["user_id"];
- 
+    // echo $amount_invested;
     // Get percentage from company_investment_plan table
   
-    $sql = "SELECT percentage FROM company_investment_plan WHERE investment_plan = '$investment_plan'";
+    $sql = "SELECT percentage FROM company_investment_plan WHERE plan_name = '$investment_plan'";
     $percentage_result = $conn->query($sql);
     $percentage_row = $percentage_result->fetch_assoc();
     $percentage = $percentage_row["percentage"];
   
     // Calculate profit and update investment history entry
     $profit = ($amount_invested * $percentage) / 100;
-    $referral_bonus  =  0.1 * $profit;
+    $referral_bonus  =  (10 * $profit) / 100;
     $investment_history_id = $row["id"];
     $sql = "UPDATE investment_history SET profit = '$profit', transaction_status = 'closed' WHERE id = '$investment_history_id'";
     mysqli_query($conn,$sql);
     $new  = $profit + $amount_invested;
-    $sql = "UPDATE account_info SET balance  =  balance + '$new', total_profit = profit + '$profit' WHERE user_id = '$user_id'";
+    $result_balance = mysqli_query($conn, "SELECT balance, total_profit, referral_bonus FROM accounts_info WHERE user_id = '$user_id'");
+    if (mysqli_num_rows($result_balance) > 0) {
+      // fetch the result row as an associative array
+      $row_balance = mysqli_fetch_assoc($result_balance);
+      $cur_balance = $row_balance['balance'];
+      $cur_profit = $row_balance['total_profit'];
+      $cur_referral_bonus = $row_balance['referral_bonus'];
+  }else{
+      $cur_balance = 0;
+      $cur_profit = 0;
+  }
+  $new_balance = $new + $cur_balance;
+  $new_profit = $profit + $cur_profit;
+  $new_referral_bonus = $cur_referral_bonus + $referral_bonus;
+    $sql = "UPDATE accounts_info SET balance = '$new_balance', total_profit = '$new_profit' WHERE user_id = '$user_id'";
+    // echo $sql;
     mysqli_query($conn,$sql);
 
     //update referal balance of that user refered by person, if that person exist
     // Get all pending investment history entries where end_date < today's date
-      $sql = "SELECT refered_by FROM users WHERE user_id = '$user_id' ";
-      if (mysqli_query($conn,$sql)){
+    
+    $sql = "SELECT refered_by FROM users WHERE user_id = '$user_id'";
+    if (mysqli_query($conn,$sql)){
+      $result = mysqli_query($conn,$sql);
+    // Loop through each entry
+    if(mysqli_num_rows($result) > 0) {
+      $row_w = mysqli_fetch_assoc($result);
+        $refered_by = $row_w["refered_by"];
+    }
+      $sql = "SELECT referral_bonus FROM referral_history WHERE user_id = '$user_id' AND referred_by = '$refered_by'";
+     
+      $result = mysqli_query($conn, $sql);
+      if (mysqli_num_rows($result) > 0) {
+        // fetch the result row as an associative array
+        $row_ref = mysqli_fetch_assoc($result);
+        $cur_ref_balance = $row_ref['referral_bonus'];
+    }else{
+      $cur_ref_balance = 0;
+    }
+    $new_cur_ref_balance = $cur_ref_balance + $referral_bonus;
 
-      // Loop through each entry
-      while($row_w = $result->fetch_assoc()) 
-        {
-          $refered_by = $row_w["refered_by"];
-          $sql = "UPDATE account_info SET referral_bonus  =  referral_bonus  + '$referral_bonus'  WHERE user_id = '$refered_by'";
-          mysqli_query($conn,$sql);
+      $sql = "UPDATE accounts_info SET referral_bonus = '$new_referral_bonus'  WHERE user_id = '$refered_by'";
+      mysqli_query($conn, $sql);
 
-          $sql = "SELECT COUNT(*) FROM referral_history WHERE user_id = '$user_id'";
-          $result = mysqli_query($conn, $sql);
-          $row_p = mysqli_fetch_array($result);
-          
-          if ($row_p[0] > 0) {
-              // If the row already exists, update it.
-              $sql = "UPDATE referral_history SET referred_by = '$refered_by', referral_bonus = '$referral_bonus', amount_invested = '$amount_invested', investment_history_id = '$investment_history_id' WHERE user_id = '$user_id'";
-              mysqli_query($conn, $sql);
-          } else {
-              // If the row doesn't exist, insert a new one.
-              $sql = "INSERT INTO referral_history (user_id, referred_by, referral_bonus, amount_invested, investment_history_id) VALUES ('$user_id', '$refered_by', '$referral_bonus', '$amount_invested', '$investment_history_id')";
-              mysqli_query($conn, $sql);
-          }
-          
-        }
+      $sql = "UPDATE referral_history SET referral_bonus = '$new_cur_ref_balance' WHERE user_id = '$user_id' AND referred_by = '$refered_by'";
+      if(mysqli_query($conn, $sql)){
+        
+      }
     }
 
   

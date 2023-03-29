@@ -25,13 +25,16 @@ if  (mysqli_num_rows($result_plan) > 0){
         $plan_duration = $row_plan;
     }
 }
-
-}
 // Prepare the SQL statement
 $todayDateTime = date('Y-m-d H:i:s'); // current date and time
-$futureDateTime = date('Y-m-d H:i:s', strtotime('+'.$plan_duration.' days')); // date and time 10 days from now
+$string_plan_duration = '+'.$plan_duration.' days';
+$futureDateTime = date('Y-m-d H:i:s', strtotime($string_plan_duration)); // date and time 10 days from now
 
-	
+$sql = "SELECT * FROM accounts_info WHERE user_id = '$user_id' AND balance > 0";
+
+$result = mysqli_query($conn, $sql);
+
+	if(mysqli_num_rows($result) > 0){
 $sql = "INSERT INTO investment_history (user_id, transaction_id, investment_plan, amount_invested, profit, transaction_status, created_at, end_date, profit_to_get) 
 VALUES ( '$user_id', '$transaction_id',  '$investment_plan', '$amount_invested','0', 'pending','$todayDateTime','$futureDateTime', '$profit')";
 // Execute the statement
@@ -66,6 +69,15 @@ if (mysqli_query($conn,$sql)){
     $response = array(
         "status"=>false,
         "message"=>"Failed to submit investment",
+
+    );
+    echo json_encode($response);
+}
+
+}else{
+    $response = array(
+        "status"=>false,
+        "message"=>"Amount to low",
 
     );
     echo json_encode($response);
