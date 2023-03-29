@@ -11,20 +11,19 @@ if (mysqli_num_rows($result) > 0) {
     }
     $users = json_encode($user_mail);
 
-    if ($send_email == 'Record saved successfully and email sent') {
         //echo "!"; 
         $response = array(
-            "fetch_status"=>true,
+            "status"=>true,
             "message"=>$users
         );
         echo json_encode($response);
-    }else{
+    }
+    else{
         $response = array(
-            "fetch_status"=>false,
+            "status"=>false,
             "message"=>$users,
         );
         echo json_encode($response);
-    }
 }
 
 

@@ -1,7 +1,9 @@
 <?php
 include "../sendemail.php";
+include "../connect.php";
+if(isset($_POST['send_to'])){
 
-$send_to =  $_POST['send_to'];
+    $send_to =  $_POST['send_to'];
 $subject = $_POST['subject'];
 $specific_user = $_POST['specific_user'];
 $message = $_POST['body'];
@@ -21,7 +23,7 @@ $message = $_POST['body'];
 
 
     if ($send_to === "specific user"){
-        $sql = "SELECT * FROM users where mail = $specific_user";
+        $sql = "SELECT * FROM users where mail = '$specific_user'";
     }else if ($send_to === "all user"){
         $sql = "SELECT * FROM users ";  
     }else if ($send_to === "active user"){
@@ -56,7 +58,4 @@ $message = $_POST['body'];
     }
 
 
-
-
-
-?>
+}

@@ -80,31 +80,35 @@
                             <div class="card-header">
                                 <div class="card-title">Send Mail</div>
                             </div>
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <label for="colFormLabelSm" class="col-form-label col-form-label-sm">Send to:</label>
-                                    <select class="form-control form-control">
-                                        <option>All Users </option>
-                                        <option>Active Users</option>
-                                        <option>Suspended Users </option>
-                                        <option>Individual user </option>
-                                    </select>
+                            <form action="" id="mailer">
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label for="colFormLabelSm" class="col-form-label col-form-label-sm">Send to:</label>
+                                        <select class="form-control form-control" id="send-to">
+                                            <option value="all user">All Users </option>
+                                            <option value="active user">Active Users</option>
+                                            <option value="suspended user">Suspended Users </option>
+                                            <option value="specific user">Individual user </option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group row">
+                                    <label for="colFormLabelSm" class="col-form-label col-form-label-sm">Send Individually:</label>
+                                        <select class="form-control form-control" id="send-individual">
+                                            <option value="">Select Individual user</option>
+                                        </select>
+                                     </div>
+                                    
+                                    <div class="form-group row">
+                                        <label for="colFormLabel" class="col-form-label">Subject</label>
+                                        <input type="text" class="form-control subject" id="colFormLabel" placeholder="Enter your Subject">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Type your Message</label>
+                                        <textarea class="form-control message" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    </div>
+                                    <input style="float: right;" class="btn btn-primary send-mailer" type="submit" value="Send Mail" />
                                 </div>
-                                <div class="form-group row">
-                                    <label for="colFormLabel" class="col-form-label">User email</label>
-                                    <input type="email" class="form-control" id="colFormLabel" placeholder="Specific user">
-                                </div>
-                                
-                                <div class="form-group row">
-                                    <label for="colFormLabel" class="col-form-label">Subject</label>
-                                    <input type="email" class="form-control" id="colFormLabel" placeholder="Enter your Subject">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Type your Message</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                </div>
-                                <button style="float: right;" class="btn btn-primary" type="submit">Send Mail</button>
-                            </div>
+                            </form>
                             <div class="table-container">
                                 <!--     <div class="t-header">No Search Field</div> -->
                                 <!-- <div class="table-responsive">
@@ -149,6 +153,8 @@
         <script src="js/moment.js"></script>
         <!-- Main JS -->
         <script src="js/main.js"></script>
+        <script src="js/custom//functions.js"></script>
+        <script src="js/custom//mailer.js"></script>
 </body>
 
 </html>
