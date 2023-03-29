@@ -37,13 +37,17 @@
 							<center>
 								<img src="img/logo-dark.png" alt="" width="200"  class="m-3"/>
 						   </center>
-							<h5>In order to access your dashboard, please enter the email id you provided during the
-								registration process.</h5>
+							<h5>In order to access your dashboard, please create a new password.</h5>
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Enter Email Address" />
-							</div>
+                                <label>New Password</label>
+								<input type="text" class="form-control" placeholder="" />
+                            </div>
+                            <div class="form-group">    
+                                <label>Confirm Password</label>
+								<input type="text" class="form-control" placeholder="" />
+                            </div>
 							<div class="actions">
-								<button type="submit" class="btn btn-dark">Validate Email</button>
+								<button type="submit" class="btn btn-dark">Reset Password</button>
 							</div>
 						</div>
 					</div>

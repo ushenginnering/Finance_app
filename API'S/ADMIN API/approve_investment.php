@@ -45,7 +45,7 @@ if (isset($_POST['approve']))
                             $total_investment = 0;
                         }
                     // update the balance with the sum of balance and amount_deposited
-                    $sql_2 = "UPDATE accounts_info SET balance = balance - $amount_invested, active_investments = '$total_investment' WHERE user_id = '$user_id'";      
+                    $sql_2 = "UPDATE accounts_info SET balance = balance, active_investments = '$total_investment' WHERE user_id = '$user_id'";      
                     
                     if (mysqli_query($conn, $sql_2)) {
                         // array to return on every request
