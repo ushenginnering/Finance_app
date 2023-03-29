@@ -11,8 +11,10 @@ if (isset ($_POST['signup'])){
     $confirm_password = $_POST['confirm_password']; /*= "12345"*/ 
     $user_mail = $_POST['mail']; // collect the email address of the user here
     $user_id =  rand(89,234324);
-    $refered_by = $_POST['refered_by']; // collect the email address of the user here
-
+    $referred_by = $_POST['referred_by']; // collect the email address of the user here
+    if($user_id == $referred_by){
+        $referred_by = "";
+    }
 
     
 // SQL query to select the desired columns from the company_profile table
@@ -34,8 +36,10 @@ if (mysqli_num_rows($result) > 0) {
     {
         if ($password == $confirm_password){
                 // SQL query to insert data into table
-                $sql = "INSERT INTO users (fullname, country, phone, password, mail, user_id, refered_by) VALUES ('$fullname', '$country', '$phone', '$password', '$user_mail', '$user_id','$refered_by')";
+                $sql = "INSERT INTO users (fullname, country, phone, password, mail, user_id, refered_by) VALUES ('$fullname', '$country', '$phone', '$password', '$user_mail', '$user_id','$referred_by')";
 
+                if(mysqli_query($conn, "INSERT INTO referral_history (user_id, referred_by, referral_name, referral_email) VALUES ('$user_id', '$referred_by', '$fullname', '$user_mail')")){
+                }
                 // Execute query
                 if (mysqli_query($conn, $sql)) {
                     // echo "User signed up successfully!";
@@ -51,7 +55,7 @@ if (mysqli_num_rows($result) > 0) {
                     if (mysqli_num_rows($result) > 0) {
                         // Loop through each row and output the data
 
-                        $sql_create_account_info = "INSERT INTO accounts_info (user_id, active_investments, total_profit, balance, referral_link) VALUES ('$user_id', 'NULL', '0', '0', 'https://stougiesinvestio.com/?ref=$user_id')";
+                        $sql_create_account_info = "INSERT INTO accounts_info (user_id, active_investments, total_profit, balance, referral_link) VALUES ('$user_id', 'NULL', '0', '0', 'http://localhost/Finance_app/user/signup.php?ref=$user_id')";
                         
                         if(mysqli_query($conn, $sql_create_account_info)){
                             echo 'set';

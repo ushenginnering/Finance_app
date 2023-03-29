@@ -8,7 +8,6 @@ let validate_user_cred = () => {
     $("#confirm-password").val()
   );
   let agreement_switch = document.getElementById("customSwitch1").checked;
-
   let status = empty(
     fullname,
     mail,
@@ -62,6 +61,7 @@ let handle_submit_registration = (
   confirm_password
 ) => {
   loading.start_loading("#register-btn");
+  let referral_id = getUrlVars()["ref"];
   router
     .post(
       `http://localhost/finance_app/API'S/USER_API's/signup.php`,
@@ -73,6 +73,7 @@ let handle_submit_registration = (
         password,
         confirm_password,
         signup: true,
+        referred_by:referral_id ? referral_id : "",
       },
       () => {
         loading.stop_loading("#register-btn", "Register here");
@@ -102,6 +103,18 @@ let handle_submit_registration = (
       console.log(err);
     });
 };
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
 $(function () {
   $("#register-form").on("submit", (e) => {
     e.preventDefault();

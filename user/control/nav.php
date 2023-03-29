@@ -5,7 +5,7 @@
         header("location:../index.php");
     }
 
-    // include '../../ADMIN API/admin_auto_end_investment.php';  // link to auto end investment 
+    include 'admin_auto_end_investment.php';  // link to auto end investment 
 ?>
 
 
