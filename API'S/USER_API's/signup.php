@@ -38,10 +38,10 @@ if (mysqli_num_rows($result) > 0) {
                 // SQL query to insert data into table
                 $sql = "INSERT INTO users (fullname, country, phone, password, mail, user_id, refered_by) VALUES ('$fullname', '$country', '$phone', '$password', '$user_mail', '$user_id','$referred_by')";
 
-                if(mysqli_query($conn, "INSERT INTO referral_history (user_id, referred_by, referral_name, referral_email) VALUES ('$user_id', '$referred_by', '$fullname', '$user_mail')")){
-                }
                 // Execute query
                 if (mysqli_query($conn, $sql)) {
+                    if(mysqli_query($conn, "INSERT INTO referral_history (user_id, referred_by, referral_name, referral_email) VALUES ('$user_id', '$referred_by', '$fullname', '$user_mail')")){
+                    }
                     // echo "User signed up successfully!";
                     // send welcome mail user
                 

@@ -1,4 +1,5 @@
-const checkers = []
+var checkers = []
+var balance = 0;
 let load_investment_plans = () => {
   router
     .get(
@@ -28,7 +29,7 @@ let create_wallet_card_template = (items) => {
                 <h4 class="pricing-title">${item?.plan_name}</h4>
                 <div class="pricing-save">${
                   item?.percentage
-                }% daily for 10days</div>
+                }% daily for ${item?.plan_duration}days</div>
             </div>
             <ul class="pricing-features">
                 <li>Minimun deposit : $${item?.minimum_value?.toLocaleString()}</li>
@@ -136,7 +137,18 @@ let update_overview = (details) => {
   updateUI.selector.all(
     ["#account-balance", Number(details?.total_balance)?.toLocaleString()],
   );
+  balance = details?.total_balance;
+  console.log(balance)
 };
+
+let validate_amount = (balance) => {
+  if(balance > 0){
+    return true;
+  }
+  else{
+    return false
+  }
+}
 $(function () {
   load_investment_plans();
   
@@ -151,9 +163,14 @@ $(function () {
     );
     let status = empty(invest_amount, invest_plan).status;
     if (status) {
-      let amount_validity = check_min_max(invest_amount, invest_plan);
-      if(amount_validity.status){
-        suscribe_investment_plan(invest_amount, invest_plan, amount_validity?.profit);
+      if(validate_amount(balance)){
+        let amount_validity = check_min_max(invest_amount, invest_plan);
+        if(amount_validity.status){
+          suscribe_investment_plan(invest_amount, invest_plan, amount_validity?.profit);
+        }
+      }else{
+        notification.danger("Balance not enough");
+
       }
     } else {
       notification.danger("Must fill all field");

@@ -10,7 +10,7 @@ $sql_deposit = "SELECT * FROM deposit_history WHERE user_id = '$user_id'";
 // $sql_profit = "SELECT total_profit FROM accounts_info WHERE user_id = '$user_id'";
 $sql_withdrawal = "SELECT * FROM withdrawal_history WHERE user_id = '$user_id'";
 $sql_investment = "SELECT * FROM investment_history WHERE user_id = '$user_id'";
-$sql_referral = "SELECT * FROM referral_history WHERE user_id = '$user_id'";
+$sql_referral = "SELECT * FROM referral_history WHERE referred_by = '$user_id'";
 
 
 $result_deposit = mysqli_query($conn, $sql_deposit);
