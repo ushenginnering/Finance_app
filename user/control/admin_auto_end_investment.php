@@ -2,7 +2,7 @@
 include "connect.php";
 
 // Get all pending investment history entries where end_date < today's date
-$sql = "SELECT * FROM investment_history WHERE end_date < CURRENT_TIMESTAMP AND transaction_status = 'approved'";
+$sql = "SELECT * FROM investment_history WHERE end_date < CURRENT_TIMESTAMP";
 if (mysqli_query($conn,$sql)){
   // echo "hi";
 $result = mysqli_query($conn,$sql);
@@ -28,17 +28,17 @@ while($row = mysqli_fetch_assoc($result))
     $sql = "UPDATE investment_history SET profit = '$profit', transaction_status = 'closed' WHERE id = '$investment_history_id'";
     mysqli_query($conn,$sql);
     $new  = $profit + $amount_invested;
-    $result_balance = mysqli_query($conn, "SELECT balance, total_profit, referral_bonus FROM accounts_info WHERE user_id = '$user_id'");
+    $result_balance = mysqli_query($conn, "SELECT balance, total_profit FROM accounts_info WHERE user_id = '$user_id'");
     if (mysqli_num_rows($result_balance) > 0) {
       // fetch the result row as an associative array
       $row_balance = mysqli_fetch_assoc($result_balance);
       $cur_balance = $row_balance['balance'];
       $cur_profit = $row_balance['total_profit'];
-      $cur_referral_bonus = $row_balance['referral_bonus'];
   }else{
       $cur_balance = 0;
       $cur_profit = 0;
   }
+  
   $new_balance = $new + $cur_balance;
   $new_profit = $profit + $cur_profit;
   $new_referral_bonus = $cur_referral_bonus + $referral_bonus;
@@ -52,11 +52,14 @@ while($row = mysqli_fetch_assoc($result))
     $sql = "SELECT refered_by FROM users WHERE user_id = '$user_id'";
     if (mysqli_query($conn,$sql)){
       $result = mysqli_query($conn,$sql);
+
+
     // Loop through each entry
     if(mysqli_num_rows($result) > 0) {
       $row_w = mysqli_fetch_assoc($result);
         $refered_by = $row_w["refered_by"];
     }
+
       $sql = "SELECT referral_bonus FROM referral_history WHERE user_id = '$user_id' AND referred_by = '$refered_by'";
      
       $result = mysqli_query($conn, $sql);
@@ -67,7 +70,19 @@ while($row = mysqli_fetch_assoc($result))
     }else{
       $cur_ref_balance = 0;
     }
-    $new_cur_ref_balance = $cur_ref_balance + $referral_bonus;
+
+    $result_balance_2 = mysqli_query($conn, "SELECT referral_bonus FROM accounts_info WHERE user_id = '$refered_by'");
+      if (mysqli_num_rows($result_balance_2) > 0) {
+        // fetch the result row as an associative array
+        $row_ref_2 = mysqli_fetch_assoc($result_balance_2);
+        $cur_referral_bonus = $row_ref_2['referral_bonus'];
+        
+  
+    }else{
+        $cur_referral_bonus = 0;
+    }
+  
+      $new_referral_bonus = $cur_referral_bonus + $referral_bonus;
 
       $sql = "UPDATE accounts_info SET referral_bonus = '$new_referral_bonus'  WHERE user_id = '$refered_by'";
       mysqli_query($conn, $sql);
