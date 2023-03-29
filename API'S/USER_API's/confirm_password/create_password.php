@@ -11,27 +11,24 @@ if ($new_pass  ==  $confirm_pass){
     $temp_pass = mysqli_real_escape_string($conn, $temp_pass);
     $current_date_time = date("Y-m-d H:i:s");
 
-
     // Prepare and execute the query
-    $sql = "SELECT * FROM users WHERE mail = '$email' AND temp_pass = '$temp_pass' AND temp_pass_end_time < '$current_date_time'";
+    $sql = "SELECT * FROM users WHERE mail = '$email' AND temp_pass = '$temp_pass' AND temp_pass_end_time > '$current_date_time'";
     $result = mysqli_query($conn, $sql);
-
     // Check if any rows were returned
     if (mysqli_num_rows($result) > 0) {
         // Loop through each row and process data
         while ($row = mysqli_fetch_assoc($result)) {
-          
             // Prepare and execute the query
-            $sql = "UPDATE users SET password = '$new_pass' WHERE email = '$email'";
+            $sql = "UPDATE users SET password = '$new_pass' WHERE mail = '$email'";
             if (mysqli_query($conn, $sql)) {
                 $response = array(
-                    "new_pass_status"=>true,
+                    "status"=>true,
                     "message"=>"Create password successful",
                 );
                 echo json_encode($response);
             } else {
                 $response = array(
-                    "new_pass_status"=>false,
+                    "status"=>false,
                     "message"=>"Create password failed",
                 );
                 echo json_encode($response);
@@ -39,7 +36,11 @@ if ($new_pass  ==  $confirm_pass){
 
         }
     } else {
-        echo "No results found.";
+        $response = array(
+            "status"=>false,
+            "message"=>"Create password failed",
+        );
+        echo json_encode($response);
     }
 }
 

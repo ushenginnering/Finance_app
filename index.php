@@ -44,7 +44,7 @@
 							<div class="custom-control custom-switch mb-3">
 								<input type="checkbox" class="custom-control-input" id="customSwitch1">
 								<label class="custom-control-label" for="customSwitch1">Remember me</label> |
-								<a class="link" href="forgot-pwd.php">Forgot password?</a>
+								<a class="link" href="./user/forgot-pwd.php">Forgot password?</a>
 
 							</div>
 							<!-- <button type="submit" class="btn btn-primary">Login here</button> -->

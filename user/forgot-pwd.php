@@ -32,27 +32,60 @@
 				<div class="col-xl-5 col-lg-5 col-md-6 col-sm-12">
 					<div class="login-screen">
                     <div class="__notification alert" role="alert"></div>
+						<form action="">
 
-						<div class="login-box">
+						</form>
+						<div class="login-box new-pas-show">
 							<center>
 								<img src="img/logo-dark.png" alt="" width="200"  class="m-3"/>
-						   </center>
+							</center>
+						   <form action="" id="forgot-pass">
 							<h5>In order to access your dashboard, please enter the email id you provided during the
 								registration process.</h5>
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Enter Email Address" />
+								<input type="email" class="form-control email" placeholder="Enter Email Address" />
 							</div>
 							<div class="actions">
-								<button type="submit" class="btn btn-dark">Validate Email</button>
+							<a href="../index.php">Login</a>
+								<input type="submit" class="btn btn-dark forgot-pass-btn" value="Validate Email" />
 							</div>
+							</form>
 						</div>
+						<div class="login-box new-pas-hide" style="display:none">
+								<center>
+									<img src="img/logo-dark.png" alt="" width="200"  class="m-3"/>
+							   </center>
+							   <form action="" id="new-pas">
+	
+								   <h5>In order to access your dashboard, please create a new password.</h5>
+								   <div class="form-group">
+									   <label>Enter OTP</label>
+									   <input type="number" class="form-control OTP" placeholder="" />
+								   </div>
+								   <div class="form-group">
+									   <label>New Password</label>
+									   <input type="text" class="form-control new-password" placeholder="" />
+								   </div>
+								   <div class="form-group">    
+									   <label>Confirm Password</label>
+									   <input type="text" class="form-control confirm-password" placeholder="" />
+								   </div>
+								   <div class="actions">
+									<a href="../index.php">Login</a>
+									   <input type="submit" class="btn btn-dark new-pas-btn" value="Reset Password" />
+								   </div>
+							   </form>
+							</div>
 					</div>
-				</div>
+					</div>
 			</div>
 		</form>
 
 	</div>
 	<!-- Container end -->
+	<script src="./js/jquery.min.js"></script>
+<script src="./js/custom/functions.js"></script>
+<script src="./js/custom/forgot-pas.js"></script>
 
 </body>
 </html>
