@@ -78,7 +78,7 @@
 								<i class="icon-users"></i>
 							</div>
 							<div class="sale-num">
-								<h3>0</h3>
+								<h3 id="referral-bonus">0</h3>
 								<p class="text-dark">Referal Bonus</p>
 							</div>
 						</div>
@@ -89,7 +89,7 @@
 								<i class="icon-users"></i>
 							</div>
 							<div class="sale-num">
-								<h3>0</h3>
+								<h3 id="total-referrals">0</h3>
 								<p class="text-dark">Total Refferal</p>
 							</div>
 						</div>
@@ -104,8 +104,8 @@
 							</div>
 							<div class="card-body">
 								<!-- <h5>Refferal Link</h5> -->
-								<p class="card-text text-white"><a href="https://stougiesinvestio.com/?refcode=Alexmak"
-										class="text-white bold" id="p1">https://stougiesinvestio.com/?refcode=Alexmak</a>
+								<p class="card-text text-white"><a href=""
+										class="text-white bold" id="p1"></a>
 								</p>
 								<div class="pricing-footer">
 									<a href="#" onclick="copyToClipboard('#p1')" class="btn btn-dark btn-lg">Copy Referral link</a>
@@ -135,6 +135,8 @@
 	<script src="vendor/lobipanel/js/lobipanel-custom.js"></script>
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
+	<script src="js/custom/functions.js"></script>
+	<script src="js/custom/referral.js"></script>
 	<script>
 		const time = new Date().getHours();
 		let greeting;

@@ -49,4 +49,3 @@ $response = array(
     "message" => $message,
 );
 echo json_encode($response);
-?>

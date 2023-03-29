@@ -1,5 +1,5 @@
 <?php
-include "../connect.php";
+include "connect.php";
 
 // Get all pending investment history entries where end_date < today's date
 $sql = "SELECT * FROM investment_history WHERE transaction_status = 'pending' AND end_date < CURDATE()";
