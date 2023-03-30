@@ -4,7 +4,7 @@ include "../connect.php";
 if(isset($_POST['send_to'])){
 
     $send_to =  $_POST['send_to'];
-$subject = strtoupper($_POST['subject']);
+$subject = ucfirst($_POST['subject']);
 $specific_user = $_POST['specific_user'];
 $message = ucfirst($_POST['body']);
 

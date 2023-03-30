@@ -24,7 +24,7 @@
                     <div class="login-screen">
                         <div class="login-box">
                             <a href="#" class="login-logo">
-                                <img src="img/logo-dark.png" alt="#ADMIN" />
+                                <img src="./img/logo-dark.png" alt="#ADMIN" />
                             </a>
                             <h5>Welcome back Admin,<br />Please Login to your Account.</h5>
                             <div class="form-group">

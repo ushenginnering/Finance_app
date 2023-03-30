@@ -70,7 +70,7 @@
             </li>
 
             <li>
-                <a href="http://localhost/finance_app/API'S/ADMIN%20API/logout.php?logout=1">
+                <a href="../../../Finance_app/API'S/ADMIN API/logout.php?logout=1">
                     <i class="icon-settings1"></i>
                     <span class="menu-text">logout</span>
                 </a>
