@@ -16,6 +16,29 @@ if (isset ($_POST['signup'])){
         $referred_by = "";
     }
 
+    /***************************************************************/
+    /**************** use image handler for user image *************/
+    /***************************************************************/
+/*
+    // Include the necessary file
+    include "../handle_image.php";
+    // Initialize the $image variable as an array and assign the uploaded file to it
+    $image = array();
+    $image  = $_FILES['image'];  
+    // Specify the name of the column in the database where the image would be saved
+    $db_image_holder =  "USER_IMAGE";
+    // Specify the name of the table in the database where the user data is stored
+    $db_table_name =  "users";
+    // Specify the name of the column in the table that serves as the where guard
+    $where_guard = "mail";
+    // Specify the value of the where guard column that corresponds to the user whose image is being uploaded
+    $guard_par =  $_POST['mail'];
+    // Specify the directory where the uploaded file should be saved
+    $target_dir = "../uploads/";
+*/
+    
+    /***********************************************************************/
+    /***********************************************************************/
     
 // SQL query to select the desired columns from the company_profile table
 $sql = "SELECT * FROM users where mail  = '$user_mail'";
@@ -40,6 +63,34 @@ if (mysqli_num_rows($result) > 0) {
 
                 // Execute query
                 if (mysqli_query($conn, $sql)) {
+                
+/*************************************************************** */
+/***************  this code was added to add image ****************/
+/****************************************************************/
+            /*
+                // handle image 
+                $handle_image  = handle_image($image, $image_name,$image_temp_name, $db_image_holder, $db_table_name, $where_guard, $guard_par,$target_dir,$conn);
+                if ($handle_image == "image updated successfully." )
+                {
+                    $image_upload_response = array(
+                        "image_upload_status"=>true,
+                        "image_upload_message"=>"image saved successfully"
+                    );
+                    echo json_encode($image_upload_response);
+                }else{
+                
+                    $image_upload_response = array(
+                        "image_upload_status"=>false,
+                        "image_upload_message"=>"image didn't saved successfully"
+                    );
+                    echo json_encode($image_upload_response); 
+                }
+                */
+/*******************************************************************/
+/***************************code end here **************************/
+/*******************************************************************/
+
+    
                     if(mysqli_query($conn, "INSERT INTO referral_history (user_id, referred_by, referral_name, referral_email) VALUES ('$user_id', '$referred_by', '$fullname', '$user_mail')")){
                     }
                     // echo "User signed up successfully!";

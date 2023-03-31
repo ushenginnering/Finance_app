@@ -16,5 +16,4 @@ if (!$conn){
     echo json_encode($response);
 }
 
-
 ?>
