@@ -17,16 +17,16 @@ function handle_image($image, $image_name,$image_temp_name, $db_image_holder, $d
     
             $sql = "UPDATE $db_table_name SET $db_image_holder  ='$image_url' WHERE $where_guard ='$guard_par'";
             if(mysqli_query($conn, $sql)) {
-                return "image updated successfully.";
+             echo  "image updated successfully.";
             } else {
-                return "image didn't updated successfully.";
+                echo "image didn't updated successfully.";
             }
 
         } else {
              return  $image_temp_name." ".$target_file;
         }
     } else {
-        return  "Error here.";
+        echo "Error!!! no image sent here.";
    }
 }
 ?>

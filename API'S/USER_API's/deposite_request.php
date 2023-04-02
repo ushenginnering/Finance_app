@@ -60,14 +60,14 @@ if (mysqli_query($conn,$sql)){
                         "image_upload_status"=>true,
                         "image_upload_message"=>"image saved successfully"
                     );
-                    echo json_encode($image_upload_response);
+                 //   echo json_encode($image_upload_response);
                 }else{
                 
                     $image_upload_response = array(
                         "image_upload_status"=>false,
                         "image_upload_message"=>  $handle_image
                     );
-                    echo json_encode($image_upload_response); 
+                 //   echo json_encode($image_upload_response); 
                 }
 /*******************************************************************/
 /***************************code end here **************************/

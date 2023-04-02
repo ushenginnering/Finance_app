@@ -265,7 +265,7 @@
                                             class="col-sm-2 col-form-label col-form-label-sm">Wallet Avater
                                         </label>
                                         <div class="col-sm-10">
-                                            <input type="file" class="form-control add-wallet-avatar" id="colFormLabel" value="">
+                                            <input type="file" class="form-control add-wallet-avatar" id="wallet-avater" value="" name = "wallet-avater" >
                                         </div>
                                     </div>
                                     <div class="form-group row">

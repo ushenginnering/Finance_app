@@ -12,6 +12,7 @@ $result = mysqli_query($conn, $sql);
 if ($result->num_rows > 0) {
     // Initialize an empty array to store the data
     $data = array();
+    
 
     // Loop through each row and add it to the array
     while ($row = $result->fetch_assoc()) {
