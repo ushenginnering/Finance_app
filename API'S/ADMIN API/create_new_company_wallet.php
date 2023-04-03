@@ -38,7 +38,10 @@ $wallet_address = mysqli_real_escape_string($conn, $_POST['wallet_address']);
 
 // check if a wallet exist with a similar name 
 $sql_check  =  "SELECT * from $db_table_name where $where_guard = $guard_par ";
-if (mysqli_query($conn, $sql)){
+$re = mysqli_query($conn, $sql);
+if (mysqli_num_rows($re) > 0){
+
+}else{
 
     // Build the SQL query
     $sql = "INSERT INTO company_wallets (wallet_name, wallet_address) VALUES ('$wallet_name',  '$wallet_address')";
@@ -63,7 +66,7 @@ if (mysqli_query($conn, $sql)){
                     
                         $image_upload_response = array(
                             "image_upload_status"=>false,
-                            "image_upload_message"=>   "image faile to save for some reason"
+                            "image_upload_message"=> $handle_image 
                         );
                         echo json_encode($image_upload_response); 
                     }
@@ -88,7 +91,7 @@ if (mysqli_query($conn, $sql)){
 else{
     $response = array(
         "status"=>false,
-        "message"=>"A wallet already exist with a similar name";
+        "message"=>"A wallet already exist with a similar name"
     );
     echo json_encode($response);
 }
