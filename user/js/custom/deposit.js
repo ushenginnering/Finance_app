@@ -27,7 +27,7 @@ let create_wallet_card_template = (items) => {
         <div class="pricing-header">
           <h4 class="pricing-title">${item?.wallet_name}</h4>
         </div>
-        <img  width="100" src=""${item?.wallet_avatar}/>
+        <center><img  width="100" src="${item?.wallet_avatar}" /> </center>
         <p class="font-weight-700 text-center" style="overflow-wrap: break-word;" id="p${item?.id}">${item?.wallet_address}</p>
         <div class="pricing-footer">
           <a href="javascript:void(0)" onclick="copyToClipboard('#p${item?.id}')" class="btn btn-primary btn-lg">Copy Address</a>

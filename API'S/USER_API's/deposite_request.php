@@ -45,41 +45,33 @@ $deposit_proof = $_FILES['deposit_proof']['tmp_name'];
 $sql = "INSERT INTO deposit_history (user_id, transaction_id, amount_deposited, deposit_type, transaction_status) VALUES ( '$user_id', '$transaction_id', '$amount_deposited', '$deposit_type', '$transaction_status')";
 
 // Execute the statement
-if (mysqli_query($conn,$sql)){
+if (mysqli_query($conn, $sql)){
 
-                  
-/*************************************************************** */
+    /*************************************************************** */
 /***************  this code was added to add image ****************/
 /****************************************************************/
 
-                // handle image 
-                $handle_image  = handle_image($image, $image_name,$image_temp_name, $db_image_holder, $db_table_name, $where_guard, $guard_par,$target_dir,$conn);
-                if ($handle_image == "image updated successfully." )
-                {
+// handle image 
+$handle_image  = handle_image($image, $image_name,$image_temp_name, $db_image_holder, $db_table_name, $where_guard, $guard_par,$target_dir,$conn);
+if ($handle_image == "image updated successfully." )
+{
                     $image_upload_response = array(
-                        "image_upload_status"=>true,
-                        "image_upload_message"=>"image saved successfully"
+                        "status"=>true,
+                        "message"=>"Deposit submitted succesfully"
                     );
-                 //   echo json_encode($image_upload_response);
+                   echo json_encode($image_upload_response);
                 }else{
                 
                     $image_upload_response = array(
-                        "image_upload_status"=>false,
-                        "image_upload_message"=>  $handle_image
+                        "status"=>false,
+                        "message"=>  $handle_image
                     );
-                 //   echo json_encode($image_upload_response); 
+                   echo json_encode($image_upload_response); 
                 }
 /*******************************************************************/
 /***************************code end here **************************/
 /*******************************************************************/
 
-
-    $response = array(
-        "status"=>true,
-        "message"=>"Deposit submitted succesfully",
-
-    );
-    echo json_encode($response);
 }else{
     $response = array(
         "status"=>false,
