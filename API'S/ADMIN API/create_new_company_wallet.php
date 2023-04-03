@@ -37,8 +37,9 @@ $wallet_address = mysqli_real_escape_string($conn, $_POST['wallet_address']);
     /***********************************************************************/
 
 // check if a wallet exist with a similar name 
-$sql_check  =  "SELECT * from $db_table_name where $where_guard = $guard_par ";
-if (mysqli_query($conn, $sql)){
+$sql_check  =  "SELECT * from $db_table_name where $where_guard = '$guard_par' ";
+$result = mysqli_query($conn, $sql_check);
+if (mysqli_num_rows($result) == 0){
 
     // Build the SQL query
     $sql = "INSERT INTO company_wallets (wallet_name, wallet_address) VALUES ('$wallet_name',  '$wallet_address')";
@@ -51,31 +52,25 @@ if (mysqli_query($conn, $sql)){
     /****************************************************************/
 
                     // handle image 
-                    $handle_image  = handle_image($image, $image_name,$image_temp_name, $db_image_holder, $db_table_name, $where_guard, $guard_par,$target_dir,$conn);
-                    if ($handle_image == "image updated successfully." )
+                    $handle_image_  = handle_image($image, $image_name,$image_temp_name, $db_image_holder, $db_table_name, $where_guard, $guard_par,$target_dir,$conn);
+                    if ($handle_image_ == "image updated successfully." )
                     {
                         $image_upload_response = array(
-                            "image_upload_status"=>true,
-                            "image_upload_message"=>"image saved successfully"
+                            "status"=>true,
+                            "message"=>"wallet added successfully"
                         );
                         echo json_encode($image_upload_response);
                     }else{
                     
                         $image_upload_response = array(
-                            "image_upload_status"=>false,
-                            "image_upload_message"=>   "image faile to save for some reason"
+                            "status"=>false,
+                            "message"=>   "image faile to save for some reason"
                         );
                         echo json_encode($image_upload_response); 
                     }
     /*******************************************************************/
     /***************************code end here **************************/
     /*******************************************************************/
-
-        $response = array(
-            "status"=>true,
-            "message"=>"Wallet added succesfully"
-        );
-        echo json_encode($response);
         }else{
             $response = array(
                 "status"=>false,
@@ -84,13 +79,13 @@ if (mysqli_query($conn, $sql)){
             echo json_encode($response);
         }
     }
-}
-else{
-    $response = array(
-        "status"=>false,
-        "message"=>"A wallet already exist with a similar name";
-    );
-    echo json_encode($response);
+    else{
+        $response = array(
+            "status"=>false,
+            "message"=>"A wallet already exist with a similar name"
+        );
+        echo json_encode($response);
+    }
 }
 
 ?>

@@ -17,9 +17,9 @@ function handle_image($image, $image_name,$image_temp_name, $db_image_holder, $d
     
             $sql = "UPDATE $db_table_name SET $db_image_holder  ='$image_url' WHERE $where_guard ='$guard_par'";
             if(mysqli_query($conn, $sql)) {
-             echo  "image updated successfully.";
+             return  "image updated successfully.";
             } else {
-                echo "image didn't updated successfully.";
+                return "image didn't updated successfully.";
             }
 
         } else {

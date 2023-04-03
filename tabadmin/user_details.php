@@ -394,14 +394,9 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form enctype="multipart/form-data" id="update-wallet-info">
+                <form id="update-wallet-info">
                 <div class="modal-body">
                         <div class="row">
-                            <div class="form-group col-md-4">
-                                <label for="" class="col-form-label">Total Deposit</label>
-                                <input type="text" class="form-control total-deposit" id="" />
-                            </div>
-
                             <div class="form-group col-md-4">
                                 <label for="" class="col-form-label">Account Balance</label>
                                 <input type="text" class="form-control account-balance" id="" />
@@ -409,20 +404,6 @@
                             <div class="form-group col-md-4">
                                 <label for="" class="col-form-label">Total Profit Earned:</label>
                                 <input type="text" class="form-control total-profit-earned" id="" />
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label for="" class="col-form-label">Total Withdrawal:</label>
-                                <input type="text" class="form-control total-withdrawal" id="" />
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label for="" class="col-form-label">Last Deposited</label>
-                                <input type="text" class="form-control last-deposit" id="" />
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="" class="col-form-label">Last Withdrawal</label>
-                                <input type="text" class="form-control last-withdrawal" id="" />
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="" class="col-form-label">Referal Bonus</label>
@@ -438,7 +419,7 @@
                     </div>
                     <div class="divider"></div>
                     <div class="right-side">
-                        <input type="submit" class="btn btn-link success" value="Update Wallet">  
+                        <input type="submit" class="btn btn-link success update-wallet-btn" value="Update Wallet">  
                     </div>
                 </div>
             </form>
