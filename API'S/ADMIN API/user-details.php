@@ -5,7 +5,7 @@ if(isset($_GET["user_id"])){
 
 $sql_users = "SELECT * FROM users WHERE user_id = '$user_id'";
 // $sql_deposit = "SELECT SUm(amount_deposited) as total_deposit FROM deposit_history WHERE transaction_status = 'approved'";
-$sql_referral = "SELECT referral_name, referral_bonus FROM referral_history WHERE user_id = '$user_id'";
+$sql_referral = "SELECT referral_name, referral_bonus FROM referral_history WHERE referred_by = '$user_id'";
 $sql_investment = "SELECT * FROM investment_history WHERE user_id = '$user_id'";
 
 

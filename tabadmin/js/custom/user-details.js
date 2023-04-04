@@ -5,7 +5,7 @@ let update_user_table_html = (details) => {
       ["#active-user", details?.fullname?.toUpperCase()],
       ["#full-name", details?.fullname],
       ["#email", details?.mail],
-      ["#avatar", `<img src='${details?.img}' alt="avatar" width="30px"/>`],
+      ["#avatar", `<img src="${details?.USER_IMAGE}" alt="avatar" width="30px"/>`],
       ["#phone-number", details?.phone],
       ["#country", details?.country]
     );
@@ -171,6 +171,10 @@ let update_overview = (details) => {
 
 // function to send ajax request to update personal info
 let update_personal_info = (formData) => {
+  $(".save-info-btn")
+    .attr("value", "Loading...")
+    .attr("disabled", true)
+    .addClass("disable");
   $.ajax({
     url: "http://localhost/finance_app/API'S/ADMIN%20API/manual_update_user_info.php",
     type: "POST",
@@ -178,6 +182,10 @@ let update_personal_info = (formData) => {
     processData: false,
     contentType: false,
     success: (data) => {
+      $(".save-info-btn")
+        .attr("value", "SAVE INFORMATION")
+        .removeAttr("disabled")
+        .removeClass("disable");
       data = parse_json_response(data);
       if (data?.status) {
         alert(data?.message);
@@ -187,6 +195,10 @@ let update_personal_info = (formData) => {
       }
     },
     error: (err) => {
+      $(".save-info-btn")
+        .attr("value", "SAVE INFORMATION")
+        .removeAttr("disabled")
+        .removeClass("disable");
       console.log(err);
     },
   });

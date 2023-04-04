@@ -56,6 +56,10 @@ let create_select_option_template = (items) => {
   }
 };
 let handle_uploading_proof = (formData) => {
+  $("#upload-proof")
+    .attr("value", "Loading...")
+    .attr("disabled", true)
+    .addClass("disable");
   $.ajax({
     url: "http://localhost/finance_app/API'S/USER_API's/deposite_request.php",
     type: "POST",
@@ -63,16 +67,23 @@ let handle_uploading_proof = (formData) => {
     processData: false,
     contentType: false,
     success: (data) => {
-      data = parse_json_response(data)
-      console.log(data)
-      if(data?.status){
-        notification.success(data?.message)
-      }else{
-        notification.danger(data?.message)
+      $("#upload-proof")
+        .attr("value", "Complete Deposit")
+        .removeAttr("disabled")
+        .removeClass("disable");
+      data = parse_json_response(data);
+      if (data?.status) {
+        notification.success(data?.message);
+      } else {
+        notification.danger(data?.message);
       }
     },
     error: (err) => {
       console.log(err);
+      $("#upload-proof")
+        .attr("value", "Complete Deposit")
+        .removeAttr("disabled")
+        .removeClass("disable");
     },
   });
 };

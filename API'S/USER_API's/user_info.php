@@ -1,10 +1,11 @@
 <?php
+session_start();
 include "../connect.php";
-if(isset($_GET["filter"])){
-    strtoupper($filter = $_GET["filter"]);
+if(isset($_SESSION["user_id"])){
+    $user_id = $_SESSION['user_id'];
 }
 // Build the SQL query to retrieve data from the deposit_history table
-$sql = "SELECT * FROM users WHERE account_status = '$filter'";
+$sql = "SELECT * FROM users WHERE user_id = '$user_id' AND account_status = 'ACTIVE'";
 
 // Execute the query
 $result = mysqli_query($conn, $sql);

@@ -143,7 +143,7 @@
 									<div class="form-group">
 										<input type="file" class="form-control" placeholder="Email Address" id="proof" name="deposit_proof"/>
 									</div>
-									<input type="submit" class="btn btn-dark" value="Complete Deposit" id="upload-proof"></input>
+									<input type="submit" class="btn btn-dark" value="Complete Deposit" id="upload-proof" />
 								</div>
 							</form>
 						</div>

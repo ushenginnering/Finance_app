@@ -6,6 +6,15 @@
     }
 
     include 'admin_auto_end_investment.php';  // link to auto end investment 
+    include 'connect.php';
+    $user_id = $_SESSION['user_id'];
+    $result = mysqli_query($conn, "SELECT USER_IMAGE FROM users WHERE user_id = '$user_id'");
+    if(mysqli_num_rows($result) > 0){
+        $row = mysqli_fetch_assoc(($result));
+        $img_path = $row['USER_IMAGE'];
+    }else{
+        $img_path = "";
+    }
 ?>
 
 
@@ -132,7 +141,7 @@
 								aria-haspopup="true">
 								<span class="user-name"><?php echo ucfirst(explode(" ", $_SESSION['fullname'])[0]); ?></span>
 								<span class="avatar"> 
-									<img src="img/user24.png" alt="avatar">
+									<img src="<?php echo $img_path ?>" alt="avatar">
 									<span class="status online"></span>
 								</span>
 							</a>
@@ -140,7 +149,7 @@
 								<div class="header-profile-actions">
 
 									<a href="account-settings.php"><i class="icon-user1"></i> My Profile</a>
-									<a href="login.php"><i class="icon-log-out1"></i> Sign Out</a>
+									<a href="http://localhost/finance_app/API'S/USER_API's/logout.php?logout=1"><i class="icon-log-out1"></i> Sign Out</a>
 								</div>
 							</div>
 						</li>

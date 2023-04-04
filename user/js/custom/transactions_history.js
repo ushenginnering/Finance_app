@@ -68,7 +68,7 @@ let create_investment_table_html = (items) => {
             <td class="start_date">${new Date(item?.created_at)
               .toJSON()
               .slice(0, 10)}</td>
-            <td class="duration">${timeDifferenceInDays} days</td>
+            <td class="duration">${timeDifferenceInDays > 0 ? timeDifferenceInDays : 0} days</td>
             <td class="end_date">${new Date(item?.end_date)
               .toJSON()
               .slice(0, 10)}</td>

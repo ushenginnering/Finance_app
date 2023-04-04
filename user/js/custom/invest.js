@@ -29,7 +29,7 @@ let create_wallet_card_template = (items) => {
                 <h4 class="pricing-title">${item?.plan_name}</h4>
                 <div class="pricing-save">${
                   item?.percentage
-                }% daily for ${item?.plan_duration}days</div>
+                }% daily for ${item?.plan_duration} ${parseInt(item?.plan_duration) > 1 ? 'days' : 'day'}</div>
             </div>
             <ul class="pricing-features">
                 <li>Minimun deposit : $${item?.minimum_value?.toLocaleString()}</li>

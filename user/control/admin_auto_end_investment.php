@@ -39,10 +39,23 @@ while($row = mysqli_fetch_assoc($result))
       $cur_balance = 0;
       $cur_profit = 0;
   }
+  
+    $sql_active_investments = "SELECT COUNT(*) AS total_investment FROM investment_history WHERE user_id = '$user_id' AND transaction_status = 'approved' GROUP BY '$user_id'";
+  
+    $result_count = mysqli_query($conn, $sql_active_investments);
+    if (mysqli_num_rows($result_count) > 0) {
+        // fetch the result row as an associative array
+        $row_count = mysqli_fetch_assoc($result_count);
+        $total_investment = $row_count['total_investment'];
+    }else{
+        $total_investment = 0;
+    }
+
 
   $new_balance = $new + $cur_balance;
   $new_profit = $profit + $cur_profit;
-    $sql = "UPDATE accounts_info SET balance = '$new_balance', total_profit = '$new_profit' WHERE user_id = '$user_id'";
+
+    $sql = "UPDATE accounts_info SET balance = '$new_balance', total_profit = '$new_profit', active_investments = '$total_investment'  WHERE user_id = '$user_id'";
     // echo $sql;
     mysqli_query($conn,$sql);
 
@@ -103,5 +116,3 @@ while($row = mysqli_fetch_assoc($result))
 }else{
   echo "broken";
 }
-
-?>
