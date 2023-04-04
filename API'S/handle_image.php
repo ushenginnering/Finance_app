@@ -26,7 +26,7 @@ function handle_image($image, $image_name,$image_temp_name, $db_image_holder, $d
              return  $image_temp_name." ".$target_file;
         }
     } else {
-        echo "Error!!! no image sent here.";
+        return "Error!!! no image sent here.";
    }
 }
 ?>

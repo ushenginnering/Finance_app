@@ -63,8 +63,8 @@ if (mysqli_num_rows($result) == 0){
                     }else{
                     
                         $image_upload_response = array(
-                            "status"=>false,
-                            "message"=>   "image faile to save for some reason"
+                            "image_upload_status"=>false,
+                            "image_upload_message"=> $handle_image 
                         );
                         echo json_encode($image_upload_response); 
                     }
@@ -79,13 +79,13 @@ if (mysqli_num_rows($result) == 0){
             echo json_encode($response);
         }
     }
-    else{
-        $response = array(
-            "status"=>false,
-            "message"=>"A wallet already exist with a similar name"
-        );
-        echo json_encode($response);
-    }
+}
+else{
+    $response = array(
+        "status"=>false,
+        "message"=>"A wallet already exist with a similar name"
+    );
+    echo json_encode($response);
 }
 
 ?>
