@@ -5,21 +5,35 @@ include "../connect.php";
 $wallet_address = $_POST['wallet_address'];
 
 // Select everything from company_wallet where wallet address matches the posted wallet address
-$sql = "SELECT * FROM company_wallet WHERE wallet_address = '$wallet_address'";
+$sql = "SELECT * FROM company_wallets WHERE wallet_address = '$wallet_address'";
 $result = $conn->query($sql);
 
 // Check if any rows were returned
 if ($result->num_rows > 0) {
   // Delete the matching rows
-  $sql = "DELETE FROM company_wallet WHERE wallet_address = '$wallet_address'";
+  $sql = "DELETE FROM company_wallets WHERE wallet_address = '$wallet_address'";
+  // execute SQL statement
   if ($conn->query($sql) === TRUE) {
-    echo "Rows deleted successfully!";
+    $delete_company_wallet = array(
+        "status"=>true,
+        "message"=>"Company wallet deleted successfully"
+    );
+    echo json_encode($delete_company_wallet);
+
   } else {
-    echo "Error deleting rows: " . $conn->error;
+    $delete_company_wallet = array(
+        "status"=>false,
+        "message"=>"Error deleting Company wallet: " . $conn->error;
+    );
+    echo json_encode($delete_company_wallet);
   }
-} else {
-  echo "No matching rows found.";
-}
+}else {
+    $delete_company_wallet = array(
+        "status"=>false,
+        "message"=>"No matching rows found.";
+    );
+    echo json_encode($delete_company_wallet);
+  }
 
 // Close database connection
 $conn->close();
