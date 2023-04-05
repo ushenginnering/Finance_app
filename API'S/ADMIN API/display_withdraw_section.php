@@ -3,8 +3,13 @@ include "../connect.php";
 if(isset($_GET["filter"])){
     $filter = $_GET["filter"];
 }
+
+if($filter == "all"){
+    $sql = "SELECT idid	user_id	withdrawal_id	date_time	amount_withdrawn	withdrawal_type	transaction_status	withdrawal_address	FROM withdraw_history";
+}else{
+    $sql = "SELECT idid	user_id	withdrawal_id	date_time	amount_withdrawn	withdrawal_type	transaction_status	withdrawal_address	FROM withdraw_history WHERE transaction_status = '$filter'";
+}
 // Build the SQL query to retrieve data from the deposit_history tabl
-$sql = "SELECT idid	user_id	withdrawal_id	date_time	amount_withdrawn	withdrawal_type	transaction_status	withdrawal_address	FROM withdraw_history WHERE transaction_status = '$filter'";
 
 // Execute the query
 $result = mysqli_query($conn, $sql);

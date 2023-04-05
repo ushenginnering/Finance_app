@@ -5,11 +5,10 @@ let create_options = (items) => {
   if (items.length > 0) {
     items?.forEach((item) => {
       option_append_html += `
-        <option value="">select individual user</option>
         <option value="${item}">${item}</option>
         `;
     });
-    updateUI.selector.all(["#send-individual", option_append_html]);
+    updateUI.selector.apppend(["#send-individual", option_append_html]);
   }
 };
 
@@ -63,9 +62,12 @@ $(function () {
       $(".message").val()
       );
       let status = empty(send_to, subject, message).status;
-      
       if (status) {
+        if(send_to.includes("specific user") && individual === ""){
+          notification.danger("Select individual email");
+        }else{
           submit_mailer(send_to, individual, subject, message);
+        }
         } else {
             notification.danger("Must fill in all field");
         }

@@ -4,7 +4,11 @@ if(isset($_GET["filter"])){
     $filter = $_GET["filter"];
 }
 // Build the SQL query to retrieve data from the deposit_history table
-$sql = "SELECT id, user_id, transaction_id,investment_plan,amount_invested,profit, transaction_status,created_at, end_date FROM investment_history WHERE transaction_status = '$filter'";
+if($filter == "all"){
+    $sql = "SELECT id, user_id, transaction_id,investment_plan,amount_invested,profit, transaction_status,created_at, end_date FROM investment_history";
+}else{
+    $sql = "SELECT id, user_id, transaction_id,investment_plan,amount_invested,profit, transaction_status,created_at, end_date FROM investment_history WHERE transaction_status = '$filter'";
+}
 
 // Execute the query
 $result = mysqli_query($conn, $sql);

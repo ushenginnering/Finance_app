@@ -219,7 +219,7 @@ let update_wallet_info = (account_balance, total_profit, referral_bonus) => {
       data = parse_json_response(data);
       if (data?.status) {
         alert(data?.message);
-        load_data();
+        load_account_overview();
       } else {
         alert(data?.message);
       }

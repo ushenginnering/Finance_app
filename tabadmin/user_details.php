@@ -32,7 +32,7 @@
         <nav id="sidebar" class="sidebar-wrapper">
             <!-- Sidebar brand start  -->
             <div class="sidebar-brand">
-                <a href="index.html" class="logo">
+                <a href="index.php" class="logo">
                     <!-- <img src="img/logo.png" alt="" /> -->
                 </a>
             </div>
@@ -44,13 +44,13 @@
                 <div class="sidebar-menu">
                     <ul>
                         <li class="">
-                            <a href="index.html">
+                            <a href="index.php">
                                 <i class="icon-devices_other"></i>
                                 <span class="menu-text">Overview</span>
                             </a>
                         </li>
                         <li class="active">
-                            <a href="users.html">
+                            <a href="users.php">
                                 <i class="icon-folder"></i>
                                 <span class="menu-text">Users Section</span>
                             </a>
@@ -63,27 +63,27 @@
                         </li>
 
                         <li>
-                            <a href="settlement.html">
+                            <a href="withdrawal.php">
                                 <i class="icon-check-circle"></i>
                                 <span class="menu-text">Withdrawal sections</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="settlement.html">
+                            <a href="invest_section.php">
                                 <i class="icon-check-circle"></i>
                                 <span class="menu-text">Investment sections</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="mailer.html">
+                            <a href="mailer.php">
                                 <i class="icon-message-circle"></i>
                                 <span class="menu-text">Mailer</span>
                             </a>
                         </li>
                         <li>
-                            <a href="setting.html">
+                            <a href="setting.php">
                                 <i class="icon-settings1"></i>
                                 <span class="menu-text">Setting</span>
                             </a>
