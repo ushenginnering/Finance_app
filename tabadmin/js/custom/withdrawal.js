@@ -109,7 +109,7 @@ let create_table_html = (items, others) => {
   let load_data = (filter) => {
     // custom api to send an ajax request to the server
     router
-      .get(`http://localhost/finance_app/API'S/ADMIN%20API/display_withdrawal_section.php?filter=${filter}`)
+      .get(`http://localhost/finance_app/API'S/ADMIN%20API/display_withdraw_section.php?filter=${filter}`)
       .then((data) => {
         data = JSON.parse(data)
         if (data.status) {
@@ -117,7 +117,9 @@ let create_table_html = (items, others) => {
             create_table_html(data?.message, data?.others);
           }
         }else{
-          notification.warning(data?.message)
+          setTimeout(() => {
+            notification.warning(data?.message)
+          }, 5000);
         }
       })
       .catch((err) => {

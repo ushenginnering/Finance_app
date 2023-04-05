@@ -120,7 +120,9 @@ let load_data = (filter) => {
           create_table_html(data?.message, data?.others);
         }
       }else{
-        notification.warning(data?.message)
+        setTimeout(() => {
+          notification.warning(data?.message)
+        }, 5000);
       }
     })
     .catch((err) => {
