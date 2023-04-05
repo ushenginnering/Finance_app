@@ -134,9 +134,9 @@ let create_investment_table_template = (items) => {
                 <div>
                     <a href="javascript:void(0)">
                     <span title="De-activate Plan from system"
-                      class="btn btn-warning icon-cancel" onClick="handle_plan_delete(${
-                        item?.id
-                      })">
+                      class="btn btn-danger icon-cancel" onClick="handle_plan_delete('${
+                        item?.plan_name
+                      }')">
                       </span>
                             </a>
                 </div>
@@ -165,9 +165,7 @@ let create_wallet_table_template = (items) => {
           <td>
           <div>
               <a href="javascript:void(0)"><span title="Delete Wallet from system"
-                      class="btn btn-danger icon-delete" onClick="handle_wallet_delete(${
-                        item?.id
-                      })"></span></a>
+                      class="btn btn-danger icon-delete" onClick="handle_wallet_delete('${item?.wallet_address}')"></span></a>
           </div>
       </td>
         </tr>`;
@@ -218,8 +216,26 @@ let handle_add_investment_plan = (
 };
 
 // handle delete event on wallets
-let handle_wallet_delete = (id) => {
-  console.log("delete wallet");
+let handle_wallet_delete = (wallet_address) => {
+  let status = empty(wallet_address).status
+
+  if(status){
+    router.post("http://localhost/finance_app/API'S/ADMIN%20API/delete_company_wallet.php", {
+      wallet_address
+    })
+    .then(data => {
+      data = parse_json_response(data)
+      if(data?.status){
+        notification.success(data?.message)
+        load_wallets()
+      }else{
+        notification.danger(data?.message)
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
 };
 
 let handle_update_site_info = (
@@ -326,8 +342,26 @@ let handle_update_auto_mailer_template = (
 
 
 // handle delete event on investment plan
-let handle_plan_delete = (id) => {
-  console.log("deactivate plan");
+let handle_plan_delete = (plan_name) => {
+  let status = empty(plan_name).status
+
+  if(status){
+    router.post("http://localhost/finance_app/API'S/ADMIN%20API/delete_investment_plan.php", {
+      plan_name
+    })
+    .then(data => {
+      data = parse_json_response(data)
+      if(data?.status){
+        notification.success(data?.message)
+        load_investment_plans()
+      }else{
+        notification.danger(data?.message)
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
 };
 
 // function to add new wallet
