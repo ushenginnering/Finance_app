@@ -218,8 +218,6 @@
                     let formData = new FormData();
                     update_fullname !== "" &&
                         formData.append("update_fullname", $(".update-fullname").val());
-                    update_country !== "" &&
-                        formData.append("update_country", $(".update-country").val());
                     update_phone !== "" &&
                         formData.append("update_phone", $(".update-phone").val());
                     formData.append("update_img", file);

@@ -40,7 +40,7 @@ if(isset($_POST['update_fullname'])){
 $deposit_proof = $_FILES['update_img']['tmp_name'];
 
 // Prepare the SQL statement
-$sql = "UPDATE users SET fullname = '$fullname', phone = '$phone', WHERE user_id = '$user_id'";
+$sql = "UPDATE users SET fullname = '$fullname', phone = '$phone' WHERE user_id = '$user_id'";
 
 // Execute the statement
 if (mysqli_query($conn, $sql)){
@@ -68,7 +68,7 @@ if ($handle_image == "image updated successfully." )
                 }
             }
     }else{
-        $sql = "UPDATE users SET fullname = '$fullname', phone = '$phone', WHERE user_id = '$user_id'";
+        $sql = "UPDATE users SET fullname = '$fullname', phone = '$phone' WHERE user_id = '$user_id'";
         if(mysqli_query($conn, $sql)){
 
             $response = array(
