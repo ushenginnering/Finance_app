@@ -258,13 +258,13 @@ let create_notification_card = (items) => {
     items?.forEach((item) => {
       card_append_html += `
       <li>
-      <a href="#">
+      <a href="javascript:void(0)" style="cursor:default;">
         <div class="details">
           <div class="noti-title mb-2"><b>${(item?.TITLE)?.toUpperCase()}</b></div>
           <div class="noti-details">${item?.CONTENT}</div>
           <date class="noti-date">${new Date(item?.DATE_TIME).toLocaleDateString()}</date>
         </div>
-        <span class="icon-cancel" onClick="delete_notification('${item?.notification_id}')"></span>
+        <span class="icon-cancel" style="cursor:pointer;" onClick="delete_notification('${item?.notification_id}')"></span>
       </a>
     </li>`;
     })
@@ -293,7 +293,13 @@ let delete_notification = (id) => {
         if(data?.status){
           create_notification_card(data?.message)
         }else{
-          $(".header-notifications").html("")
+          $(".header-notifications").html(` <li>
+          <a href="javascript:void(0)" style="cursor:default;">
+            <div class="details">
+              <div class="noti-details">No New Notification</div>
+            </div>
+          </a>
+        </li>`)
         }
     })
     .catch(err => {
