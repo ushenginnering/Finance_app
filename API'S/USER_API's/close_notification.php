@@ -1,9 +1,10 @@
 <?php
+session_start();
 // Set the user ID and notification ID
-$user_id = $_POST['user_id'];
+$user_id = $_SESSION['user_id'];
 $notification_id = $_POST['notification_id'];
 
-include "../connect.php"
+include "../connect.php";
 
 if (isset($_POST['notification_id'])){
     // Prepare and execute the SQL statement

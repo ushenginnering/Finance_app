@@ -55,7 +55,7 @@ $sql = "CREATE TABLE NOTIFICATIONS (
     CONTENT TEXT NOT NULL,
     DATE_TIME DATETIME DEFAULT CURRENT_TIMESTAMP,
     STATUS INT(6) NOT NULL,
-    notification_id INT(10) NOT NULL,
+    notification_id INT(10) NOT NULL
 )";
 
 // Execute the query

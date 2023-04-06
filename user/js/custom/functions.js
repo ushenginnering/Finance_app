@@ -249,3 +249,70 @@ let parse_json_response = (jsonString, searchTerm="status") => {
       return []
     }
   }
+
+let create_notification_card = (items) => {
+  items = JSON.parse(items);
+  console.log(items);
+  let card_append_html = ``;
+  if (items.length > 0) {
+    items?.forEach((item) => {
+      card_append_html += `
+      <li>
+      <a href="#">
+        <div class="details">
+          <div class="noti-title mb-2"><b>${(item?.TITLE)?.toUpperCase()}</b></div>
+          <div class="noti-details">${item?.CONTENT}</div>
+          <date class="noti-date">${new Date(item?.DATE_TIME).toLocaleDateString()}</date>
+        </div>
+        <span class="icon-cancel" onClick="delete_notification('${item?.notification_id}')"></span>
+      </a>
+    </li>`;
+    })
+    updateUI.selector.all([".header-notifications", card_append_html])
+  }
+} 
+
+let delete_notification = (id) => {
+  router.post("../../../../Finance_app/API'S/USER_API's/close_notification.php", {
+    notification_id:id,
+  })
+  .then(data => {
+      data = JSON.parse(data)
+      if(data?.status){
+        get_notifications()
+      }
+  })
+  .catch(err => {
+      console.log(err);
+  })
+}
+  let get_notifications = () => {
+    router.get("../../../../Finance_app/API'S/USER_API's/top_five_notice.php")
+    .then(data => {
+        data = JSON.parse(data)
+        if(data?.status){
+          create_notification_card(data?.message)
+        }else{
+          updateUI.selector.all([".header-notifications", "<li></li>"])
+        }
+    })
+    .catch(err => {
+        console.log(err);
+    })
+
+    router.get("../../../../Finance_app/API'S/USER_API's/open_notification_count.php")
+    .then(data => {
+        data = JSON.parse(data)
+        if(data?.status){
+          if(data?.message < 100){
+            $(".count-label").text(data?.message)
+          }else{
+            $(".count-label").text("99+")
+          }
+        }
+    })
+    .catch(err => {
+        console.log(err);
+    })
+  }
+  get_notifications()

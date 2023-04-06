@@ -1,6 +1,7 @@
 <?php
 // Set the user ID
-$user_id = $_POST['user_id'];
+session_start();
+$user_id = $_SESSION['user_id'];
 
 include "../connect.php";
 
