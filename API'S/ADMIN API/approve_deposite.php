@@ -52,6 +52,37 @@ if (isset($_POST['approve']))
                     }
                 
                     if (mysqli_query($conn, $sql)) {
+
+                        
+                         /**************************** */
+                    // create notification 
+                    /************************************ */
+                                    
+                    // Set the user ID and notification title
+                    $notification_title = "Approved deposited";
+                    // Generate a random notification ID
+                    $notification_id = rand(54, 78834534);
+                    // Set the notification content and status
+                    $notification_content = "Your request to deposite ".$amount_deposited." has been approved";
+                    $status = 0;
+
+
+                    // Prepare and execute the SQL statement
+                    $sql = "INSERT INTO NOTIFICATIONS (user_id, TITLE, CONTENT, DATE_TIME, STATUS, notification_id)
+                            VALUES ('$user_id', '$notification_title', '$notification_content', NOW(), '$status', '$notification_id')";
+
+                    if (mysqli_query($conn, $sql)) {
+                        //echo "New notification created successfully.";
+                    } else {
+                       // echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                    }
+                        
+
+                    /****************************************************/
+                    /**************notification end *********************/
+                    /**************************************************/
+
+
                         // array to return on every request
                         $response = array(
                             "status"=>true,

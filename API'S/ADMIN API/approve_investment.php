@@ -12,8 +12,8 @@ if (isset($_POST['approve']))
 
     // check if query returned any rows
     if (mysqli_num_rows($result) > 0) {
-
-                    
+ 
+                 
                 // Update the transaction status to "approved"
                 $sql = "UPDATE investment_history SET transaction_status='approved' WHERE transaction_id = $transaction_id and transaction_status = 'pending'";
 
@@ -48,6 +48,38 @@ if (isset($_POST['approve']))
                     $sql_2 = "UPDATE accounts_info SET balance = balance, active_investments = '$total_investment' WHERE user_id = '$user_id'";      
                     
                     if (mysqli_query($conn, $sql_2)) {
+
+
+                         /**************************** */
+                    // create notification 
+                    /************************************ */
+                                    
+                    // Set the user ID and notification title
+                    $notification_title = "Approved Investment";
+                    // Generate a random notification ID
+                    $notification_id = rand(54, 78834534);
+                    // Set the notification content and status
+                    $notification_content = "Your request to invest ".$amount_invested." has been approved";
+                    $status = 0;
+
+
+                    // Prepare and execute the SQL statement
+                    $sql = "INSERT INTO NOTIFICATIONS (user_id, TITLE, CONTENT, DATE_TIME, STATUS, notification_id)
+                            VALUES ('$user_id', '$notification_title', '$notification_content', NOW(), '$status', '$notification_id')";
+
+                    if (mysqli_query($conn, $sql)) {
+                        //echo "New notification created successfully.";
+                    } else {
+                       // echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                    }
+                        
+
+                    /****************************************************/
+                    /**************notification end *********************/
+                    /**************************************************/
+
+
+
                         // array to return on every request
                         $response = array(
                             "status"=>true,
@@ -64,7 +96,8 @@ if (isset($_POST['approve']))
                     echo json_encode($response);
 
                 }
-    } else {
+    }
+     else {
         // array to return on every request
         $response = array(
             "status"=>false,

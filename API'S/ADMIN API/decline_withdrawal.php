@@ -44,6 +44,34 @@ if (isset($_POST['withdrawal_id']))
             $return_amount_sql = "UPDATE accounts_info SET referral_bonus = $current_referral_bonus + $amount WHERE user_id = '$user_id'";
         }
         if(mysqli_query($conn, $return_amount_sql)){
+
+                   /**************************** */
+                    // create notification 
+                    /************************************ */
+                                    
+                    // Set the user ID and notification title
+                    $notification_title = "Withdrawal Declined ";
+                    // Generate a random notification ID
+                    $notification_id = rand(54, 78834534);
+                    // Set the notification content and status
+                    $notification_content = "Your request to withdrawl ".$amount." has been declined";
+                    $status = 0;
+
+
+                    // Prepare and execute the SQL statement
+                    $sql = "INSERT INTO NOTIFICATIONS (user_id, TITLE, CONTENT, DATE_TIME, STATUS, notification_id)
+                            VALUES ('$user_id', '$notification_title', '$notification_content', NOW(), '$status', '$notification_id')";
+
+                    if (mysqli_query($conn, $sql)) {
+                        //echo "New notification created successfully.";
+                    } else {
+                       // echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                    }
+                        
+
+                    /****************************************************/
+                    /**************notification end *********************/
+                    /**************************************************/
             $response = array(
                 "status"=>true,
                 "message"=>"Transaction decline status updated successfully.",

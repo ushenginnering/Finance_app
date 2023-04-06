@@ -5,38 +5,48 @@ include "connect.php";
 
 if (isset($_POST['approve'])){
     $transaction_id = $_POST['withdraw_id'];
-    $script = "SELECT amount_withdrawn FROM withdrawal_history WHERE withdrawal_id = '$transaction_id' and transaction_status = 'pending'";
+    $script = "SELECT amount_withdrawn, user_id FROM withdrawal_history WHERE withdrawal_id = '$transaction_id' and transaction_status = 'pending'";
     $result = mysqli_query($conn, $script);
 
     // check if query returned any rows
     if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $amount_withdrawn = $row["amount_withdrawn"];
+            $user_id = $row["user_id"];
 
-                    
+                 
                 // Update the transaction status to "approved"
                 $sql = "UPDATE withdrawal_history SET transaction_status='approved' WHERE withdrawal_id = '$transaction_id' and transaction_status = 'pending'";
 
                 if (mysqli_query($conn, $sql)) {
-                    // add sum to the existing wallet value of this patient
 
-                    // $script = "SELECT amount_withdrawn, user_id FROM withdrawal_history WHERE withdrawal_id = '$transaction_id'";
-                    // $result = mysqli_query($conn, $script);
+                    /**************************** */
+                    // create notification 
+                    /************************************ */
+                                    
+                    // Set the user ID and notification title
+                    $notification_title = "Approved Withdrawal";
+                    // Generate a random notification ID
+                    $notification_id = rand(54, 78834534);
+                    // Set the notification content and status
+                    $notification_content = "Your request to withdraw has been approved";
+                    $status = 0;
 
-                    // // check if query returned any rows
-                    // if (mysqli_num_rows($result) > 0) {
-                    //     // fetch the result row as an associative array
-                    //     $row = mysqli_fetch_assoc($result);
-                    //     // access the value of amount_deposited column
-                    //     $amount_withdrawn = $row['amount_withdrawn'];
-                    //     $user_id = $row['user_id'] ; // set user_id
-                    // }else{
-                    //     $amount_invested = 0;
-                    // }
-                   
-                    // // update the balance with the sum of balance and amount_deposited
-                    // $sql = "UPDATE accounts_info SET balance = balance - $amount_withdrawn WHERE user_id = '$user_id'";      
-                    
-                    // if (mysqli_query($conn, $sql)) {
-                    //     // array to return on every request
+
+                    // Prepare and execute the SQL statement
+                    $sql = "INSERT INTO NOTIFICATIONS (user_id, TITLE, CONTENT, DATE_TIME, STATUS, notification_id)
+                            VALUES ('$user_id', '$notification_title', '$notification_content', NOW(), '$status', '$notification_id')";
+
+                    if (mysqli_query($conn, $sql)) {
+                        //echo "New notification created successfully.";
+                    } else {
+                       // echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                    }
+                        
+
+                    /****************************************************/
+                    /**************notification end *********************/
+                    /**************************************************/
                         $response = array(
                             "status"=>true,
                             "message"=>"Transaction approved status updated successfully.",
@@ -52,8 +62,10 @@ if (isset($_POST['approve'])){
                         echo json_encode($response);
 
                     }
+        }
+               
 
-                } else {
+    } else {
         // array to return on every request
         $response = array(
             "status"=>false,
