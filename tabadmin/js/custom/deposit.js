@@ -120,9 +120,7 @@ let load_data = (filter) => {
           create_table_html(data?.message, data?.others);
         }
       }else{
-        setTimeout(() => {
-          notification.warning(data?.message)
-        }, 5000);
+        $("#deposit_data").html("<tr><td colSpan='10' style='text-align:center'>No Data available</td></tr>")
       }
     })
     .catch((err) => {

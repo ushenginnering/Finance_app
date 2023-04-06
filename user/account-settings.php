@@ -163,10 +163,11 @@
                         .removeClass("disable");
                     data = parse_json_response(data);
                     if (data?.status) {
-                        alert(data?.message);
-                        load_data();
+                        notification.success(data?.message);
+                        // load_data();
+                        location.reload()
                     } else {
-                        alert(data?.message);
+                        notification.danger(data?.message);
                     }
                 },
                 error: (err) => {

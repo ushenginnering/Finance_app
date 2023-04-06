@@ -8,6 +8,9 @@ let load_investment_plans = () => {
       data = JSON.parse(data);
       if (data?.status) {
         create_investment_table_template(data?.message);
+      }else{
+        $(".investment_data").html("<tr><td colSpan='8' style='text-align:center'>No Data available</td></tr>")
+
       }
     })
     .catch((error) => {
@@ -24,6 +27,9 @@ let load_wallets = () => {
       data = JSON.parse(data);
       if (data?.status) {
         create_wallet_table_template(data?.message);
+      }else{
+        $(".wallet_data").html("<tr><td colSpan='6' style='text-align:center'>No Data available</td></tr>")
+
       }
     })
     .catch((error) => {

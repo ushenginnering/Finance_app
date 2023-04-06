@@ -293,7 +293,7 @@ let delete_notification = (id) => {
         if(data?.status){
           create_notification_card(data?.message)
         }else{
-          updateUI.selector.all([".header-notifications", "<li></li>"])
+          $(".header-notifications").html("")
         }
     })
     .catch(err => {
@@ -309,6 +309,8 @@ let delete_notification = (id) => {
           }else{
             $(".count-label").text("99+")
           }
+        }else{
+          $(".count-label").text("0")
         }
     })
     .catch(err => {

@@ -43,10 +43,7 @@ let create_table_html = (items, others) => {
   
       updateUI.selector.all(["#withdrawal_data", table_append_html]);
     }else{
-      setTimeout(() => {
-        notification.warning('No data available')
-      }, 3000);
-      $("#deposit_data").html("")
+      
     }
   };
   
@@ -117,16 +114,13 @@ let create_table_html = (items, others) => {
             create_table_html(data?.message, data?.others);
           }
         }else{
-          setTimeout(() => {
-            notification.warning(data?.message)
-          }, 5000);
+          $("#withdrawal_data").html("<tr><td colSpan='10' style='text-align:center'>No Data available</td></tr>")
         }
       })
       .catch((err) => {
         console.error(err);
       });
   };
-  
   // handle button click events
   let handle_action = (action, id) => {
     if (action.toLowerCase()?.trim() === "approve") {

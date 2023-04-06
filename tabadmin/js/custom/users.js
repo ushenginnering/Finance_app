@@ -12,12 +12,12 @@ let create_table_html = (items) => {
             <td class="status">${item?.account_status}</td>
             <td class="action_btns">
             <div>
-            <span title="delete user investment at your own risk" class="btn btn-danger icon-delete delete-user" onClick="handle_action(${
+            <span title="suspend user" class="btn btn-warning icon-cancel delete-user" onClick="handle_action(${
           item?.user_id
         })">
         </span>
             <a href="user_details.php?user_id=${item?.user_id}">
-            <span title="delete user investment at your own risk" class="btn btn-info icon-eye">
+            <span title="view user" class="btn btn-info icon-eye">
             </span></a>
             </div>
             </td>
@@ -44,6 +44,8 @@ let load_data = (filter) => {
             create_table_html(data.message);
           }
         }else{
+          $("#user-data").html("<tr><td colSpan='8' style='text-align:center'>No Data available</td></tr>")
+
           setTimeout(() => {
             notification.warning(data?.message)
           }, 5000);

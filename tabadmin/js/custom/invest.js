@@ -120,9 +120,8 @@ let load_data = (filter, showNoti = true) => {
           );
         }
       } else {
-        setTimeout(() => {
-          notification.warning(data?.message)
-        }, 5000);
+        $("#invest_data").html("<tr><td colSpan='12' style='text-align:center'>No Data available</td></tr>")
+
       }
     })
     .catch((err) => {

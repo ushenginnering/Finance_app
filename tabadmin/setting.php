@@ -210,7 +210,7 @@
                                 <div class="table-container">
                                     <!--     <div class="t-header">No Search Field</div> -->
                                     <div class="table-responsive">
-                                        <table id="copy-print-csv" class="table custom-table investment_data">
+                                        <table id="copy-print-csv" class="table custom-table ">
                                             <thead>
                                                 <tr>
                                                     <th>S/n</th>
@@ -223,7 +223,7 @@
 
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody class="investment_data">
                                                 <!-- <tr>
                                                     <td>1</td>
                                                     <td>Starter Plan</td>
@@ -282,7 +282,7 @@
                                 <div class="table-container">
                                     <!--     <div class="t-header">No Search Field</div> -->
                                     <div class="table-responsive">
-                                        <table id="copy-print-csv" class="table custom-table wallet_data">
+                                        <table id="copy-print-csv" class="table custom-table ">
                                             <thead>
                                                 <tr>
                                                     <th>S/n</th>
@@ -292,7 +292,7 @@
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody class="wallet_data">
                                                 <!-- <tr>
                                                     <td>1</td>
                                                     <td>Ethereum</td>
