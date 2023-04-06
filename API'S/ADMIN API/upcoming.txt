@@ -1,4 +1,5 @@
-
-
-// user list 
-// send user mail
+1. show top 5 notifications
+2. count total number of notification 
+3. close a notification 
+4. create a notification witdraw, depostit, investment (approve & closed) 
+5. create documentation
